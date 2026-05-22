@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { Handle, Position } from '@xyflow/vue';
-import { FileText, FileImage, FileArchive, FileAudio, File } from 'lucide-vue-next';
+import { Handle, Position } from '@vue-flow/core';
+import { FileText, FileImage, FileArchive, FileAudio, File } from '@lucide/vue';
 import { cn } from '@/lib/utils';
 
 interface FileNodeData {

@@ -1,4 +1,5 @@
 import type { FastifyRequest, FastifyReply } from 'fastify';
+import { runPiiGuard } from '../../lib/piiGuard.js';
 
 const VALID_IMAGE_MODELS = ['gemini-2.5-flash-image', 'gemini-3-pro-image-preview'];
 
@@ -9,6 +10,14 @@ export async function runNano(req: FastifyRequest, reply: FastifyReply) {
 
   const apiKey = process.env.GEMINI_API_KEY;
   if (!apiKey) return reply.code(500).send({ error: 'GEMINI_API_KEY is not configured' });
+
+  const guardOk = await runPiiGuard(
+    req,
+    reply,
+    [{ name: 'prompt', value: prompt }],
+    { sse: false, route: 'POST /api/run-nano' },
+  );
+  if (!guardOk) return;
 
   const selectedModel = VALID_IMAGE_MODELS.includes(model) ? model : 'gemini-3-pro-image-preview';
 

@@ -14,7 +14,7 @@ import {
   Copy,
   Lock,
   Unlock,
-} from 'lucide-vue-next';
+} from '@lucide/vue';
 import { toast } from 'vue-sonner';
 import type { AgentNode as AgentNodeData } from '@agent-builder/shared';
 import Card from '../ui/Card.vue';

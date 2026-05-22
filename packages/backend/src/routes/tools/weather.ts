@@ -1,4 +1,5 @@
 import type { FastifyRequest, FastifyReply } from 'fastify';
+import { runPiiGuard } from '../../lib/piiGuard.js';
 
 const WMO_CODES: Record<number, string> = {
   0: 'Clear sky', 1: 'Mainly clear', 2: 'Partly cloudy', 3: 'Overcast',
@@ -12,6 +13,15 @@ const WMO_CODES: Record<number, string> = {
 export async function getWeather(req: FastifyRequest, reply: FastifyReply) {
   const { location, units = 'metric' } = req.body as { location: string; units?: string };
   if (!location) return reply.code(400).send({ error: 'location is required' });
+
+  // PII guard — a free-text `location` can be a home address.
+  const guardOk = await runPiiGuard(
+    req,
+    reply,
+    [{ name: 'location', value: location }],
+    { sse: false, route: 'POST /api/tools/weather' },
+  );
+  if (!guardOk) return;
 
   try {
     const geoRes = await fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(location)}&count=1&language=en&format=json`);

@@ -23,7 +23,7 @@ export interface AgentNode extends BaseNode {
   type: string;
   systemPrompt: string;
   userPrompt: string;
-  tools: ToolInstance[];
+  tools: AgentToolReference[];
   useSpecificModel?: boolean;
   model?: "gemini-2.5-flash" | "gemini-2.5-flash-lite" | "gemini-3-pro-preview" | "gemini-3-flash-preview" | "claude-sonnet-4-5" | "claude-haiku-4-5" | "claude-opus-4-5" | "grok-4-1-fast-reasoning" | "grok-4-1-fast-non-reasoning" | "grok-code-fast-1";
   responseLength?: number;
@@ -37,7 +37,7 @@ export interface AgentNode extends BaseNode {
 export interface FunctionNode extends BaseNode {
   nodeType: "function";
   functionType: string;
-  config: Record<string, unknown>;
+  config: Record<string, any>;
   outputPorts: string[];
   outputCount?: number;
   outputs?: Record<string, string>;
@@ -54,12 +54,14 @@ export interface FunctionNode extends BaseNode {
 export interface ToolNode extends BaseNode {
   nodeType: "tool";
   toolType: string;
-  config: Record<string, unknown>;
+  config: Record<string, any>;
 }
 
 export type WorkflowNode = AgentNode | FunctionNode | ToolNode;
 
-export interface ToolInstance {
+// A reference attached to an AgentNode pointing at a configured tool.
+// Distinct from the richer free-agent ToolInstance in types/toolInstance.ts.
+export interface AgentToolReference {
   id: string;
   toolId: string;
   config: unknown;

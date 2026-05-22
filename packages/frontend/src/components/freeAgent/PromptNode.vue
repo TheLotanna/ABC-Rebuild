@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { Handle, Position, NodeResizer } from '@xyflow/vue';
-import { MessageSquareText } from 'lucide-vue-next';
+import { Handle, Position } from '@vue-flow/core';
+import { NodeResizer } from '@vue-flow/node-resizer';
+import { MessageSquareText } from '@lucide/vue';
 
 interface PromptNodeData {
   type: 'prompt';

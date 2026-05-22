@@ -1,0 +1,21 @@
+control_id,control_family,title,description,applies_to,implementation,status
+PRV-001,pii_detection,Pre-LLM PII regex scan,Run regex detectors over user prompt and tool inputs before any LLM call; block or redact based on classification.,all,packages/backend/src/lib/pii.ts wired into /api/run-agent* and /api/free-agent pre-flight,in_progress
+PRV-002,pii_detection,Secret pattern detection,Detect Anthropic/OpenAI/AWS/GitHub style API keys in prompts; block egress and warn user.,all,packages/backend/src/lib/pii.ts secret table; same hook as PRV-001,in_progress
+PRV-003,classification,Data classification enforcement,Every workflow run carries a classification (unclassified / protected_a / protected_b); enforced server-side.,all,classification column on workflow_run; deny LLM egress for protected_b unless target endpoint is Vertex,planned
+PRV-004,ministry_isolation,EntraID dynamic group mapping,Map AIM-G-{MINISTRY}-ALL_EMPLOYEES / -ALL_CONTRACTORS to ministry tenant on login.,all,Fastify auth plugin parses JWT 'groups' claim; populates req.user.ministry,planned
+PRV-005,ministry_isolation,Ministry-scoped row level security,Postgres RLS on every workflow/free-agent table by ministry_id.,protected_a;protected_b,RLS policies in migrations 0002+; ministry_id default from current setting,planned
+PRV-006,access_control,Role-based access control,Three roles: viewer / builder / admin. Tool palette adapts.,all,users.role column + Fastify preHandler RBAC check,planned
+PRV-007,audit,Append-only audit log,Every LLM call and tool call appended to audit_log: who / when / classification / prompt-hash / tool-list / output-classification.,all,audit_log table + Fastify onSend hook in run-agent routes,planned
+PRV-008,audit,Audit retention 7 years,Audit log retained 7 years per GoA retention schedule.,all,Nightly job archives >7y rows; never deletes pre-archive,planned
+PRV-009,encryption,Encryption in transit,TLS 1.2+ enforced end-to-end; HSTS preloaded.,all,Fastify behind GoA LB terminating TLS; HSTS header,planned
+PRV-010,encryption,Encryption at rest,Postgres at-rest encryption (AES-256) via GoA managed Postgres,all,Provided by managed Postgres; documented in ATO,planned
+PRV-011,retention,Per-classification retention,Free-agent sessions: 30d unclassified / 90d protected_a / 1y protected_b then purge.,all,Nightly job; user export endpoint pre-purge,planned
+PRV-012,retention,User data export,Self-serve export of all artifacts/blackboards/files,all,GET /api/me/export returns ZIP,planned
+PRV-013,consent,LLM call consent banner,User must accept that prompt may leave GoA boundary unless using GoA-vetted endpoint.,unclassified;protected_a,Banner shown once per session; acceptance written to audit_log,planned
+PRV-014,access_control,Idle session timeout,30 minutes idle / 8h absolute,all,Fastify session plugin,planned
+PRV-015,data_segmentation,Per-user schema,Each user's analysis data lives in their own Postgres schema (lotanna_okwuchukwu etc.).,exercise,SCHEMA_NAME env-driven migrations,implemented
+PRV-016,pii_detection,Output redaction (optional),Optionally scan LLM output for PII; block if detected and target is unclassified channel.,all,packages/backend/src/lib/pii.ts onSend hook,planned
+PRV-017,access_control,Tool URL allowlist,Per ministry: api_call / web_scrape / db URLs require admin approval.,all,allowlist table joined per ministry; enforced in tool routes,planned
+PRV-018,access_control,Block private IP egress,Tool routes refuse 10.x / 172.16-31 / 192.168 / 169.254 / ::1.,all,Helper in packages/backend/src/lib/safeFetch.ts (planned),planned
+PRV-019,audit,Prompt hash not stored verbatim,Store SHA-256 of prompt + first 80 chars; never the full prompt unless classification permits.,protected_b,Audit insert path hashes prompt before write,planned
+PRV-020,ministry_isolation,Cross-ministry sharing controls,Sharing a workflow across ministries requires admin from both ministries.,all,sharing_invite table + dual-approval flow,planned

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { Handle, Position } from '@xyflow/vue';
-import { FileText, Image, Database, File, CheckCircle2, Volume2 } from 'lucide-vue-next';
+import { Handle, Position } from '@vue-flow/core';
+import { FileText, Image, Database, File, CheckCircle2, Volume2 } from '@lucide/vue';
 
 interface ArtifactNodeData {
   type: 'artifact';

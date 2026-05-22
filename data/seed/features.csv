@@ -1,0 +1,68 @@
+category,name,source_path,description,status,notes
+endpoint,POST /api/free-agent,packages/backend/src/routes/agents/freeAgent.ts,Free Agent iteration loop (JSON request/response),ported,From supabase/functions/free-agent
+endpoint,POST /api/run-agent,packages/backend/src/routes/agents/gemini.ts,SSE streaming Gemini run,ported,Default model route
+endpoint,POST /api/run-agent/anthropic,packages/backend/src/routes/agents/anthropic.ts,SSE streaming Claude run,ported,
+endpoint,POST /api/run-agent/xai,packages/backend/src/routes/agents/xai.ts,SSE streaming Grok run,ported,
+endpoint,POST /api/run-nano,packages/backend/src/routes/agents/nano.ts,Single-shot fast LLM,ported,
+endpoint,POST /api/enhance-prompt,packages/backend/src/routes/agents/enhancePrompt.ts,Prompt enhancement,ported,
+endpoint,POST /api/tools/brave-search,packages/backend/src/routes/tools/search.ts,Brave search,ported,
+endpoint,POST /api/tools/google-search,packages/backend/src/routes/tools/search.ts,Google search,ported,
+endpoint,POST /api/tools/web-scrape,packages/backend/src/routes/tools/scrape.ts,HTML scrape via cheerio,ported,
+endpoint,POST /api/tools/api-call,packages/backend/src/routes/tools/apiCall.ts,Generic outbound HTTP,ported,Egress risk - needs allowlist
+endpoint,POST /api/tools/github,packages/backend/src/routes/tools/github.ts,GitHub API fetch,ported,
+endpoint,POST /api/tools/email,packages/backend/src/routes/tools/email.ts,Email send via Resend,ported,Outbound comm risk
+endpoint,POST /api/tools/time,packages/backend/src/routes/tools/time.ts,Time/timezone helper,ported,
+endpoint,POST /api/tools/weather,packages/backend/src/routes/tools/weather.ts,Weather lookup,ported,
+endpoint,POST /api/tools/tts,packages/backend/src/routes/tools/tts.ts,ElevenLabs text-to-speech,ported,
+endpoint,GET /api/tools/tts/voices,packages/backend/src/routes/tools/tts.ts,List TTS voices,ported,
+endpoint,POST /api/tools/db,packages/backend/src/routes/tools/db.ts,External DB query,ported,SQL injection risk - needs parameterization audit
+endpoint,POST /api/tools/pdf,packages/backend/src/routes/tools/pdf.ts,PDF parsing,ported,
+endpoint,POST /api/tools/ocr,packages/backend/src/routes/tools/ocr.ts,OCR via Google Vision,ported,
+endpoint,POST /api/tools/zip,packages/backend/src/routes/tools/zip.ts,Zip archive handler,ported,
+endpoint,GET /health,packages/backend/src/index.ts,Health probe,ported,
+screen,WorkbenchView,packages/frontend/src/views/WorkbenchView.vue,Main two-mode workbench (Workflow + Free Agent),discovered,Phase 3 in progress
+screen,NotFoundView,packages/frontend/src/views/NotFoundView.vue,404 fallback,discovered,
+screen,WorkflowCanvasMode,packages/frontend/src/components/workflow/WorkflowCanvasMode.vue,Canvas-mode workflow editor (xyflow),discovered,Phase 4
+screen,SimpleView,packages/frontend/src/components/workflow/SimpleView.vue,Stacked-list workflow view,discovered,Phase 4
+screen,FreeAgentView,packages/frontend/src/components/freeAgent/FreeAgentView.vue,Free Agent mode container,discovered,Phase 5
+component,Sidebar,packages/frontend/src/components/sidebar/Sidebar.vue,Tool palette / agent gallery,discovered,Phase 4
+component,Toolbar,packages/frontend/src/components/toolbar/Toolbar.vue,Top action bar,discovered,Phase 4
+component,PropertiesPanel,packages/frontend/src/components/properties/PropertiesPanel.vue,Right-hand inspector,discovered,Phase 4
+component,OutputLog,packages/frontend/src/components/output/OutputLog.vue,SSE stream viewer,discovered,Phase 4
+component,AppLayout,packages/frontend/src/components/layout/AppLayout.vue,App shell,ported,
+component,MobileNav,packages/frontend/src/components/layout/MobileNav.vue,Mobile navigation,ported,
+component,BlackboardViewer,packages/frontend/src/components/freeAgent/BlackboardViewer.vue,Free agent blackboard,ported,
+component,ArtifactsPanel,packages/frontend/src/components/freeAgent/ArtifactsPanel.vue,Artifact list,ported,
+component,SecretsManagerModal,packages/frontend/src/components/freeAgent/SecretsManagerModal.vue,Per-tool secret overrides,discovered,Phase 5
+agent,Workflow Agent,packages/frontend/src/components/workflow/AgentNode.vue,LLM-backed node in workflow,ported,
+agent,Free Agent,packages/frontend/src/components/freeAgent/FreeAgentNode.vue,Iterative root agent,ported,
+agent,Child Agent,packages/frontend/src/components/freeAgent/ChildAgentNode.vue,Sub-agent spawned by free agent,ported,
+tool,brave_search,packages/backend/src/routes/tools/search.ts,Web search,ported,
+tool,google_search,packages/backend/src/routes/tools/search.ts,Web search,ported,
+tool,web_scrape,packages/backend/src/routes/tools/scrape.ts,Page extractor,ported,
+tool,api_call,packages/backend/src/routes/tools/apiCall.ts,Generic HTTP,ported,
+tool,github,packages/backend/src/routes/tools/github.ts,GitHub fetch,ported,
+tool,email,packages/backend/src/routes/tools/email.ts,Email sender,ported,
+tool,tts,packages/backend/src/routes/tools/tts.ts,ElevenLabs voice,ported,
+tool,db,packages/backend/src/routes/tools/db.ts,External DB,ported,
+tool,pdf,packages/backend/src/routes/tools/pdf.ts,PDF parse,ported,
+tool,ocr,packages/backend/src/routes/tools/ocr.ts,OCR,ported,
+tool,zip,packages/backend/src/routes/tools/zip.ts,Zip handler,ported,
+workflow,Stage,packages/frontend/src/components/workflow/Stage.vue,Logical workflow stage,ported,
+workflow,WorkflowNodeComponent,packages/frontend/src/components/workflow/WorkflowNodeComponent.vue,xyflow node renderer,ported,
+integration,Anthropic Claude,packages/backend/src/routes/agents/anthropic.ts,LLM provider,ported,Model IDs need centralized config
+integration,Google Gemini,packages/backend/src/routes/agents/gemini.ts,LLM provider,ported,
+integration,xAI Grok,packages/backend/src/routes/agents/xai.ts,LLM provider,ported,
+integration,Brave Search API,packages/backend/src/routes/tools/search.ts,Search provider,ported,
+integration,ElevenLabs TTS,packages/backend/src/routes/tools/tts.ts,Voice synthesis,ported,
+integration,Resend Email,packages/backend/src/routes/tools/email.ts,Transactional email,ported,
+integration,Google Vision OCR,packages/backend/src/routes/tools/ocr.ts,OCR provider,ported,
+integration,EntraID SSO,docs/PRIVACY_CONTROLS.md,MSAL Microsoft identity for ministry detection,discovered,Required for GoA deploy
+integration,Vertex AI,docs/PRIVACY_CONTROLS.md,Alternate Anthropic endpoint via GoA Vertex token,discovered,Required for production
+dependency,Vue 3,packages/frontend/package.json,Frontend framework,ported,
+dependency,Fastify 5,packages/backend/package.json,Backend framework,ported,
+dependency,@xyflow/vue,packages/frontend/package.json,Canvas graph,ported,
+dependency,Pinia,packages/frontend/package.json,State management,ported,
+dependency,Tailwind,packages/frontend/package.json,Styling,ported,
+dependency,@anthropic-ai/sdk,packages/backend/package.json,Claude SDK,ported,
+dependency,pg,packages/backend/package.json,Postgres driver,ported,

@@ -1,0 +1,767 @@
+import type { FunctionDefinition } from "@agent-builder/shared";
+
+export const functionDefinitions: FunctionDefinition[] = [
+  // String Operations
+  {
+    id: "string_contains",
+    name: "String Contains",
+    description: "Check if text contains a substring. Outputs 'true' or 'false' port.",
+    category: "string",
+    iconName: "Filter",
+    color: "bg-blue-500/10 text-blue-500",
+    inputs: {
+      label: "Text input",
+      description: "The text to search in",
+    },
+    outputs: ["true", "false"],
+    configSchema: {
+      searchText: {
+        type: "string",
+        label: "Search Text",
+        description: "Text to search for",
+        required: true,
+        placeholder: "Enter text to search for",
+      },
+      caseSensitive: {
+        type: "boolean",
+        label: "Case Sensitive",
+        description: "Whether the search should be case sensitive",
+        default: false,
+      },
+    },
+  },
+  {
+    id: "string_concat",
+    name: "Concatenate",
+    description: "Join multiple text inputs together",
+    category: "string",
+    iconName: "Merge",
+    color: "bg-blue-500/10 text-blue-500",
+    inputs: {
+      label: "Text input",
+      description: "Text to concatenate",
+    },
+    outputs: ["output"],
+    configSchema: {
+      separator: {
+        type: "string",
+        label: "Separator",
+        description: "Text to insert between inputs",
+        default: " ",
+        placeholder: "e.g., ', ' or '\\n'",
+      },
+    },
+  },
+  {
+    id: "string_replace",
+    name: "Replace",
+    description: "Replace text with another text",
+    category: "string",
+    iconName: "Type",
+    color: "bg-blue-500/10 text-blue-500",
+    inputs: {
+      label: "Text input",
+      description: "The text to modify",
+    },
+    outputs: ["output"],
+    configSchema: {
+      find: {
+        type: "string",
+        label: "Find",
+        description: "Text to find",
+        required: true,
+        placeholder: "Text to find",
+      },
+      replace: {
+        type: "string",
+        label: "Replace With",
+        description: "Replacement text",
+        required: true,
+        placeholder: "Replacement text",
+      },
+    },
+  },
+  {
+    id: "string_split",
+    name: "Split",
+    description: "Split text into multiple parts with configurable output ports",
+    category: "string",
+    iconName: "Split",
+    color: "bg-blue-500/10 text-blue-500",
+    inputs: {
+      label: "Text input",
+      description: "Text to split",
+    },
+    outputs: ["output_1"], // Dynamic outputs based on outputCount
+    supportsMultipleOutputs: true,
+    configSchema: {
+      delimiter: {
+        type: "string",
+        label: "Delimiter",
+        description: "Character(s) to split on",
+        default: ",",
+        placeholder: "e.g., ',' or '\\n'",
+      },
+    },
+  },
+
+  // Logic Functions
+  {
+    id: "logic_gate",
+    name: "Logic Gate",
+    description: "Control data flow based on AND, OR, NAND, NOR logic across multiple inputs",
+    category: "logic",
+    iconName: "GitBranch",
+    color: "bg-purple-500/10 text-purple-500",
+    inputs: {
+      label: "Multiple inputs",
+      description: "Configure number of input sockets in properties panel",
+    },
+    outputs: ["output"],
+    supportsMultipleInputs: true,
+    supportsMultipleOutputs: true,
+    configSchema: {
+      gateType: {
+        type: "string",
+        label: "Gate Type",
+        description: "AND (all non-null), OR (any non-null), NAND (all null), NOR (any null)",
+        required: true,
+        default: "AND",
+      },
+      outputMode: {
+        type: "string",
+        label: "Output Mode",
+        description: "Single (concatenated) or Matching (same as inputs)",
+        required: true,
+        default: "single",
+      },
+      separator: {
+        type: "string",
+        label: "Separator",
+        description: "Text between concatenated values (for Single mode)",
+        default: "\n",
+        placeholder: "\\n",
+      },
+    },
+  },
+  {
+    id: "is_json",
+    name: "Is JSON",
+    description: "Check if input is valid JSON. Outputs 'true' or 'false' port.",
+    category: "logic",
+    iconName: "CheckCircle2",
+    color: "bg-purple-500/10 text-purple-500",
+    inputs: {
+      label: "Text input",
+      description: "Text to validate as JSON",
+    },
+    outputs: ["true", "false"],
+  },
+  {
+    id: "is_empty",
+    name: "Is Empty",
+    description: "Check if input is empty or whitespace only",
+    category: "logic",
+    iconName: "CheckCircle2",
+    color: "bg-purple-500/10 text-purple-500",
+    inputs: {
+      label: "Text input",
+      description: "Text to check",
+    },
+    outputs: ["true", "false"],
+  },
+  {
+    id: "is_url",
+    name: "Is URL",
+    description: "Check if input is a valid URL",
+    category: "logic",
+    iconName: "CheckCircle2",
+    color: "bg-purple-500/10 text-purple-500",
+    inputs: {
+      label: "Text input",
+      description: "Text to validate as URL",
+    },
+    outputs: ["true", "false"],
+  },
+
+  // Conditional
+  {
+    id: "if_else",
+    name: "If/Else",
+    description: "Route data based on a condition",
+    category: "conditional",
+    iconName: "GitBranch",
+    color: "bg-amber-500/10 text-amber-500",
+    inputs: {
+      label: "Input",
+      description: "Data to route",
+    },
+    outputs: ["true", "false"],
+    configSchema: {
+      condition: {
+        type: "string",
+        label: "Condition",
+        description: "Condition to evaluate (contains, equals, etc.)",
+        required: true,
+        placeholder: "e.g., 'contains success'",
+      },
+    },
+  },
+
+  // Memory
+  {
+    id: "memory",
+    name: "Memory",
+    description: "Store outputs across multiple workflow runs",
+    category: "memory",
+    iconName: "Database",
+    color: "bg-green-500/10 text-green-500",
+    inputs: {
+      label: "Data input",
+      description: "Data to store in memory",
+    },
+    outputs: ["output"],
+    configSchema: {
+      memoryKey: {
+        type: "string",
+        label: "Memory Key",
+        description: "Unique identifier for this memory store",
+        required: true,
+        placeholder: "e.g., 'research_results'",
+      },
+    },
+  },
+
+  // Export Functions
+  {
+    id: "export_markdown",
+    name: "Export to Markdown",
+    description: "Export output as a .md file",
+    category: "export",
+    iconName: "FileDown",
+    color: "bg-orange-500/10 text-orange-500",
+    inputs: {
+      label: "Content",
+      description: "Content to export",
+    },
+    outputs: ["output"],
+    configSchema: {
+      filename: {
+        type: "string",
+        label: "Filename",
+        description: "Name for the exported file",
+        default: "export.md",
+        placeholder: "filename.md",
+      },
+    },
+  },
+  {
+    id: "export_json",
+    name: "Export to JSON",
+    description: "Export output as a .json file",
+    category: "export",
+    iconName: "FileJson",
+    color: "bg-orange-500/10 text-orange-500",
+    inputs: {
+      label: "Content",
+      description: "Content to export",
+    },
+    outputs: ["output"],
+    configSchema: {
+      filename: {
+        type: "string",
+        label: "Filename",
+        description: "Name for the exported file",
+        default: "export.json",
+        placeholder: "filename.json",
+      },
+      pretty: {
+        type: "boolean",
+        label: "Pretty Print",
+        description: "Format JSON with indentation",
+        default: true,
+      },
+    },
+  },
+  {
+    id: "export_text",
+    name: "Export to Text",
+    description: "Export output as a .txt file",
+    category: "export",
+    iconName: "FileDown",
+    color: "bg-orange-500/10 text-orange-500",
+    inputs: {
+      label: "Content",
+      description: "Content to export",
+    },
+    outputs: ["output"],
+    configSchema: {
+      filename: {
+        type: "string",
+        label: "Filename",
+        description: "Name for the exported file",
+        default: "export.txt",
+        placeholder: "filename.txt",
+      },
+    },
+  },
+  {
+    id: "export_pdf",
+    name: "Export to PDF",
+    description: "Export output as a formatted PDF file",
+    category: "export",
+    iconName: "FileDown",
+    color: "bg-orange-500/10 text-orange-500",
+    inputs: {
+      label: "Content",
+      description: "Markdown content to export as PDF",
+    },
+    outputs: ["output"],
+    configSchema: {
+      filename: {
+        type: "string",
+        label: "Filename",
+        description: "Name for the exported PDF file",
+        default: "export.pdf",
+        placeholder: "filename.pdf",
+      },
+      title: {
+        type: "string",
+        label: "Document Title",
+        description: "Title for the PDF document",
+        default: "Document",
+        placeholder: "My Document",
+      },
+    },
+  },
+  {
+    id: "export_word",
+    name: "Export to Word",
+    description: "Export output as a formatted Word document (.docx)",
+    category: "export",
+    iconName: "FileDown",
+    color: "bg-orange-500/10 text-orange-500",
+    inputs: {
+      label: "Content",
+      description: "Markdown content to export as Word document",
+    },
+    outputs: ["output"],
+    configSchema: {
+      filename: {
+        type: "string",
+        label: "Filename",
+        description: "Name for the exported Word file",
+        default: "export.docx",
+        placeholder: "filename.docx",
+      },
+      title: {
+        type: "string",
+        label: "Document Title",
+        description: "Title for the Word document",
+        default: "Document",
+        placeholder: "My Document",
+      },
+    },
+  },
+
+  // URL Operations
+  {
+    id: "extract_urls",
+    name: "Extract URLs",
+    description: "Extract all URLs from text for web scraping",
+    category: "url",
+    iconName: "Globe",
+    color: "bg-cyan-500/10 text-cyan-500",
+    inputs: {
+      label: "Text input",
+      description: "Text containing URLs",
+    },
+    outputs: ["output"],
+    configSchema: {
+      unique: {
+        type: "boolean",
+        label: "Unique URLs Only",
+        description: "Remove duplicate URLs",
+        default: true,
+      },
+    },
+  },
+
+  // Data Transformation
+  {
+    id: "parse_json",
+    name: "Parse JSON",
+    description: "Parse JSON string into readable format",
+    category: "data",
+    iconName: "FileJson",
+    color: "bg-indigo-500/10 text-indigo-500",
+    inputs: {
+      label: "JSON input",
+      description: "JSON string to parse",
+    },
+    outputs: ["output"],
+    configSchema: {
+      extractPath: {
+        type: "string",
+        label: "Extract Path",
+        description: "JSON path to extract (e.g., 'data.results')",
+        placeholder: "Optional: data.items",
+      },
+    },
+  },
+  {
+    id: "format_json",
+    name: "Format JSON",
+    description: "Format JSON with proper indentation",
+    category: "data",
+    iconName: "AlignLeft",
+    color: "bg-indigo-500/10 text-indigo-500",
+    inputs: {
+      label: "JSON input",
+      description: "JSON to format",
+    },
+    outputs: ["output"],
+  },
+  {
+    id: "google_search",
+    name: "Google Search",
+    description: "Perform a Google search and return top results",
+    category: "url",
+    iconName: "Globe",
+    color: "bg-sky-500/10 text-sky-500",
+    inputs: {
+      label: "Search query",
+      description: "The search query to execute",
+    },
+    outputs: ["output"],
+    configSchema: {
+      overrideQuery: {
+        type: "string",
+        label: "Override Search Query",
+        description: "Optional: Override input with this search query",
+        required: false,
+        placeholder: "Enter search query to override input",
+      },
+      numResults: {
+        type: "number",
+        label: "Number of Results",
+        description: "Number of search results to return (1-1000)",
+        default: 20,
+        required: false,
+        placeholder: "20",
+      },
+    },
+  },
+  {
+    id: "brave_search",
+    name: "Brave Search",
+    description: "Perform a Brave search and return top results",
+    category: "url",
+    iconName: "Globe",
+    color: "bg-orange-500/10 text-orange-500",
+    inputs: {
+      label: "Search query",
+      description: "The search query to execute",
+    },
+    outputs: ["output"],
+    configSchema: {
+      overrideQuery: {
+        type: "string",
+        label: "Override Search Query",
+        description: "Optional: Override input with this search query",
+        required: false,
+        placeholder: "Enter search query to override input",
+      },
+      numResults: {
+        type: "number",
+        label: "Number of Results",
+        description: "Number of search results to return (1-20)",
+        default: 20,
+        required: false,
+        placeholder: "20",
+      },
+    },
+  },
+  {
+    id: "web_scrape",
+    name: "Web Scrape",
+    description: "Extract URLs from input and scrape each one, concatenating results",
+    category: "url",
+    iconName: "ExternalLink",
+    color: "bg-teal-500/10 text-teal-500",
+    inputs: {
+      label: "Text with URLs",
+      description: "Text containing URLs to scrape",
+    },
+    outputs: ["output"],
+    configSchema: {
+      returnHtml: {
+        type: "boolean",
+        label: "Return HTML",
+        description: "Return raw HTML instead of extracted text",
+        default: false,
+      },
+      truncateResults: {
+        type: "boolean",
+        label: "Truncate Results",
+        description: "Limit the character length of scraped content",
+        default: false,
+      },
+      maxCharacters: {
+        type: "number",
+        label: "Max Characters",
+        description: "Maximum characters per result (applies to web pages, PDFs, and DOCX)",
+        default: 5000,
+        required: false,
+        placeholder: "5000",
+      },
+    },
+  },
+  {
+    id: "api_call",
+    name: "API Call",
+    description: "Make an HTTP API call with the input as the body",
+    category: "url",
+    iconName: "Zap",
+    color: "bg-yellow-500/10 text-yellow-500",
+    inputs: {
+      label: "Request body",
+      description: "Data to send in the API call",
+    },
+    outputs: ["output"],
+    configSchema: {
+      url: {
+        type: "string",
+        label: "API URL",
+        description: "The URL to call",
+        required: true,
+        placeholder: "https://api.example.com/endpoint",
+      },
+      method: {
+        type: "string",
+        label: "HTTP Method",
+        description: "HTTP method (GET, POST, PUT, DELETE)",
+        default: "POST",
+        placeholder: "POST",
+      },
+      bearerToken: {
+        type: "string",
+        label: "Bearer Token",
+        description: "JWT or API token for Authorization header",
+        placeholder: "your-token-here",
+      },
+      headers: {
+        type: "json",
+        label: "Additional Headers (JSON)",
+        description: "Additional HTTP headers as JSON object",
+        placeholder: '{"X-Custom-Header": "value"}',
+      },
+    },
+  },
+  {
+    id: "content",
+    name: "Content",
+    description: "Add static content manually or via file upload at any workflow stage",
+    category: "data",
+    iconName: "FileText",
+    color: "bg-blue-500/10 text-blue-500",
+    inputs: {
+      label: "Optional Input",
+      description: "Optional input from connections (displayed but not used in output)"
+    },
+    outputs: ["output"],
+    configSchema: {
+      content: {
+        type: "string",
+        label: "Content",
+        description: "Static content to output (can be manually entered or uploaded from files)",
+        placeholder: "Enter your content here or upload files...",
+      },
+    },
+  },
+  // AI Media Generation
+  {
+    id: "image_generation",
+    name: "Image Generation",
+    description: "Generate images from text prompts using Gemini Nano Banana models",
+    category: "data",
+    iconName: "Image",
+    color: "bg-pink-500/10 text-pink-500",
+    inputs: {
+      label: "Prompt",
+      description: "Text description of the image to generate"
+    },
+    outputs: ["output"],
+    configSchema: {
+      model: {
+        type: "string",
+        label: "Model",
+        description: "gemini-2.5-flash-image (fast) or gemini-3-pro-image-preview (quality)",
+        default: "gemini-2.5-flash-image",
+        placeholder: "gemini-2.5-flash-image",
+      },
+      overridePrompt: {
+        type: "string",
+        label: "Override Prompt",
+        description: "Optional: Use this prompt instead of input connection",
+        placeholder: "A beautiful sunset over mountains...",
+      },
+    },
+  },
+  {
+    id: "text_to_speech",
+    name: "Text to Speech",
+    description: "Convert text to audio using ElevenLabs TTS",
+    category: "data",
+    iconName: "Volume2",
+    color: "bg-violet-500/10 text-violet-500",
+    inputs: {
+      label: "Text",
+      description: "Text to convert to speech"
+    },
+    outputs: ["output"],
+    configSchema: {
+      voiceId: {
+        type: "string",
+        label: "Voice",
+        description: "Select a voice from your ElevenLabs account",
+        required: true,
+        placeholder: "Select a voice...",
+      },
+      model: {
+        type: "string",
+        label: "Model",
+        description: "ElevenLabs model to use",
+        default: "eleven_multilingual_v2",
+        placeholder: "eleven_multilingual_v2",
+      },
+    },
+  },
+  // Email
+  {
+    id: "send_email",
+    name: "Send Email",
+    description: "Send email via Resend from info@agentbuilderconsole.com",
+    category: "export",
+    iconName: "Mail",
+    color: "bg-rose-500/10 text-rose-500",
+    inputs: {
+      label: "Email Body",
+      description: "Content to send in the email body"
+    },
+    outputs: ["output"],
+    configSchema: {
+      to: {
+        type: "string",
+        label: "To",
+        description: "Recipient email address",
+        required: true,
+        placeholder: "recipient@example.com",
+      },
+      subject: {
+        type: "string",
+        label: "Subject",
+        description: "Email subject line",
+        required: true,
+        placeholder: "Enter subject...",
+      },
+      useHtml: {
+        type: "boolean",
+        label: "Send as HTML",
+        description: "Send body as HTML instead of plain text",
+        default: false,
+      },
+    },
+  },
+  // GitHub Integration
+  {
+    id: "github_files",
+    name: "GitHub Files",
+    description: "Fetch files from a GitHub repository",
+    category: "data",
+    iconName: "GitBranch",
+    color: "bg-slate-500/10 text-slate-500",
+    supportsMultipleOutputs: true,
+    inputs: {
+      label: "Optional Input",
+      description: "Optional input (not used directly)"
+    },
+    outputs: ["output"],
+    configSchema: {
+      repoUrl: {
+        type: "string",
+        label: "Repository URL",
+        description: "GitHub repository URL (e.g., github.com/owner/repo)",
+        required: true,
+        placeholder: "github.com/owner/repo",
+      },
+      branch: {
+        type: "string",
+        label: "Branch",
+        description: "Branch name (defaults to main/master)",
+        default: "",
+        placeholder: "main",
+      },
+      selectedPaths: {
+        type: "json",
+        label: "Selected Files",
+        description: "File paths to fetch (populated by file selector)",
+        default: [],
+      },
+      outputMode: {
+        type: "string",
+        label: "Output Mode",
+        description: "combined = single output, separate = one output per file",
+        default: "combined",
+        placeholder: "combined",
+      },
+    },
+  },
+  // Pronghorn Integration
+  {
+    id: "pronghorn",
+    name: "Pronghorn",
+    description: "Send text and media artifacts to a Pronghorn project",
+    category: "export",
+    iconName: "Send",
+    color: "bg-amber-500/10 text-amber-500",
+    inputs: {
+      label: "Multiple inputs",
+      description: "Configure number of input sockets in properties panel",
+    },
+    outputs: ["output"],
+    supportsMultipleInputs: true,
+    configSchema: {
+      inputCount: {
+        type: "number",
+        label: "Input Count",
+        description: "Number of input sockets (1-10)",
+        default: 1,
+      },
+      projectId: {
+        type: "string",
+        label: "Project ID",
+        description: "Your Pronghorn project UUID",
+        required: true,
+        placeholder: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+      },
+      token: {
+        type: "string",
+        label: "Token",
+        description: "Your editor/owner token UUID",
+        required: true,
+        placeholder: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+      },
+    },
+  },
+];
+
+// Helper to get function by ID
+export const getFunctionById = (id: string): FunctionDefinition | undefined => {
+  return functionDefinitions.find((f) => f.id === id);
+};
+
+// Helper to get functions by category
+export const getFunctionsByCategory = (category: string): FunctionDefinition[] => {
+  return functionDefinitions.filter((f) => f.category === category);
+};

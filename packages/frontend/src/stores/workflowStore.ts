@@ -371,8 +371,8 @@ export const useWorkflowStore = defineStore('workflow', () => {
       id: `note-${Date.now()}`,
       content: '',
       position,
-      width: 200,
-      height: 100,
+      size: { width: 200, height: 100 },
+      color: '#fef3c7',
     };
     workflow.value = { ...workflow.value, notes: [...(workflow.value.notes || []), note] };
   }
@@ -404,6 +404,22 @@ export const useWorkflowStore = defineStore('workflow', () => {
     workflowName.value = 'Untitled Workflow';
     logs.value = [];
     selectedNode.value = null;
+  }
+
+  function clearWorkflowOutputs() {
+    workflow.value = {
+      ...workflow.value,
+      stages: workflow.value.stages.map(stage => ({
+        ...stage,
+        nodes: stage.nodes.map(node => ({
+          ...node,
+          output: '',
+          outputs: {},
+          input: '',
+          status: 'idle' as const,
+        })),
+      })),
+    };
   }
 
   return {
@@ -449,5 +465,6 @@ export const useWorkflowStore = defineStore('workflow', () => {
     deleteNote,
     loadWorkflow,
     clearWorkflow,
+    clearWorkflowOutputs,
   };
 });

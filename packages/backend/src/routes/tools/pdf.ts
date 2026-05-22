@@ -1,4 +1,5 @@
 import type { FastifyRequest, FastifyReply } from 'fastify';
+import { runPiiGuard } from '../../lib/piiGuard.js';
 
 export async function pdfHandler(req: FastifyRequest, reply: FastifyReply) {
   const { action, url, base64, startPage, endPage, maxCharacters } = req.body as {
@@ -9,6 +10,16 @@ export async function pdfHandler(req: FastifyRequest, reply: FastifyReply) {
     endPage?: number;
     maxCharacters?: number;
   };
+
+  // PII guard — scan `url` only. `base64` is binary PDF and produces
+  // false positives on the regex catalogue.
+  const guardOk = await runPiiGuard(
+    req,
+    reply,
+    [{ name: 'url', value: url }],
+    { sse: false, route: 'POST /api/tools/pdf' },
+  );
+  if (!guardOk) return;
 
   try {
     let pdfBuffer: Buffer;

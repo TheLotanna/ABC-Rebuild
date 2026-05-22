@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, watch } from 'vue';
-import { Trash2, FunctionSquare, Bot, Copy, Play } from 'lucide-vue-next';
+import { Trash2, FunctionSquare, Bot, Copy, Play } from '@lucide/vue';
 import type { Stage } from '@agent-builder/shared';
 import Card from '../ui/Card.vue';
 import Button from '../ui/Button.vue';

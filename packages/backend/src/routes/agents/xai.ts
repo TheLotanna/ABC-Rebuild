@@ -1,5 +1,6 @@
 import type { FastifyRequest, FastifyReply } from 'fastify';
 import { initSse, sendEvent, pipeSSE } from './sseHelper.js';
+import { runPiiGuard } from '../../lib/piiGuard.js';
 
 interface RunAgentBody {
   systemPrompt: string;
@@ -22,6 +23,17 @@ export async function runAgentXai(req: FastifyRequest, reply: FastifyReply) {
   if (!apiKey) {
     return reply.code(500).send({ error: 'XAI_API_KEY is not configured' });
   }
+
+  const guardOk = await runPiiGuard(
+    req,
+    reply,
+    [
+      { name: 'systemPrompt', value: systemPrompt },
+      { name: 'userPrompt', value: userPrompt },
+    ],
+    { sse: false, route: 'POST /api/run-agent/xai' },
+  );
+  if (!guardOk) return;
 
   initSse(reply);
 

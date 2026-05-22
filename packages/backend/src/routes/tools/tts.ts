@@ -1,4 +1,5 @@
 import type { FastifyRequest, FastifyReply } from 'fastify';
+import { runPiiGuard } from '../../lib/piiGuard.js';
 
 export async function elevenlabsTts(req: FastifyRequest, reply: FastifyReply) {
   const { text, voice_id, model_id = 'eleven_multilingual_v2' } = req.body as { text: string; voice_id?: string; model_id?: string };
@@ -6,6 +7,16 @@ export async function elevenlabsTts(req: FastifyRequest, reply: FastifyReply) {
 
   const apiKey = process.env.ELEVENLABS_API_KEY;
   if (!apiKey) return reply.code(500).send({ error: 'ELEVENLABS_API_KEY not configured' });
+
+  // PII guard — TTS reads `text` aloud; if it contains PII it's literally
+  // synthesised into audio that may be sent to a user or stored.
+  const guardOk = await runPiiGuard(
+    req,
+    reply,
+    [{ name: 'text', value: text }],
+    { sse: false, route: 'POST /api/tools/tts' },
+  );
+  if (!guardOk) return;
 
   const voiceId = voice_id ?? 'FyYFoP6qNryBV7G8rnI9';
 

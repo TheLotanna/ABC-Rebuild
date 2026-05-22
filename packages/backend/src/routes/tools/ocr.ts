@@ -1,10 +1,22 @@
 import type { FastifyRequest, FastifyReply } from 'fastify';
+import { runPiiGuard } from '../../lib/piiGuard.js';
 
 export async function ocrHandler(req: FastifyRequest, reply: FastifyReply) {
   const { imageBase64, mimeType = 'image/jpeg', imageUrl } = req.body as { imageBase64?: string; mimeType?: string; imageUrl?: string };
 
   const apiKey = process.env.GOOGLE_VISION_API_KEY ?? process.env.GEMINI_API_KEY;
   if (!apiKey) return reply.code(500).send({ error: 'GOOGLE_VISION_API_KEY or GEMINI_API_KEY not configured' });
+
+  // PII guard — scan `imageUrl` only. `imageBase64` is binary; running
+  // regexes over base64-encoded image bytes generates constant false
+  // positives (random byte runs match name_candidate / IPv4 / phone).
+  const guardOk = await runPiiGuard(
+    req,
+    reply,
+    [{ name: 'imageUrl', value: imageUrl }],
+    { sse: false, route: 'POST /api/tools/ocr' },
+  );
+  if (!guardOk) return;
 
   let base64Data = imageBase64;
 

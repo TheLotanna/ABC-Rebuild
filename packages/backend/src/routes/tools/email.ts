@@ -1,4 +1,5 @@
 import type { FastifyRequest, FastifyReply } from 'fastify';
+import { runPiiGuard } from '../../lib/piiGuard.js';
 
 export async function sendEmail(req: FastifyRequest, reply: FastifyReply) {
   const { to, subject, body: emailBody, useHtml } = req.body as { to: string; subject: string; body: string; useHtml?: boolean };
@@ -9,6 +10,20 @@ export async function sendEmail(req: FastifyRequest, reply: FastifyReply) {
 
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailRegex.test(to)) return reply.code(400).send({ error: 'Invalid email format' });
+
+  // Pre-flight PII / secret scan. `to` is intentionally NOT scanned — the
+  // regex above already validates it's an email address; scanning it would
+  // false-positive on every legitimate request.
+  const guardOk = await runPiiGuard(
+    req,
+    reply,
+    [
+      { name: 'subject', value: subject },
+      { name: 'body', value: emailBody },
+    ],
+    { sse: false, route: 'POST /api/tools/email' },
+  );
+  if (!guardOk) return;
 
   const apiKey = process.env.RESEND_API_KEY;
   if (!apiKey) return reply.code(500).send({ error: 'RESEND_API_KEY not configured' });

@@ -121,40 +121,5 @@ export interface PromptCustomization {
   toolOverrides?: Record<string, ToolOverride>;
 }
 
-export interface ToolParameter {
-  type: string;
-  required: boolean;
-  description: string;
-  default?: string | number | boolean;
-  enum?: string[];
-  items?: string;
-}
-
-export interface ToolDefinition {
-  name: string;
-  description: string;
-  icon: string;
-  category: string | string[];
-  parameters: Record<string, ToolParameter>;
-  returns: {
-    type: string;
-    properties?: string[] | Record<string, unknown>;
-    items?: Record<string, unknown>;
-    description?: string;
-  };
-  edge_function?: string;
-  frontend_handler?: boolean;
-}
-
-export interface ToolCategory {
-  name: string;
-  description: string;
-  color: string;
-}
-
-export interface ToolsManifest {
-  version: string;
-  description: string;
-  tools: Record<string, ToolDefinition>;
-  categories: Record<string, ToolCategory>;
-}
+// ToolDefinition, ToolParameter, ToolCategory, ToolsManifest are canonical in
+// types/freeAgent.ts. Use those — they're re-exported from the package barrel.
