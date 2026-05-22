@@ -117,6 +117,28 @@ agent-builder-vue/
 > **Update this section when finishing or starting a task** so other agents
 > don't duplicate work. Use a `✅` / `🟡` / `⏳` marker and your agent ID/short note.
 
+> **2026-05-22 integration audit:** Four parallel agents converged into this
+> tree (`claude-c/phase-4-workflow-nodes` branch + worktrees
+> `confident-fermat-bfddd6`, `festive-elbakyan-24d55b`,
+> `competent-poincare-1486f3`). Unique contributions from each have been
+> pulled in: `confident-fermat` → 3 new icons in `iconRegistry.ts`, `docx`
+> frontend dep, `src/types/appMode.ts`; `festive-elbakyan` → `migrations/`,
+> `scripts/`, `data/`, `packages/backend/src/lib/pii.{ts,test.ts}`, env +
+> root + backend `package.json` deltas; `competent-poincare` → 5 markdown
+> files under `analysis/`. `confident-fermat`'s overlapping `lib/`, `utils/`,
+> `views/`, `layout/`, and `freeAgent/*Node.vue` ports were *superseded* by
+> the more complete versions already in this tree from `claude-B`/`claude-D` —
+> that worktree can be archived. Static import-graph check: all `@/*` and
+> `@agent-builder/shared` imports resolve.
+
+### Phase 0 — AI Garage exercise: analysis docs ✅ DONE — claude-E (2026-05-22)
+Non-overlapping; all files live in top-level `analysis/`:
+- `analysis/architecture.md` — from→to architecture, monorepo vs SOA decision
+- `analysis/features.md` — endpoint/screen/feature/dependency inventory
+- `analysis/vulnerabilities.md` — vulnerability + improvement scan
+- `analysis/migration_plan.md` — granular ported-from-where checklist
+- `analysis/privacy_controls.md` — Protected B controls, EntraID, PII regex plan
+
 ### Phase 1 — Monorepo scaffold & shared types ✅ DONE
 - Root `package.json` with npm workspaces ✅
 - `.env.example` documenting all required keys ✅
@@ -155,7 +177,7 @@ All Fastify routes ported. SSE format preserved as
 
 ### Phase 4 — Workflow mode Vue components 🟡 IN PROGRESS
 Port from `src/components/workflow/` (source):
-- ✅ DONE — claude-C (2026-05-22): `WorkflowCanvas.vue` — **stacked-view canvas** (SVG arrows between port DOM IDs, identical to the React source's approach). Despite the file name it does **not** wrap `@xyflow/vue` — the source `WorkflowCanvas.tsx` is the stacked view, not the canvas-mode renderer. The eventual `@xyflow/vue` integration lives in `WorkflowCanvasMode.vue`.
+- ✅ DONE — claude-C (2026-05-22): `WorkflowCanvas.vue` — **stacked-view canvas** (SVG arrows between port DOM IDs, identical to the React source's approach). Despite the file name it does **not** wrap `@xyflow/vue` — the source `WorkflowCanvas.tsx` is the stacked view, not the canvas-mode renderer. The eventual `@xyflow/vue` integration lives in `WorkflowCanvasMode.vue`. **TODO for whoever finalises this file: add `@drop` / `@dragover` handler on the canvas container to call `store.addNode(stageId, JSON.parse(e.dataTransfer.getData('agentTemplate')), e.dataTransfer.getData('nodeType'))` — Sidebar now sends this data on drag-start.**
 - ⏳ `WorkflowCanvasMode.vue` — this is where `@xyflow/vue` + `WorkflowNodeComponent.vue` + `StageNode.vue` get wired together.
 - ✅ DONE — claude-C (2026-05-22): `SimpleView.vue` — folder/file-style flat view with per-stage / per-node downloads (JSZip). Shadcn primitives (ScrollArea, Dialog, Tabs, Accordion) and `vue-markdown-render` are **deferred** — replaced with plain `overflow-auto` divs, a fixed-overlay modal, button-tab switcher, and `<pre>` rendering. Swap in real primitives once they land in `components/ui/`.
 - ✅ DONE — claude-C (2026-05-22): `Stage.vue`, `StageNode.vue`
@@ -163,11 +185,14 @@ Port from `src/components/workflow/` (source):
 - ✅ DONE — claude-C (2026-05-22): `WorkflowNodeComponent.vue` (shared node-content renderer; uses `@xyflow/vue` `Handle`/`Position`)
 - ✅ DONE — claude-C (2026-05-22): `iconRegistry.ts` (string-name → `LucideIcon` lookup used by `FunctionNode`)
 - ✅ DONE — claude-C (2026-05-22): ui primitives `ui/Card.vue`, `ui/Badge.vue`, `ui/Button.vue`, `ui/Input.vue`, `ui/CardHeader.vue`, `ui/CardTitle.vue`, `ui/CardContent.vue` — plain Tailwind, no `radix-vue` dep. **Other agents: do not re-implement these primitives, but feel free to add more shadcn-vue primitives alongside them.**
-- ⏳ `Sidebar.vue` (from `src/components/sidebar/`) — stub created at `components/sidebar/Sidebar.vue`
-- ⏳ `Toolbar.vue` (from `src/components/toolbar/`) — stub created at `components/toolbar/Toolbar.vue`
-- ⏳ `PropertiesPanel.vue` (from `src/components/properties/`) — stub created at `components/properties/PropertiesPanel.vue`
+- ✅ DONE — claude-B (2026-05-22): `Sidebar.vue` — full port. Workflow name, prompt textarea + file upload (extractTextFromFile/parseExcelFile), model select, response length, thinking toggle (Gemini Flash/Lite only), agent library with drag-and-drop + custom agent add/edit/delete/download/import, functions library with search + category filter. Shadcn primitives deferred — plain `<select>`, `<textarea>`, inline modals. ExcelSelector placeholder inline (real component pending). Icon rendering via `iconFor()` from `iconRegistry.ts`.
+- ✅ DONE — claude-B (2026-05-22): `Toolbar.vue` — full port. Desktop-only header (`hidden lg:flex`). Logo, mode toggle (Workflow/Free Agent), workflow actions (Add Stage, view-mode dropdown, Load, Save, Clear, Help, Run Workflow, Clear Outputs). Inline dropdown for view mode. Inline confirmation modal for Clear Outputs. Compact mode at <1400px (icon-only mode toggle).
+- ✅ DONE — claude-B (2026-05-22): `PropertiesPanel.vue` — full port. Name field, Lock/ExecuteOnNull toggles, running banner, computed-input preview (resolved from workflow connections), agent fields (systemPrompt, userPrompt, per-agent model override with model/responseLength/thinking, tools list, output), function fields (content upload, schema-driven config, output/outputs). Content function has file upload + view/edit modal. Schema types: boolean→checkbox, number→number input, bearerToken→password toggle, default→text.
 - ⏳ `OutputLog.vue` (from `src/components/output/`) — functional stub created (renders log entries with colour-coding)
-- ⏳ `AgentSelector.vue`, `FunctionSelector.vue`, `ExcelSelector.vue`
+- ✅ DONE — claude-D (2026-05-22): `AgentSelector.vue`, `FunctionSelector.vue`
+  (placed under `components/workflow/`; both use the inline fixed-overlay
+  backdrop, expose `v-model:open`, emit `@select-agent` / `@select-function`)
+- ⏳ `ExcelSelector.vue` (largest of the three; open for another agent)
 
 **claude-C scope note (2026-05-22, ✅ slice complete):** Workflow node slice is done.
 I authored `Card.vue`, `Badge.vue`, `Button.vue`, all 6 workflow `.vue` files,
@@ -280,6 +305,22 @@ ported using the same fixed-overlay backdrop pattern claude-C used in
   toggle them in response to the `open-viewer` events from `AttributeNode`
   / `ScratchpadNode`. The Assistance/Interject modals are typically owned
   by `FreeAgentView.vue` (orchestration scope).
+
+**claude-D selector slice (2026-05-22, ✅ slice complete):** Both pickers
+under `components/workflow/`. Notes for follow-up:
+
+- API: `v-model:open` + `@select-agent (template)` / `@select-function (def)`.
+- `Stage.vue` already emits `request-add-agent` / `request-add-function` —
+  wire those to mount these selectors at `WorkbenchView` / `WorkflowCanvas` /
+  `WorkflowCanvasMode` scope and forward the selection into
+  `useWorkflowStore().addNode(stageId, template, 'agent' | 'function')`.
+- `AgentSelector` exports a re-usable `AgentTemplate` interface — import
+  from `@/components/workflow/AgentSelector` for typing custom agents.
+- `FunctionSelector` reads `functionDefinitions` from `@/lib/functionDefinitions`
+  and resolves icons via `iconFor()` from `@/components/workflow/iconRegistry`.
+  No `lucide-react` reference remains.
+- Both use the same inline fixed-overlay backdrop pattern; swap to a real
+  shadcn-vue `Dialog` primitive when one lands.
 
 ### Phase 6 — Integration & polish ⏳ PENDING
 - Wire composables to backend (`VITE_BACKEND_URL` → Fastify)
