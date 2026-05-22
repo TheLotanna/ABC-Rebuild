@@ -148,14 +148,15 @@ All Fastify routes ported. SSE format preserved as
 - ✅ `src/composables/use-mobile.ts`, `use-toast.ts`, `useSecretsManager.ts`, `usePromptCustomization.ts`, `useToolInstances.ts` — claude-B
 - ✅ `public/data/` JSON assets copied (systemPromptTemplate, toolsManifest, freeAgentInstructions)
 - ✅ `src/lib/*` and `src/utils/*` framework-agnostic files copied & fixed (supabase→fetch, lucide-react→iconName)
-- ⏳ `src/views/WorkbenchView.vue`, `NotFoundView.vue`
-- ⏳ `src/components/layout/AppLayout.vue`, `MobileNav.vue`
+- ⏳ `src/views/WorkbenchView.vue`
+- ✅ DONE — claude-C (2026-05-22): `src/views/NotFoundView.vue`
+- ✅ DONE — claude-C (2026-05-22): `src/components/layout/AppLayout.vue`, `MobileNav.vue` (MobileNav is the lean variant — `DropdownMenu` / `AlertDialog` swapped for plain Buttons + hidden file input + an inline modal-free confirm. Swap in `shadcn-vue` `DropdownMenu` / `AlertDialog` when those primitives land.)
 
 ### Phase 4 — Workflow mode Vue components 🟡 IN PROGRESS
 Port from `src/components/workflow/` (source):
-- ⏳ `WorkflowCanvas.vue` (wraps `@xyflow/vue`)
+- 🟡 IN PROGRESS — claude-C (2026-05-22): `WorkflowCanvas.vue` (wraps `@xyflow/vue`)
 - ⏳ `WorkflowCanvasMode.vue`
-- ⏳ `SimpleView.vue`
+- 🟡 IN PROGRESS — claude-C (2026-05-22): `SimpleView.vue`
 - ✅ DONE — claude-C (2026-05-22): `Stage.vue`, `StageNode.vue`
 - ✅ DONE — claude-C (2026-05-22): `AgentNode.vue`, `FunctionNode.vue`, `NoteNode.vue`
 - ✅ DONE — claude-C (2026-05-22): `WorkflowNodeComponent.vue` (shared node-content renderer; uses `@xyflow/vue` `Handle`/`Position`)
@@ -201,8 +202,10 @@ Notes for whoever wires `WorkflowCanvas.vue` / `WorkflowCanvasMode.vue` next:
 ### Phase 5 — Free Agent mode Vue components 🟡 IN PROGRESS
 Port all 30 files from `src/components/freeAgent/`:
 - Containers: `FreeAgentView.vue`, `FreeAgentPanel.vue`, `FreeAgentCanvas.vue` ⏳
-- Viewers: `BlackboardViewer.vue`, `ArtifactsPanel.vue`, `RawViewer.vue`,
-  `SystemPromptViewer.vue`, `SecretsMiniPanel.vue` ⏳
+- Viewers (✅ DONE — claude-D (2026-05-22)):
+  `BlackboardViewer.vue`, `ArtifactsPanel.vue`, `RawViewer.vue`,
+  `SecretsMiniPanel.vue`. `SystemPromptViewer.vue` (1525 lines) ⏳ still
+  deferred — open for another agent.
 - Canvas nodes (✅ DONE — claude-D (2026-05-22)):
   `FreeAgentNode.vue`, `ChildAgentNode.vue`, `ScratchpadNode.vue`,
   `AttributeNode.vue`, `FileNode.vue`, `PromptNode.vue`, `PromptFileNode.vue`,
@@ -230,6 +233,28 @@ ported. Notes for follow-up agents:
 - All nodes import `cn` from `@/lib/utils` and `FreeAgentNodeData` from
   `@agent-builder/shared` (already in shared types).
 - `lucide-vue-next` icons used: see each node's `<script setup>` imports.
+
+**claude-D viewer slice (2026-05-22, ✅ slice complete):** 4 viewer panels
+ported. Notes for follow-up:
+
+- `RawViewer.vue` inlines a minimal three-button tab control rather than
+  pulling in a shadcn-vue `Tabs` primitive. Swap to a real Tabs primitive
+  when one lands.
+- `RawViewer.vue` also inlines the copy tooltip as a native `title=` attribute
+  (no `Tooltip` primitive used).
+- `SecretsMiniPanel.vue` reads its data from `useSecretsManager()` directly
+  (the `secretsStore`) instead of taking `SecretsManager` as a prop. It emits
+  `open-modal` for the parent to render `SecretsManagerModal.vue`. **Note:**
+  it accesses `secretsManager.config.secrets/.mappings/.headerMappings`
+  rather than the top-level `secrets/mappings/headerMappings` properties,
+  because those are returned as static snapshots in
+  `stores/secretsStore.ts:264-266`. Worth fixing in the store later — return
+  computed refs so consumers can use the natural names.
+- `ArtifactsPanel.vue` renders text artifacts as `whitespace-pre-wrap` plain
+  text (no markdown yet — same deferral as the node slice).
+- All four viewers consume only the shadcn-vue primitives that already
+  exist in `components/ui/` (Card/Header/Title/Content, Button, Badge) — no
+  new ui primitives required.
 
 ### Phase 6 — Integration & polish ⏳ PENDING
 - Wire composables to backend (`VITE_BACKEND_URL` → Fastify)
