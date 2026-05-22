@@ -1,0 +1,31 @@
+import type { FastifyPluginAsync } from 'fastify';
+import { braveSearch } from './search.js';
+import { googleSearch } from './search.js';
+import { webScrape } from './scrape.js';
+import { apiCall } from './apiCall.js';
+import { githubFetch } from './github.js';
+import { sendEmail } from './email.js';
+import { elevenlabsTts, getElevenlabsVoices } from './tts.js';
+import { getTime } from './time.js';
+import { getWeather } from './weather.js';
+import { externalDb } from './db.js';
+import { pdfHandler } from './pdf.js';
+import { ocrHandler } from './ocr.js';
+import { zipHandler } from './zip.js';
+
+export const toolRoutes: FastifyPluginAsync = async (fastify) => {
+  fastify.post('/brave-search', braveSearch);
+  fastify.post('/google-search', googleSearch);
+  fastify.post('/web-scrape', webScrape);
+  fastify.post('/api-call', apiCall);
+  fastify.post('/github', githubFetch);
+  fastify.post('/email', sendEmail);
+  fastify.post('/tts', elevenlabsTts);
+  fastify.get('/tts/voices', getElevenlabsVoices);
+  fastify.post('/time', getTime);
+  fastify.post('/weather', getWeather);
+  fastify.post('/db', externalDb);
+  fastify.post('/pdf', pdfHandler);
+  fastify.post('/ocr', ocrHandler);
+  fastify.post('/zip', zipHandler);
+};

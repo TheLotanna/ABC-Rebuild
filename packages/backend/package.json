@@ -1,0 +1,29 @@
+{
+  "name": "@agent-builder/backend",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "main": "./src/index.ts",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "build": "esbuild src/index.ts --bundle --platform=node --target=node18 --outfile=dist/index.cjs --external:@anthropic-ai/sdk --external:@google/generative-ai --external:cheerio --external:undici --external:dotenv",
+    "start": "node dist/index.cjs"
+  },
+  "dependencies": {
+    "@agent-builder/shared": "*",
+    "@anthropic-ai/sdk": "^0.55.0",
+    "@fastify/cors": "^10.0.2",
+    "@fastify/multipart": "^9.0.3",
+    "@google/generative-ai": "^0.24.0",
+    "cheerio": "^1.0.0",
+    "dotenv": "^16.5.0",
+    "fastify": "^5.3.3",
+    "undici": "^7.10.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "esbuild": "^0.25.5",
+    "tsx": "^4.19.4",
+    "typescript": "^5.8.3"
+  }
+}
