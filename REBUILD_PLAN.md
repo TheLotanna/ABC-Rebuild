@@ -154,9 +154,9 @@ All Fastify routes ported. SSE format preserved as
 
 ### Phase 4 — Workflow mode Vue components 🟡 IN PROGRESS
 Port from `src/components/workflow/` (source):
-- 🟡 IN PROGRESS — claude-C (2026-05-22): `WorkflowCanvas.vue` (wraps `@xyflow/vue`)
-- ⏳ `WorkflowCanvasMode.vue`
-- 🟡 IN PROGRESS — claude-C (2026-05-22): `SimpleView.vue`
+- ✅ DONE — claude-C (2026-05-22): `WorkflowCanvas.vue` — **stacked-view canvas** (SVG arrows between port DOM IDs, identical to the React source's approach). Despite the file name it does **not** wrap `@xyflow/vue` — the source `WorkflowCanvas.tsx` is the stacked view, not the canvas-mode renderer. The eventual `@xyflow/vue` integration lives in `WorkflowCanvasMode.vue`.
+- ⏳ `WorkflowCanvasMode.vue` — this is where `@xyflow/vue` + `WorkflowNodeComponent.vue` + `StageNode.vue` get wired together.
+- ✅ DONE — claude-C (2026-05-22): `SimpleView.vue` — folder/file-style flat view with per-stage / per-node downloads (JSZip). Shadcn primitives (ScrollArea, Dialog, Tabs, Accordion) and `vue-markdown-render` are **deferred** — replaced with plain `overflow-auto` divs, a fixed-overlay modal, button-tab switcher, and `<pre>` rendering. Swap in real primitives once they land in `components/ui/`.
 - ✅ DONE — claude-C (2026-05-22): `Stage.vue`, `StageNode.vue`
 - ✅ DONE — claude-C (2026-05-22): `AgentNode.vue`, `FunctionNode.vue`, `NoteNode.vue`
 - ✅ DONE — claude-C (2026-05-22): `WorkflowNodeComponent.vue` (shared node-content renderer; uses `@xyflow/vue` `Handle`/`Position`)
