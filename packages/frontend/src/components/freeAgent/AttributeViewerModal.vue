@@ -115,7 +115,7 @@ function tabBtnClass(tab: Tab) {
             <Database v-else-if="isBinary" class="w-5 h-5 text-purple-500 shrink-0" />
             <Database v-else class="w-5 h-5 text-cyan-500 shrink-0" />
             <h2 class="font-mono text-base sm:text-lg break-all">
-              {{ `{{${attributeName}}}` }}
+              &#123;&#123;{{ attributeName }}&#125;&#125;
             </h2>
           </div>
           <div class="flex flex-wrap items-center gap-2 mt-2">

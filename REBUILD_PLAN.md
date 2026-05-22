@@ -178,7 +178,7 @@ All Fastify routes ported. SSE format preserved as
 ### Phase 4 — Workflow mode Vue components 🟡 IN PROGRESS
 Port from `src/components/workflow/` (source):
 - ✅ DONE — claude-C (2026-05-22): `WorkflowCanvas.vue` — **stacked-view canvas** (SVG arrows between port DOM IDs, identical to the React source's approach). Despite the file name it does **not** wrap `@vue-flow/core` — the source `WorkflowCanvas.tsx` is the stacked view, not the canvas-mode renderer. The eventual `@vue-flow/core` integration lives in `WorkflowCanvasMode.vue`. **TODO for whoever finalises this file: add `@drop` / `@dragover` handler on the canvas container to call `store.addNode(stageId, JSON.parse(e.dataTransfer.getData('agentTemplate')), e.dataTransfer.getData('nodeType'))` — Sidebar now sends this data on drag-start.**
-- ⏳ `WorkflowCanvasMode.vue` — this is where `@vue-flow/core` + `WorkflowNodeComponent.vue` + `StageNode.vue` get wired together.
+- 🟡 IN PROGRESS — claude-C (2026-05-22): `WorkflowCanvasMode.vue` — `@vue-flow/core` canvas wiring. Adapter SFCs added under `components/workflow/canvas/` to bridge the @vue-flow `NodeProps` shape (props.data) to my existing nodes' direct-prop API.
 - ✅ DONE — claude-C (2026-05-22): `SimpleView.vue` — folder/file-style flat view with per-stage / per-node downloads (JSZip). Shadcn primitives (ScrollArea, Dialog, Tabs, Accordion) and `vue-markdown-render` are **deferred** — replaced with plain `overflow-auto` divs, a fixed-overlay modal, button-tab switcher, and `<pre>` rendering. Swap in real primitives once they land in `components/ui/`.
 - ✅ DONE — claude-C (2026-05-22): `Stage.vue`, `StageNode.vue`
 - ✅ DONE — claude-C (2026-05-22): `AgentNode.vue`, `FunctionNode.vue`, `NoteNode.vue`
@@ -245,8 +245,16 @@ Port all 30 files from `src/components/freeAgent/`:
     `DEFAULT_ENHANCEMENT_PROMPT` + `getStoredEnhancementPrompt()` + `setStoredEnhancementPrompt()`
     into `@/lib/enhancePromptStorage.ts` so the future `EnhancePromptModal.vue` can share them
     without a circular import.
-  - ⏳ `FinalReportModal.vue`, `ChildAgentDetailModal.vue`, `ReflectModal.vue`,
-    `EnhancePromptModal.vue`, `SecretsManagerModal.vue` (larger modals — open for other agents)
+  - ✅ DONE — claude-D (2026-05-22): `ReflectModal.vue` — SSE-streamed
+    post-session analysis. Mirrors `useWorkflowRunner`'s endpoint routing
+    (`claude-*` → `/api/run-agent/anthropic`, `grok-*` → `/api/run-agent/xai`,
+    else `/api/run-agent`). Auto-streams on `open`, aborts on close/unmount.
+    Markdown rendered as `whitespace-pre-wrap` until `vue-markdown-render`
+    lands. Also fixed `AttributeViewerModal.vue:118` — Vue template parser
+    was choking on `{{ \`{{${...}}}\` }}` (the `}}` inside the template
+    literal closed the interpolation early); replaced with `&#123;&#123;…&#125;&#125;`,
+    matching the same fix already applied to `AttributeNode.vue:107`.
+  - 🟡 IN PROGRESS — claude-festive-elbakyan (2026-05-22): `ChildAgentDetailModal.vue`, `EnhancePromptModal.vue`, `SecretsManagerModal.vue` — the 3 largest remaining modals. Same `v-model:open` + fixed-overlay backdrop pattern as the existing modals.
 - Tabs: ✅ DONE — claude-D (2026-05-22): `ToolInstancesTab.vue` — reads `useToolInstances()` directly, 3 inline modals (add, edit, delete-confirm), accesses through `.config.instances` to dodge the reactivity-snapshot issue [stores/toolInstanceStore.ts:112-124](packages/frontend/src/stores/toolInstanceStore.ts)
 
 **claude-D scope note (2026-05-22, ✅ slice complete):** All 10 canvas-node
@@ -328,13 +336,15 @@ under `components/workflow/`. Notes for follow-up:
 ### Phase 6 — Integration & polish 🟡 IN PROGRESS
 - ✅ All composables already target `VITE_BACKEND_URL` via Vite proxy
 - ✅ Dark mode wired via `@vueuse/core` `useColorMode` in `AppLayout.vue`
-- ⏳ Replace stubs: `PropertiesPanel.vue`, `OutputLog.vue`,
-  `WorkflowCanvasMode.vue`, `FreeAgentView.vue`, `FreeAgentPanel.vue`,
-  `FreeAgentCanvas.vue`
-- ⏳ Remaining 6 modals (FinalReport, ChildAgentDetail, Reflect,
-  EnhancePrompt, EnhancePromptSettings, SecretsManager)
+- ✅ DONE — claude-integrator (2026-05-22): Rewrote 9 stale `${VITE_SUPABASE_URL}/functions/v1/<name>` calls in `packages/frontend/src/lib/functionExecutor.ts` to `${VITE_BACKEND_URL ?? ''}/api/<...>` per the route map. Endpoints fixed: `run-nano`, `tts` (was `elevenlabs-tts`), `google-search`, `brave-search`, `web-scrape`, `api-call`, `email` (was `send-email`), `github` (was `github-fetch`), `pronghorn` (was `pronghorn-post`). Unblocks the workflow execution path — those tools were unreachable from the Vue frontend.
+- ⏳ Replace stubs: `PropertiesPanel.vue`, `WorkflowCanvasMode.vue`,
+  `FreeAgentView.vue`, `FreeAgentPanel.vue`, `FreeAgentCanvas.vue`
+- ✅ DONE — claude-D (2026-05-22): `OutputLog.vue` (real impl replaces claude-B's stub)
+- ✅ DONE — claude-D (2026-05-22): `AgentSelector.vue`, `FunctionSelector.vue`, `ExcelSelector.vue`
+- ✅ DONE — claude-D (2026-05-22): `EnhancePromptSettingsModal.vue`, `ToolInstancesTab.vue`
+- ✅ DONE — claude-integrator (2026-05-22): `FinalReportModal.vue` — port of the 242-line source. Same `v-model:open` + fixed-overlay pattern as the modal slice. Emits `@reset` for the "Start New Task" button. `Download` hits `exportSessionToZip()` from `@/utils/sessionExporter`. Inline border-`div`s replace shadcn `Separator`; markdown still deferred (summary renders as `whitespace-pre-wrap`).
+- ⏳ Remaining 4 modals (ChildAgentDetail, Reflect, EnhancePrompt, SecretsManager)
 - ⏳ `SystemPromptViewer.vue` (~1525 lines)
-- ⏳ `AgentSelector.vue`, `FunctionSelector.vue`, `ExcelSelector.vue`
 - ✅ DONE — claude-D (2026-05-22): Backend `POST /api/tools/pronghorn` route (registered in `routes/tools/index.ts`, mirrors Supabase edge function: validates `projectId`/`token`/`items`, proxies to Pronghorn `ingest-artifacts`, maps per-item failures to HTTP 422)
 - ⏳ Final E2E verification (see §8)
 - ⏳ `npm install` + `vue-tsc --noEmit` once node is available
@@ -356,7 +366,7 @@ touch any file under `packages/frontend/src/components/`,
 - ✅ `.env.example` — adds `SHARED_DATABASE_URL`, `SCHEMA_NAME`
 - ✅ Root `package.json` — `db:migrate`, `db:seed` scripts
 - ✅ `packages/backend/package.json` — adds `pg` (fixes pre-existing dynamic import in `routes/tools/db.ts`) + `@types/pg`
-- 🟡 IN PROGRESS — claude-C (2026-05-22): Wire `pii.ts` into agent routes as a pre-flight check before LLM egress. Adds `packages/backend/src/lib/piiGuard.ts` (reusable middleware) + integrates into all 6 agent routes (`anthropic.ts`, `gemini.ts`, `xai.ts`, `nano.ts`, `enhancePrompt.ts`, `freeAgent.ts`). Modes via `PII_GUARD_MODE` env: `block` (default — return error before egress), `warn` (log + redact in audit, still call LLM), `off`. Emits audit lines to stderr as structured JSON; full DB audit-log table deferred to a follow-up.
+- ✅ DONE — claude-C (2026-05-22): Wire `pii.ts` into agent routes as a pre-flight check before LLM egress. Adds `packages/backend/src/lib/piiGuard.ts` (`runPiiGuard`, `scanFields`, `redactForUpstream`, `getGuardMode`) + `piiGuard.test.ts` (16 cases, runs via `node --import tsx`). Integrated into all 6 agent routes (`anthropic.ts`, `gemini.ts`, `xai.ts`, `nano.ts`, `enhancePrompt.ts`, `freeAgent.ts`). Modes via `PII_GUARD_MODE` env (documented in `.env.example`): `block` (default — HTTP 400 / SSE error before egress on any secret or high-confidence hit), `warn` (audit only, still calls LLM), `off`. Live smoke-tested: clean prompts pass through; leaked Anthropic key + valid SIN both blocked with `piiGuard.findings` body; `warn` mode emits structured `{"audit":"pii_guard",...}` line to stderr without blocking. Audit lines carry kinds/confidences/offsets only — never the matched raw value. **Follow-ups left for another agent:** (a) persist audit lines to an `audit_log` table in the `lotanna_okwuchukwu` schema so they survive process restart; (b) gate tool-route inputs (e.g. `send-email`, `db`) on the same guard; (c) wire the audit line into the frontend so the user sees *why* the request was blocked (currently just shows the generic message).
 
 Schema name is variable-driven via `SCHEMA_NAME` env (default
 `lotanna_okwuchukwu`). Migrations are rerunnable (`CREATE … IF NOT EXISTS`).
