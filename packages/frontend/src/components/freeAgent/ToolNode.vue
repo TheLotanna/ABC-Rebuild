@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { computed, type Component } from 'vue';
-import { Handle, Position } from '@xyflow/vue';
+import { Handle, Position } from '@vue-flow/core';
 import {
   Clock,
   Search,
   Globe,
-  Github,
+  GitBranch,
   FileCode,
   ClipboardList,
   Edit3,
@@ -22,7 +22,7 @@ import {
   Upload,
   Database,
   Table,
-} from 'lucide-vue-next';
+} from '@lucide/vue';
 import { cn } from '@/lib/utils';
 
 interface ToolNodeData {
@@ -43,7 +43,7 @@ const iconMap: Record<string, Component> = {
   Clock,
   Search,
   Globe,
-  Github,
+  GitBranch,
   FileCode,
   ClipboardList,
   Edit3,

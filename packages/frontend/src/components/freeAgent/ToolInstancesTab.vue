@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue';
-import { Plus, Trash2, Edit, Copy, Package, X } from 'lucide-vue-next';
+import { Plus, Trash2, Edit, Copy, Package, X } from '@lucide/vue';
 import { toast } from 'vue-sonner';
 import { useToolInstances } from '@/composables/useToolInstances';
 import type { ToolsManifest, ToolInstance } from '@agent-builder/shared';

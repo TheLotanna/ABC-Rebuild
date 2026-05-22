@@ -1,5 +1,6 @@
 import type { FastifyRequest, FastifyReply } from 'fastify';
 import JSZip from 'jszip';
+import { runPiiGuard } from '../../lib/piiGuard.js';
 
 async function getZipBuffer(url?: string, base64?: string): Promise<Buffer | null> {
   if (url) {
@@ -19,6 +20,21 @@ export async function zipHandler(req: FastifyRequest, reply: FastifyReply) {
     filePath?: string;
     filePaths?: string[];
   };
+
+  // PII guard — `url`, `filePath`, `filePaths` are user-controlled and can
+  // carry identifying file names (e.g. "case-files/SIN-046454286.pdf").
+  // `base64` is binary archive payload — skipped to avoid false positives.
+  const guardOk = await runPiiGuard(
+    req,
+    reply,
+    [
+      { name: 'url', value: url },
+      { name: 'filePath', value: filePath },
+      { name: 'filePaths', value: filePaths?.join('\n') },
+    ],
+    { sse: false, route: 'POST /api/tools/zip' },
+  );
+  if (!guardOk) return;
 
   try {
     const buf = await getZipBuffer(url, base64);

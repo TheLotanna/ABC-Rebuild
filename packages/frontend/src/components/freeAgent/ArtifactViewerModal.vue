@@ -9,7 +9,7 @@ import {
   Database,
   File,
   X,
-} from 'lucide-vue-next';
+} from '@lucide/vue';
 import { toast } from 'vue-sonner';
 import type { FreeAgentArtifact } from '@agent-builder/shared';
 import Button from '@/components/ui/Button.vue';

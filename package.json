@@ -10,9 +10,20 @@
     "dev:frontend": "npm run dev --workspace=packages/frontend",
     "dev:backend": "npm run dev --workspace=packages/backend",
     "build": "npm run build --workspace=packages/shared && npm run build --workspace=packages/backend && npm run build --workspace=packages/frontend",
-    "lint": "npm run lint --workspaces --if-present"
+    "lint": "npm run lint --workspaces --if-present",
+    "test": "npm run test --workspaces --if-present",
+    "test:frontend": "npm run test --workspace=packages/frontend",
+    "test:backend": "npm run test --workspace=packages/backend",
+    "db:migrate": "node scripts/migrate.mjs",
+    "db:seed": "node scripts/seed.mjs",
+    "sbom:generate": "node scripts/generate-sbom.mjs",
+    "redblue:red": "node scripts/red-agent.mjs"
   },
   "devDependencies": {
     "concurrently": "^9.0.0"
+  },
+  "overrides": {
+    "comment-uuid": "exceljs@4.4.0 transitively pulls uuid@8.3.2 which has a buffer-bounds-check vuln (advisory: <11.1.1). The fix landed in uuid@11.1.1; we pin to ^11 across the tree until exceljs releases an update that ships a fixed uuid directly.",
+    "uuid": "^11.1.1"
   }
 }

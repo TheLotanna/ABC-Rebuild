@@ -11,7 +11,7 @@ import {
   Trash2,
   Eraser,
   Bot,
-} from 'lucide-vue-next';
+} from '@lucide/vue';
 import Button from '@/components/ui/Button.vue';
 
 type Tab = 'library' | 'workflow' | 'properties';

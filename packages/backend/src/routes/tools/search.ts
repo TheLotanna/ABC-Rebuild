@@ -1,8 +1,20 @@
 import type { FastifyRequest, FastifyReply } from 'fastify';
+import { runPiiGuard } from '../../lib/piiGuard.js';
 
 export async function braveSearch(req: FastifyRequest, reply: FastifyReply) {
   const { query, numResults = 20, apiKey: userKey } = req.body as { query: string; numResults?: number; apiKey?: string };
   if (!query) return reply.code(400).send({ error: 'query is required' });
+
+  // Pre-flight PII scan — search queries egress verbatim to Brave's servers.
+  // We deliberately do NOT scan `apiKey`: it is by definition a secret, so
+  // the api_key_* detectors would 100% false-positive on every call.
+  const guardOk = await runPiiGuard(
+    req,
+    reply,
+    [{ name: 'query', value: query }],
+    { sse: false, route: 'POST /api/tools/brave-search' },
+  );
+  if (!guardOk) return;
 
   const apiKey = userKey ?? process.env.BRAVE_API_KEY;
   if (!apiKey) return reply.code(500).send({ error: 'Brave API key not configured' });
@@ -35,6 +47,16 @@ export async function braveSearch(req: FastifyRequest, reply: FastifyReply) {
 export async function googleSearch(req: FastifyRequest, reply: FastifyReply) {
   const { query, numResults = 20, apiKey: userKey, searchEngineId: userEngineId } = req.body as { query: string; numResults?: number; apiKey?: string; searchEngineId?: string };
   if (!query) return reply.code(400).send({ error: 'query is required' });
+
+  // Pre-flight PII scan — query egresses to Google Custom Search.
+  // Same rationale as braveSearch: skip `apiKey` / `searchEngineId`.
+  const guardOk = await runPiiGuard(
+    req,
+    reply,
+    [{ name: 'query', value: query }],
+    { sse: false, route: 'POST /api/tools/google-search' },
+  );
+  if (!guardOk) return;
 
   const apiKey = userKey ?? process.env.GOOGLE_SEARCH_API;
   const searchEngineId = userEngineId ?? process.env.GOOGLE_SEARCH_ENGINE;

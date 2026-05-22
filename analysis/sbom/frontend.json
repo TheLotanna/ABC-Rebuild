@@ -1,0 +1,7454 @@
+{
+  "bomFormat": "cyclonedx-lite",
+  "specVersion": "0.1",
+  "metadata": {
+    "timestamp": "2026-05-22T23:01:06.037Z",
+    "root": {
+      "name": "agent-builder-vue",
+      "version": "1.0.0"
+    },
+    "tool": "scripts/generate-sbom.mjs",
+    "workspaceLabel": "packages/frontend"
+  },
+  "components": [
+    {
+      "type": "library",
+      "name": "@agent-builder/frontend",
+      "version": "1.0.0",
+      "license": null,
+      "purl": "pkg:npm/%40agent-builder%2Ffrontend@1.0.0",
+      "scope": "required",
+      "parents": [
+        "agent-builder-vue"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@agent-builder/shared",
+      "version": "1.0.0",
+      "license": null,
+      "purl": "pkg:npm/%40agent-builder%2Fshared@1.0.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@alloc/quick-lru",
+      "version": "5.2.0",
+      "license": "MIT",
+      "purl": "pkg:npm/%40alloc%2Fquick-lru@5.2.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "tailwindcss"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@babel/helper-string-parser",
+      "version": "7.27.1",
+      "license": "MIT",
+      "purl": "pkg:npm/%40babel%2Fhelper-string-parser@7.27.1",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@babel/types",
+        "@vitest/coverage-v8",
+        "agent-builder-vue",
+        "magicast"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@babel/helper-validator-identifier",
+      "version": "7.28.5",
+      "license": "MIT",
+      "purl": "pkg:npm/%40babel%2Fhelper-validator-identifier@7.28.5",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@babel/types",
+        "@vitest/coverage-v8",
+        "agent-builder-vue",
+        "magicast"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@babel/parser",
+      "version": "7.29.3",
+      "license": "MIT",
+      "purl": "pkg:npm/%40babel%2Fparser@7.29.3",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@vitest/coverage-v8",
+        "@vue/compiler-core",
+        "@vue/compiler-dom",
+        "@vue/compiler-sfc",
+        "@vue/test-utils",
+        "agent-builder-vue",
+        "magicast",
+        "vue"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@babel/runtime",
+      "version": "7.29.2",
+      "license": "MIT",
+      "purl": "pkg:npm/%40babel%2Fruntime@7.29.2",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "canvg",
+        "jspdf"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@babel/types",
+      "version": "7.29.0",
+      "license": "MIT",
+      "purl": "pkg:npm/%40babel%2Ftypes@7.29.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@babel/parser",
+        "@vitest/coverage-v8",
+        "agent-builder-vue",
+        "magicast"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@bcoe/v8-coverage",
+      "version": "1.0.2",
+      "license": "MIT",
+      "purl": "pkg:npm/%40bcoe%2Fv8-coverage@1.0.2",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@vitest/coverage-v8",
+        "agent-builder-vue"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@edge-runtime/vm",
+      "version": null,
+      "license": null,
+      "purl": "pkg:npm/%40edge-runtime%2Fvm@0.0.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "vitest"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@esbuild/aix-ppc64",
+      "version": null,
+      "license": null,
+      "purl": "pkg:npm/%40esbuild%2Faix-ppc64@0.0.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "esbuild",
+        "postcss-load-config",
+        "tailwindcss",
+        "tsx",
+        "vite",
+        "vitest"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@esbuild/android-arm",
+      "version": null,
+      "license": null,
+      "purl": "pkg:npm/%40esbuild%2Fandroid-arm@0.0.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "esbuild",
+        "postcss-load-config",
+        "tailwindcss",
+        "tsx",
+        "vite",
+        "vitest"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@esbuild/android-arm64",
+      "version": null,
+      "license": null,
+      "purl": "pkg:npm/%40esbuild%2Fandroid-arm64@0.0.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "esbuild",
+        "postcss-load-config",
+        "tailwindcss",
+        "tsx",
+        "vite",
+        "vitest"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@esbuild/android-x64",
+      "version": null,
+      "license": null,
+      "purl": "pkg:npm/%40esbuild%2Fandroid-x64@0.0.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "esbuild",
+        "postcss-load-config",
+        "tailwindcss",
+        "tsx",
+        "vite",
+        "vitest"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@esbuild/darwin-arm64",
+      "version": "0.21.5",
+      "license": "MIT",
+      "purl": "pkg:npm/%40esbuild%2Fdarwin-arm64@0.21.5",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "esbuild",
+        "vite"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@esbuild/darwin-arm64",
+      "version": "0.25.12",
+      "license": "MIT",
+      "purl": "pkg:npm/%40esbuild%2Fdarwin-arm64@0.25.12",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "esbuild",
+        "vite",
+        "vitest"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@esbuild/darwin-arm64",
+      "version": "0.28.0",
+      "license": "MIT",
+      "purl": "pkg:npm/%40esbuild%2Fdarwin-arm64@0.28.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "esbuild",
+        "postcss-load-config",
+        "tailwindcss",
+        "tsx"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@esbuild/darwin-x64",
+      "version": null,
+      "license": null,
+      "purl": "pkg:npm/%40esbuild%2Fdarwin-x64@0.0.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "esbuild",
+        "postcss-load-config",
+        "tailwindcss",
+        "tsx",
+        "vite",
+        "vitest"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@esbuild/freebsd-arm64",
+      "version": null,
+      "license": null,
+      "purl": "pkg:npm/%40esbuild%2Ffreebsd-arm64@0.0.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "esbuild",
+        "postcss-load-config",
+        "tailwindcss",
+        "tsx",
+        "vite",
+        "vitest"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@esbuild/freebsd-x64",
+      "version": null,
+      "license": null,
+      "purl": "pkg:npm/%40esbuild%2Ffreebsd-x64@0.0.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "esbuild",
+        "postcss-load-config",
+        "tailwindcss",
+        "tsx",
+        "vite",
+        "vitest"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@esbuild/linux-arm",
+      "version": null,
+      "license": null,
+      "purl": "pkg:npm/%40esbuild%2Flinux-arm@0.0.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "esbuild",
+        "postcss-load-config",
+        "tailwindcss",
+        "tsx",
+        "vite",
+        "vitest"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@esbuild/linux-arm64",
+      "version": null,
+      "license": null,
+      "purl": "pkg:npm/%40esbuild%2Flinux-arm64@0.0.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "esbuild",
+        "postcss-load-config",
+        "tailwindcss",
+        "tsx",
+        "vite",
+        "vitest"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@esbuild/linux-ia32",
+      "version": null,
+      "license": null,
+      "purl": "pkg:npm/%40esbuild%2Flinux-ia32@0.0.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "esbuild",
+        "postcss-load-config",
+        "tailwindcss",
+        "tsx",
+        "vite",
+        "vitest"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@esbuild/linux-loong64",
+      "version": null,
+      "license": null,
+      "purl": "pkg:npm/%40esbuild%2Flinux-loong64@0.0.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "esbuild",
+        "postcss-load-config",
+        "tailwindcss",
+        "tsx",
+        "vite",
+        "vitest"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@esbuild/linux-mips64el",
+      "version": null,
+      "license": null,
+      "purl": "pkg:npm/%40esbuild%2Flinux-mips64el@0.0.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "esbuild",
+        "postcss-load-config",
+        "tailwindcss",
+        "tsx",
+        "vite",
+        "vitest"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@esbuild/linux-ppc64",
+      "version": null,
+      "license": null,
+      "purl": "pkg:npm/%40esbuild%2Flinux-ppc64@0.0.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "esbuild",
+        "postcss-load-config",
+        "tailwindcss",
+        "tsx",
+        "vite",
+        "vitest"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@esbuild/linux-riscv64",
+      "version": null,
+      "license": null,
+      "purl": "pkg:npm/%40esbuild%2Flinux-riscv64@0.0.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "esbuild",
+        "postcss-load-config",
+        "tailwindcss",
+        "tsx",
+        "vite",
+        "vitest"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@esbuild/linux-s390x",
+      "version": null,
+      "license": null,
+      "purl": "pkg:npm/%40esbuild%2Flinux-s390x@0.0.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "esbuild",
+        "postcss-load-config",
+        "tailwindcss",
+        "tsx",
+        "vite",
+        "vitest"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@esbuild/linux-x64",
+      "version": null,
+      "license": null,
+      "purl": "pkg:npm/%40esbuild%2Flinux-x64@0.0.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "esbuild",
+        "postcss-load-config",
+        "tailwindcss",
+        "tsx",
+        "vite",
+        "vitest"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@esbuild/netbsd-arm64",
+      "version": null,
+      "license": null,
+      "purl": "pkg:npm/%40esbuild%2Fnetbsd-arm64@0.0.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "esbuild",
+        "postcss-load-config",
+        "tailwindcss",
+        "tsx",
+        "vite",
+        "vitest"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@esbuild/netbsd-x64",
+      "version": null,
+      "license": null,
+      "purl": "pkg:npm/%40esbuild%2Fnetbsd-x64@0.0.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "esbuild",
+        "postcss-load-config",
+        "tailwindcss",
+        "tsx",
+        "vite",
+        "vitest"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@esbuild/openbsd-arm64",
+      "version": null,
+      "license": null,
+      "purl": "pkg:npm/%40esbuild%2Fopenbsd-arm64@0.0.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "esbuild",
+        "postcss-load-config",
+        "tailwindcss",
+        "tsx",
+        "vite",
+        "vitest"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@esbuild/openbsd-x64",
+      "version": null,
+      "license": null,
+      "purl": "pkg:npm/%40esbuild%2Fopenbsd-x64@0.0.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "esbuild",
+        "postcss-load-config",
+        "tailwindcss",
+        "tsx",
+        "vite",
+        "vitest"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@esbuild/openharmony-arm64",
+      "version": null,
+      "license": null,
+      "purl": "pkg:npm/%40esbuild%2Fopenharmony-arm64@0.0.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "esbuild",
+        "postcss-load-config",
+        "tailwindcss",
+        "tsx",
+        "vite",
+        "vitest"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@esbuild/sunos-x64",
+      "version": null,
+      "license": null,
+      "purl": "pkg:npm/%40esbuild%2Fsunos-x64@0.0.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "esbuild",
+        "postcss-load-config",
+        "tailwindcss",
+        "tsx",
+        "vite",
+        "vitest"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@esbuild/win32-arm64",
+      "version": null,
+      "license": null,
+      "purl": "pkg:npm/%40esbuild%2Fwin32-arm64@0.0.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "esbuild",
+        "postcss-load-config",
+        "tailwindcss",
+        "tsx",
+        "vite",
+        "vitest"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@esbuild/win32-ia32",
+      "version": null,
+      "license": null,
+      "purl": "pkg:npm/%40esbuild%2Fwin32-ia32@0.0.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "esbuild",
+        "postcss-load-config",
+        "tailwindcss",
+        "tsx",
+        "vite",
+        "vitest"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@esbuild/win32-x64",
+      "version": null,
+      "license": null,
+      "purl": "pkg:npm/%40esbuild%2Fwin32-x64@0.0.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "esbuild",
+        "postcss-load-config",
+        "tailwindcss",
+        "tsx",
+        "vite",
+        "vitest"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@fast-csv/format",
+      "version": "4.3.5",
+      "license": "MIT",
+      "purl": "pkg:npm/%40fast-csv%2Fformat@4.3.5",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "exceljs",
+        "fast-csv"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@fast-csv/parse",
+      "version": "4.3.6",
+      "license": "MIT",
+      "purl": "pkg:npm/%40fast-csv%2Fparse@4.3.6",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "exceljs",
+        "fast-csv"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@floating-ui/core",
+      "version": "1.7.5",
+      "license": "MIT",
+      "purl": "pkg:npm/%40floating-ui%2Fcore@1.7.5",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@floating-ui/dom",
+        "agent-builder-vue",
+        "radix-vue"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@floating-ui/dom",
+      "version": "1.7.6",
+      "license": "MIT",
+      "purl": "pkg:npm/%40floating-ui%2Fdom@1.7.6",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@floating-ui/vue",
+        "agent-builder-vue",
+        "radix-vue"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@floating-ui/utils",
+      "version": "0.2.11",
+      "license": "MIT",
+      "purl": "pkg:npm/%40floating-ui%2Futils@0.2.11",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@floating-ui/core",
+        "@floating-ui/dom",
+        "@floating-ui/vue",
+        "agent-builder-vue",
+        "radix-vue"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@floating-ui/vue",
+      "version": "1.1.11",
+      "license": "MIT",
+      "purl": "pkg:npm/%40floating-ui%2Fvue@1.1.11",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "radix-vue"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@internationalized/date",
+      "version": "3.12.1",
+      "license": "Apache-2.0",
+      "purl": "pkg:npm/%40internationalized%2Fdate@3.12.1",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "radix-vue"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@internationalized/number",
+      "version": "3.6.6",
+      "license": "Apache-2.0",
+      "purl": "pkg:npm/%40internationalized%2Fnumber@3.6.6",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "radix-vue"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@isaacs/cliui",
+      "version": "8.0.2",
+      "license": "ISC",
+      "purl": "pkg:npm/%40isaacs%2Fcliui@8.0.2",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@vue/test-utils",
+        "agent-builder-vue",
+        "glob",
+        "jackspeak",
+        "js-beautify"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@jridgewell/gen-mapping",
+      "version": "0.3.13",
+      "license": "MIT",
+      "purl": "pkg:npm/%40jridgewell%2Fgen-mapping@0.3.13",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "sucrase",
+        "tailwindcss"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@jridgewell/resolve-uri",
+      "version": "3.1.2",
+      "license": "MIT",
+      "purl": "pkg:npm/%40jridgewell%2Fresolve-uri@3.1.2",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@jridgewell/trace-mapping",
+        "@vitest/coverage-v8",
+        "agent-builder-vue",
+        "ast-v8-to-istanbul"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@jridgewell/sourcemap-codec",
+      "version": "1.5.5",
+      "license": "MIT",
+      "purl": "pkg:npm/%40jridgewell%2Fsourcemap-codec@1.5.5",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@jridgewell/gen-mapping",
+        "@jridgewell/trace-mapping",
+        "@vitest/coverage-v8",
+        "agent-builder-vue",
+        "ast-v8-to-istanbul",
+        "magic-string",
+        "sucrase",
+        "tailwindcss",
+        "vitest"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@jridgewell/trace-mapping",
+      "version": "0.3.31",
+      "license": "MIT",
+      "purl": "pkg:npm/%40jridgewell%2Ftrace-mapping@0.3.31",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@jridgewell/gen-mapping",
+        "@vitest/coverage-v8",
+        "agent-builder-vue",
+        "ast-v8-to-istanbul",
+        "sucrase",
+        "tailwindcss"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@napi-rs/canvas",
+      "version": "0.1.100",
+      "license": "MIT",
+      "purl": "pkg:npm/%40napi-rs%2Fcanvas@0.1.100",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "pdfjs-dist"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@napi-rs/canvas-android-arm64",
+      "version": null,
+      "license": null,
+      "purl": "pkg:npm/%40napi-rs%2Fcanvas-android-arm64@0.0.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@napi-rs/canvas",
+        "agent-builder-vue",
+        "pdfjs-dist"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@napi-rs/canvas-darwin-arm64",
+      "version": "0.1.100",
+      "license": "MIT",
+      "purl": "pkg:npm/%40napi-rs%2Fcanvas-darwin-arm64@0.1.100",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@napi-rs/canvas",
+        "agent-builder-vue",
+        "pdfjs-dist"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@napi-rs/canvas-darwin-x64",
+      "version": null,
+      "license": null,
+      "purl": "pkg:npm/%40napi-rs%2Fcanvas-darwin-x64@0.0.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@napi-rs/canvas",
+        "agent-builder-vue",
+        "pdfjs-dist"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@napi-rs/canvas-linux-arm-gnueabihf",
+      "version": null,
+      "license": null,
+      "purl": "pkg:npm/%40napi-rs%2Fcanvas-linux-arm-gnueabihf@0.0.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@napi-rs/canvas",
+        "agent-builder-vue",
+        "pdfjs-dist"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@napi-rs/canvas-linux-arm64-gnu",
+      "version": null,
+      "license": null,
+      "purl": "pkg:npm/%40napi-rs%2Fcanvas-linux-arm64-gnu@0.0.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@napi-rs/canvas",
+        "agent-builder-vue",
+        "pdfjs-dist"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@napi-rs/canvas-linux-arm64-musl",
+      "version": null,
+      "license": null,
+      "purl": "pkg:npm/%40napi-rs%2Fcanvas-linux-arm64-musl@0.0.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@napi-rs/canvas",
+        "agent-builder-vue",
+        "pdfjs-dist"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@napi-rs/canvas-linux-riscv64-gnu",
+      "version": null,
+      "license": null,
+      "purl": "pkg:npm/%40napi-rs%2Fcanvas-linux-riscv64-gnu@0.0.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@napi-rs/canvas",
+        "agent-builder-vue",
+        "pdfjs-dist"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@napi-rs/canvas-linux-x64-gnu",
+      "version": null,
+      "license": null,
+      "purl": "pkg:npm/%40napi-rs%2Fcanvas-linux-x64-gnu@0.0.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@napi-rs/canvas",
+        "agent-builder-vue",
+        "pdfjs-dist"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@napi-rs/canvas-linux-x64-musl",
+      "version": null,
+      "license": null,
+      "purl": "pkg:npm/%40napi-rs%2Fcanvas-linux-x64-musl@0.0.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@napi-rs/canvas",
+        "agent-builder-vue",
+        "pdfjs-dist"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@napi-rs/canvas-win32-arm64-msvc",
+      "version": null,
+      "license": null,
+      "purl": "pkg:npm/%40napi-rs%2Fcanvas-win32-arm64-msvc@0.0.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@napi-rs/canvas",
+        "agent-builder-vue",
+        "pdfjs-dist"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@napi-rs/canvas-win32-x64-msvc",
+      "version": null,
+      "license": null,
+      "purl": "pkg:npm/%40napi-rs%2Fcanvas-win32-x64-msvc@0.0.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@napi-rs/canvas",
+        "agent-builder-vue",
+        "pdfjs-dist"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@nodelib/fs.scandir",
+      "version": "2.1.5",
+      "license": "MIT",
+      "purl": "pkg:npm/%40nodelib%2Ffs.scandir@2.1.5",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@nodelib/fs.walk",
+        "agent-builder-vue",
+        "fast-glob",
+        "tailwindcss"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@nodelib/fs.stat",
+      "version": "2.0.5",
+      "license": "MIT",
+      "purl": "pkg:npm/%40nodelib%2Ffs.stat@2.0.5",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@nodelib/fs.scandir",
+        "@nodelib/fs.walk",
+        "agent-builder-vue",
+        "fast-glob",
+        "tailwindcss"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@nodelib/fs.walk",
+      "version": "1.2.8",
+      "license": "MIT",
+      "purl": "pkg:npm/%40nodelib%2Ffs.walk@1.2.8",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "fast-glob",
+        "tailwindcss"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@nuxt/kit",
+      "version": null,
+      "license": null,
+      "purl": "pkg:npm/%40nuxt%2Fkit@0.0.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "vue-sonner"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@nuxt/schema",
+      "version": null,
+      "license": null,
+      "purl": "pkg:npm/%40nuxt%2Fschema@0.0.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "vue-sonner"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@one-ini/wasm",
+      "version": "0.1.1",
+      "license": "MIT",
+      "purl": "pkg:npm/%40one-ini%2Fwasm@0.1.1",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@vue/test-utils",
+        "agent-builder-vue",
+        "editorconfig",
+        "js-beautify"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@opentelemetry/api",
+      "version": null,
+      "license": null,
+      "purl": "pkg:npm/%40opentelemetry%2Fapi@0.0.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "vitest"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@pkgjs/parseargs",
+      "version": "0.11.0",
+      "license": "MIT",
+      "purl": "pkg:npm/%40pkgjs%2Fparseargs@0.11.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@vue/test-utils",
+        "agent-builder-vue",
+        "glob",
+        "jackspeak",
+        "js-beautify"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@rollup/rollup-android-arm-eabi",
+      "version": null,
+      "license": null,
+      "purl": "pkg:npm/%40rollup%2Frollup-android-arm-eabi@0.0.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "rollup",
+        "vite"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@rollup/rollup-android-arm64",
+      "version": null,
+      "license": null,
+      "purl": "pkg:npm/%40rollup%2Frollup-android-arm64@0.0.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "rollup",
+        "vite"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@rollup/rollup-darwin-arm64",
+      "version": "4.60.4",
+      "license": "MIT",
+      "purl": "pkg:npm/%40rollup%2Frollup-darwin-arm64@4.60.4",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "rollup",
+        "vite"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@rollup/rollup-darwin-x64",
+      "version": null,
+      "license": null,
+      "purl": "pkg:npm/%40rollup%2Frollup-darwin-x64@0.0.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "rollup",
+        "vite"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@rollup/rollup-freebsd-arm64",
+      "version": null,
+      "license": null,
+      "purl": "pkg:npm/%40rollup%2Frollup-freebsd-arm64@0.0.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "rollup",
+        "vite"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@rollup/rollup-freebsd-x64",
+      "version": null,
+      "license": null,
+      "purl": "pkg:npm/%40rollup%2Frollup-freebsd-x64@0.0.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "rollup",
+        "vite"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@rollup/rollup-linux-arm-gnueabihf",
+      "version": null,
+      "license": null,
+      "purl": "pkg:npm/%40rollup%2Frollup-linux-arm-gnueabihf@0.0.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "rollup",
+        "vite"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@rollup/rollup-linux-arm-musleabihf",
+      "version": null,
+      "license": null,
+      "purl": "pkg:npm/%40rollup%2Frollup-linux-arm-musleabihf@0.0.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "rollup",
+        "vite"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@rollup/rollup-linux-arm64-gnu",
+      "version": null,
+      "license": null,
+      "purl": "pkg:npm/%40rollup%2Frollup-linux-arm64-gnu@0.0.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "rollup",
+        "vite"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@rollup/rollup-linux-arm64-musl",
+      "version": null,
+      "license": null,
+      "purl": "pkg:npm/%40rollup%2Frollup-linux-arm64-musl@0.0.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "rollup",
+        "vite"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@rollup/rollup-linux-loong64-gnu",
+      "version": null,
+      "license": null,
+      "purl": "pkg:npm/%40rollup%2Frollup-linux-loong64-gnu@0.0.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "rollup",
+        "vite"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@rollup/rollup-linux-loong64-musl",
+      "version": null,
+      "license": null,
+      "purl": "pkg:npm/%40rollup%2Frollup-linux-loong64-musl@0.0.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "rollup",
+        "vite"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@rollup/rollup-linux-ppc64-gnu",
+      "version": null,
+      "license": null,
+      "purl": "pkg:npm/%40rollup%2Frollup-linux-ppc64-gnu@0.0.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "rollup",
+        "vite"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@rollup/rollup-linux-ppc64-musl",
+      "version": null,
+      "license": null,
+      "purl": "pkg:npm/%40rollup%2Frollup-linux-ppc64-musl@0.0.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "rollup",
+        "vite"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@rollup/rollup-linux-riscv64-gnu",
+      "version": null,
+      "license": null,
+      "purl": "pkg:npm/%40rollup%2Frollup-linux-riscv64-gnu@0.0.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "rollup",
+        "vite"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@rollup/rollup-linux-riscv64-musl",
+      "version": null,
+      "license": null,
+      "purl": "pkg:npm/%40rollup%2Frollup-linux-riscv64-musl@0.0.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "rollup",
+        "vite"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@rollup/rollup-linux-s390x-gnu",
+      "version": null,
+      "license": null,
+      "purl": "pkg:npm/%40rollup%2Frollup-linux-s390x-gnu@0.0.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "rollup",
+        "vite"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@rollup/rollup-linux-x64-gnu",
+      "version": null,
+      "license": null,
+      "purl": "pkg:npm/%40rollup%2Frollup-linux-x64-gnu@0.0.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "rollup",
+        "vite"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@rollup/rollup-linux-x64-musl",
+      "version": null,
+      "license": null,
+      "purl": "pkg:npm/%40rollup%2Frollup-linux-x64-musl@0.0.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "rollup",
+        "vite"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@rollup/rollup-openbsd-x64",
+      "version": null,
+      "license": null,
+      "purl": "pkg:npm/%40rollup%2Frollup-openbsd-x64@0.0.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "rollup",
+        "vite"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@rollup/rollup-openharmony-arm64",
+      "version": null,
+      "license": null,
+      "purl": "pkg:npm/%40rollup%2Frollup-openharmony-arm64@0.0.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "rollup",
+        "vite"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@rollup/rollup-win32-arm64-msvc",
+      "version": null,
+      "license": null,
+      "purl": "pkg:npm/%40rollup%2Frollup-win32-arm64-msvc@0.0.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "rollup",
+        "vite"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@rollup/rollup-win32-ia32-msvc",
+      "version": null,
+      "license": null,
+      "purl": "pkg:npm/%40rollup%2Frollup-win32-ia32-msvc@0.0.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "rollup",
+        "vite"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@rollup/rollup-win32-x64-gnu",
+      "version": null,
+      "license": null,
+      "purl": "pkg:npm/%40rollup%2Frollup-win32-x64-gnu@0.0.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "rollup",
+        "vite"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@rollup/rollup-win32-x64-msvc",
+      "version": null,
+      "license": null,
+      "purl": "pkg:npm/%40rollup%2Frollup-win32-x64-msvc@0.0.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "rollup",
+        "vite"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@standard-schema/spec",
+      "version": "1.1.0",
+      "license": "MIT",
+      "purl": "pkg:npm/%40standard-schema%2Fspec@1.1.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@vitest/expect",
+        "agent-builder-vue",
+        "vitest"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@swc/helpers",
+      "version": "0.5.21",
+      "license": "Apache-2.0",
+      "purl": "pkg:npm/%40swc%2Fhelpers@0.5.21",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@internationalized/date",
+        "@internationalized/number",
+        "agent-builder-vue",
+        "radix-vue"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@tailwindcss/typography",
+      "version": "0.5.19",
+      "license": "MIT",
+      "purl": "pkg:npm/%40tailwindcss%2Ftypography@0.5.19",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@tanstack/match-sorter-utils",
+      "version": "8.19.4",
+      "license": "MIT",
+      "purl": "pkg:npm/%40tanstack%2Fmatch-sorter-utils@8.19.4",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@tanstack/vue-query",
+        "agent-builder-vue"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@tanstack/query-core",
+      "version": "5.100.13",
+      "license": "MIT",
+      "purl": "pkg:npm/%40tanstack%2Fquery-core@5.100.13",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@tanstack/vue-query",
+        "agent-builder-vue"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@tanstack/virtual-core",
+      "version": "3.15.0",
+      "license": "MIT",
+      "purl": "pkg:npm/%40tanstack%2Fvirtual-core@3.15.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@tanstack/vue-virtual",
+        "agent-builder-vue",
+        "radix-vue"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@tanstack/vue-query",
+      "version": "5.100.13",
+      "license": "MIT",
+      "purl": "pkg:npm/%40tanstack%2Fvue-query@5.100.13",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@tanstack/vue-virtual",
+      "version": "3.13.25",
+      "license": "MIT",
+      "purl": "pkg:npm/%40tanstack%2Fvue-virtual@3.13.25",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "radix-vue"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@types/chai",
+      "version": "5.2.3",
+      "license": "MIT",
+      "purl": "pkg:npm/%40types%2Fchai@5.2.3",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@vitest/expect",
+        "agent-builder-vue",
+        "vitest"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@types/deep-eql",
+      "version": "4.0.2",
+      "license": "MIT",
+      "purl": "pkg:npm/%40types%2Fdeep-eql@4.0.2",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@types/chai",
+        "@vitest/expect",
+        "agent-builder-vue",
+        "vitest"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@types/estree",
+      "version": "1.0.8",
+      "license": "MIT",
+      "purl": "pkg:npm/%40types%2Festree@1.0.8",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@vitest/coverage-v8",
+        "@vitest/mocker",
+        "agent-builder-vue",
+        "ast-v8-to-istanbul",
+        "estree-walker",
+        "rollup",
+        "vite",
+        "vitest"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@types/node",
+      "version": "14.18.63",
+      "license": "MIT",
+      "purl": "pkg:npm/%40types%2Fnode@14.18.63",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@fast-csv/format",
+        "@fast-csv/parse",
+        "agent-builder-vue",
+        "exceljs",
+        "fast-csv"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@types/node",
+      "version": "22.19.19",
+      "license": "MIT",
+      "purl": "pkg:npm/%40types%2Fnode@22.19.19",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@types/ws",
+        "agent-builder-vue",
+        "happy-dom",
+        "vite",
+        "vitest"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@types/node",
+      "version": "25.9.1",
+      "license": "MIT",
+      "purl": "pkg:npm/%40types%2Fnode@25.9.1",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "docx"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@types/pako",
+      "version": "2.0.4",
+      "license": "MIT",
+      "purl": "pkg:npm/%40types%2Fpako@2.0.4",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "fast-png",
+        "jspdf"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@types/raf",
+      "version": "3.4.3",
+      "license": "MIT",
+      "purl": "pkg:npm/%40types%2Fraf@3.4.3",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "canvg",
+        "jspdf"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@types/trusted-types",
+      "version": "2.0.7",
+      "license": "MIT",
+      "purl": "pkg:npm/%40types%2Ftrusted-types@2.0.7",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "dompurify",
+        "jspdf"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@types/web-bluetooth",
+      "version": "0.0.20",
+      "license": "MIT",
+      "purl": "pkg:npm/%40types%2Fweb-bluetooth@0.0.20",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@vue-flow/core",
+        "@vueuse/core",
+        "agent-builder-vue",
+        "radix-vue"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@types/web-bluetooth",
+      "version": "0.0.21",
+      "license": "MIT",
+      "purl": "pkg:npm/%40types%2Fweb-bluetooth@0.0.21",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@vueuse/core",
+        "agent-builder-vue"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@types/whatwg-mimetype",
+      "version": "3.0.2",
+      "license": "MIT",
+      "purl": "pkg:npm/%40types%2Fwhatwg-mimetype@3.0.2",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "happy-dom"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@types/ws",
+      "version": "8.18.1",
+      "license": "MIT",
+      "purl": "pkg:npm/%40types%2Fws@8.18.1",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "happy-dom"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@vitejs/plugin-vue",
+      "version": "5.2.4",
+      "license": "MIT",
+      "purl": "pkg:npm/%40vitejs%2Fplugin-vue@5.2.4",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@vitest/browser",
+      "version": null,
+      "license": null,
+      "purl": "pkg:npm/%40vitest%2Fbrowser@0.0.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@vitest/coverage-v8",
+        "agent-builder-vue"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@vitest/browser-playwright",
+      "version": null,
+      "license": null,
+      "purl": "pkg:npm/%40vitest%2Fbrowser-playwright@0.0.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "vitest"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@vitest/browser-preview",
+      "version": null,
+      "license": null,
+      "purl": "pkg:npm/%40vitest%2Fbrowser-preview@0.0.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "vitest"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@vitest/browser-webdriverio",
+      "version": null,
+      "license": null,
+      "purl": "pkg:npm/%40vitest%2Fbrowser-webdriverio@0.0.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "vitest"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@vitest/coverage-istanbul",
+      "version": null,
+      "license": null,
+      "purl": "pkg:npm/%40vitest%2Fcoverage-istanbul@0.0.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "vitest"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@vitest/coverage-v8",
+      "version": "4.1.7",
+      "license": "MIT",
+      "purl": "pkg:npm/%40vitest%2Fcoverage-v8@4.1.7",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "vitest"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@vitest/expect",
+      "version": "4.1.7",
+      "license": "MIT",
+      "purl": "pkg:npm/%40vitest%2Fexpect@4.1.7",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "vitest"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@vitest/mocker",
+      "version": "4.1.7",
+      "license": "MIT",
+      "purl": "pkg:npm/%40vitest%2Fmocker@4.1.7",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "vitest"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@vitest/pretty-format",
+      "version": "4.1.7",
+      "license": "MIT",
+      "purl": "pkg:npm/%40vitest%2Fpretty-format@4.1.7",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@vitest/coverage-v8",
+        "@vitest/snapshot",
+        "@vitest/utils",
+        "agent-builder-vue",
+        "vitest"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@vitest/runner",
+      "version": "4.1.7",
+      "license": "MIT",
+      "purl": "pkg:npm/%40vitest%2Frunner@4.1.7",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "vitest"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@vitest/snapshot",
+      "version": "4.1.7",
+      "license": "MIT",
+      "purl": "pkg:npm/%40vitest%2Fsnapshot@4.1.7",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "vitest"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@vitest/spy",
+      "version": "4.1.7",
+      "license": "MIT",
+      "purl": "pkg:npm/%40vitest%2Fspy@4.1.7",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@vitest/expect",
+        "@vitest/mocker",
+        "agent-builder-vue",
+        "vitest"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@vitest/ui",
+      "version": null,
+      "license": null,
+      "purl": "pkg:npm/%40vitest%2Fui@0.0.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "vitest"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@vitest/utils",
+      "version": "4.1.7",
+      "license": "MIT",
+      "purl": "pkg:npm/%40vitest%2Futils@4.1.7",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@vitest/coverage-v8",
+        "@vitest/expect",
+        "@vitest/runner",
+        "@vitest/snapshot",
+        "agent-builder-vue",
+        "vitest"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@volar/language-core",
+      "version": "2.4.15",
+      "license": "MIT",
+      "purl": "pkg:npm/%40volar%2Flanguage-core@2.4.15",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@volar/typescript",
+        "@vue/language-core",
+        "agent-builder-vue",
+        "vue-tsc"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@volar/source-map",
+      "version": "2.4.15",
+      "license": "MIT",
+      "purl": "pkg:npm/%40volar%2Fsource-map@2.4.15",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@volar/language-core",
+        "@volar/typescript",
+        "agent-builder-vue",
+        "vue-tsc"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@volar/typescript",
+      "version": "2.4.15",
+      "license": "MIT",
+      "purl": "pkg:npm/%40volar%2Ftypescript@2.4.15",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "vue-tsc"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@vue-flow/core",
+      "version": "1.48.2",
+      "license": "MIT",
+      "purl": "pkg:npm/%40vue-flow%2Fcore@1.48.2",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@vue-flow/node-resizer",
+        "agent-builder-vue"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@vue-flow/node-resizer",
+      "version": "1.5.1",
+      "license": "MIT",
+      "purl": "pkg:npm/%40vue-flow%2Fnode-resizer@1.5.1",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@vue/compiler-core",
+      "version": "3.5.34",
+      "license": "MIT",
+      "purl": "pkg:npm/%40vue%2Fcompiler-core@3.5.34",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@vue/compiler-dom",
+        "@vue/compiler-sfc",
+        "@vue/test-utils",
+        "agent-builder-vue",
+        "vue"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@vue/compiler-dom",
+      "version": "3.5.34",
+      "license": "MIT",
+      "purl": "pkg:npm/%40vue%2Fcompiler-dom@3.5.34",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@vue/compiler-sfc",
+        "@vue/compiler-ssr",
+        "@vue/language-core",
+        "@vue/server-renderer",
+        "@vue/test-utils",
+        "agent-builder-vue",
+        "vue",
+        "vue-tsc"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@vue/compiler-sfc",
+      "version": "3.5.34",
+      "license": "MIT",
+      "purl": "pkg:npm/%40vue%2Fcompiler-sfc@3.5.34",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "vue"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@vue/compiler-ssr",
+      "version": "3.5.34",
+      "license": "MIT",
+      "purl": "pkg:npm/%40vue%2Fcompiler-ssr@3.5.34",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@vue/compiler-sfc",
+        "@vue/server-renderer",
+        "@vue/test-utils",
+        "agent-builder-vue",
+        "vue"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@vue/compiler-vue2",
+      "version": "2.7.16",
+      "license": "MIT",
+      "purl": "pkg:npm/%40vue%2Fcompiler-vue2@2.7.16",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@vue/language-core",
+        "agent-builder-vue",
+        "vue-tsc"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@vue/composition-api",
+      "version": null,
+      "license": null,
+      "purl": "pkg:npm/%40vue%2Fcomposition-api@0.0.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@tanstack/vue-query",
+        "agent-builder-vue",
+        "vue-demi"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@vue/devtools-api",
+      "version": "6.6.4",
+      "license": "MIT",
+      "purl": "pkg:npm/%40vue%2Fdevtools-api@6.6.4",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@tanstack/vue-query",
+        "agent-builder-vue",
+        "vue-router"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@vue/devtools-api",
+      "version": "7.7.9",
+      "license": "MIT",
+      "purl": "pkg:npm/%40vue%2Fdevtools-api@7.7.9",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "pinia"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@vue/devtools-kit",
+      "version": "7.7.9",
+      "license": "MIT",
+      "purl": "pkg:npm/%40vue%2Fdevtools-kit@7.7.9",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@vue/devtools-api",
+        "agent-builder-vue",
+        "pinia"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@vue/devtools-shared",
+      "version": "7.7.9",
+      "license": "MIT",
+      "purl": "pkg:npm/%40vue%2Fdevtools-shared@7.7.9",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@vue/devtools-api",
+        "@vue/devtools-kit",
+        "agent-builder-vue",
+        "pinia"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@vue/language-core",
+      "version": "2.2.12",
+      "license": "MIT",
+      "purl": "pkg:npm/%40vue%2Flanguage-core@2.2.12",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "vue-tsc"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@vue/reactivity",
+      "version": "3.5.34",
+      "license": "MIT",
+      "purl": "pkg:npm/%40vue%2Freactivity@3.5.34",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@vue/runtime-core",
+        "@vue/runtime-dom",
+        "agent-builder-vue",
+        "vue"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@vue/runtime-core",
+      "version": "3.5.34",
+      "license": "MIT",
+      "purl": "pkg:npm/%40vue%2Fruntime-core@3.5.34",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@vue/runtime-dom",
+        "agent-builder-vue",
+        "vue"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@vue/runtime-dom",
+      "version": "3.5.34",
+      "license": "MIT",
+      "purl": "pkg:npm/%40vue%2Fruntime-dom@3.5.34",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "vue"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@vue/server-renderer",
+      "version": "3.5.34",
+      "license": "MIT",
+      "purl": "pkg:npm/%40vue%2Fserver-renderer@3.5.34",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@vue/test-utils",
+        "agent-builder-vue",
+        "vue"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@vue/shared",
+      "version": "3.5.34",
+      "license": "MIT",
+      "purl": "pkg:npm/%40vue%2Fshared@3.5.34",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@vue/compiler-core",
+        "@vue/compiler-dom",
+        "@vue/compiler-sfc",
+        "@vue/compiler-ssr",
+        "@vue/language-core",
+        "@vue/reactivity",
+        "@vue/runtime-core",
+        "@vue/runtime-dom",
+        "@vue/server-renderer",
+        "@vue/test-utils",
+        "agent-builder-vue",
+        "vue",
+        "vue-tsc"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@vue/test-utils",
+      "version": "2.4.10",
+      "license": "MIT",
+      "purl": "pkg:npm/%40vue%2Ftest-utils@2.4.10",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@vue/tsconfig",
+      "version": "0.7.0",
+      "license": "MIT",
+      "purl": "pkg:npm/%40vue%2Ftsconfig@0.7.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@vueuse/core",
+      "version": "10.11.1",
+      "license": "MIT",
+      "purl": "pkg:npm/%40vueuse%2Fcore@10.11.1",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@vue-flow/core",
+        "agent-builder-vue",
+        "radix-vue"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@vueuse/core",
+      "version": "13.9.0",
+      "license": "MIT",
+      "purl": "pkg:npm/%40vueuse%2Fcore@13.9.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@vueuse/metadata",
+      "version": "10.11.1",
+      "license": "MIT",
+      "purl": "pkg:npm/%40vueuse%2Fmetadata@10.11.1",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@vue-flow/core",
+        "@vueuse/core",
+        "agent-builder-vue",
+        "radix-vue"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@vueuse/metadata",
+      "version": "13.9.0",
+      "license": "MIT",
+      "purl": "pkg:npm/%40vueuse%2Fmetadata@13.9.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@vueuse/core",
+        "agent-builder-vue"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@vueuse/shared",
+      "version": "10.11.1",
+      "license": "MIT",
+      "purl": "pkg:npm/%40vueuse%2Fshared@10.11.1",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@vue-flow/core",
+        "@vueuse/core",
+        "agent-builder-vue",
+        "radix-vue"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@vueuse/shared",
+      "version": "13.9.0",
+      "license": "MIT",
+      "purl": "pkg:npm/%40vueuse%2Fshared@13.9.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@vueuse/core",
+        "agent-builder-vue"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@xmldom/xmldom",
+      "version": "0.8.13",
+      "license": "MIT",
+      "purl": "pkg:npm/%40xmldom%2Fxmldom@0.8.13",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "mammoth"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "abbrev",
+      "version": "2.0.0",
+      "license": "ISC",
+      "purl": "pkg:npm/abbrev@2.0.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@vue/test-utils",
+        "agent-builder-vue",
+        "js-beautify",
+        "nopt"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "alien-signals",
+      "version": "1.0.13",
+      "license": "MIT",
+      "purl": "pkg:npm/alien-signals@1.0.13",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@vue/language-core",
+        "agent-builder-vue",
+        "vue-tsc"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "ansi-regex",
+      "version": "5.0.1",
+      "license": "MIT",
+      "purl": "pkg:npm/ansi-regex@5.0.1",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@isaacs/cliui",
+        "@vue/test-utils",
+        "agent-builder-vue",
+        "glob",
+        "jackspeak",
+        "js-beautify",
+        "string-width-cjs",
+        "strip-ansi",
+        "strip-ansi-cjs"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "ansi-regex",
+      "version": "6.2.2",
+      "license": "MIT",
+      "purl": "pkg:npm/ansi-regex@6.2.2",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@isaacs/cliui",
+        "@vue/test-utils",
+        "agent-builder-vue",
+        "glob",
+        "jackspeak",
+        "js-beautify",
+        "strip-ansi"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "ansi-styles",
+      "version": "4.3.0",
+      "license": "MIT",
+      "purl": "pkg:npm/ansi-styles@4.3.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@isaacs/cliui",
+        "@vue/test-utils",
+        "agent-builder-vue",
+        "glob",
+        "jackspeak",
+        "js-beautify",
+        "wrap-ansi-cjs"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "ansi-styles",
+      "version": "6.2.3",
+      "license": "MIT",
+      "purl": "pkg:npm/ansi-styles@6.2.3",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@isaacs/cliui",
+        "@vue/test-utils",
+        "agent-builder-vue",
+        "glob",
+        "jackspeak",
+        "js-beautify",
+        "wrap-ansi"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "any-promise",
+      "version": "1.3.0",
+      "license": "MIT",
+      "purl": "pkg:npm/any-promise@1.3.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "mz",
+        "sucrase",
+        "tailwindcss",
+        "thenify",
+        "thenify-all"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "anymatch",
+      "version": "3.1.3",
+      "license": "ISC",
+      "purl": "pkg:npm/anymatch@3.1.3",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "chokidar",
+        "tailwindcss"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "archiver",
+      "version": "5.3.2",
+      "license": "MIT",
+      "purl": "pkg:npm/archiver@5.3.2",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "exceljs"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "archiver-utils",
+      "version": "2.1.0",
+      "license": "MIT",
+      "purl": "pkg:npm/archiver-utils@2.1.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "archiver",
+        "exceljs"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "archiver-utils",
+      "version": "3.0.4",
+      "license": "MIT",
+      "purl": "pkg:npm/archiver-utils@3.0.4",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "archiver",
+        "exceljs",
+        "zip-stream"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "arg",
+      "version": "5.0.2",
+      "license": "MIT",
+      "purl": "pkg:npm/arg@5.0.2",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "tailwindcss"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "argparse",
+      "version": "1.0.10",
+      "license": "MIT",
+      "purl": "pkg:npm/argparse@1.0.10",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "mammoth"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "aria-hidden",
+      "version": "1.2.6",
+      "license": "MIT",
+      "purl": "pkg:npm/aria-hidden@1.2.6",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "radix-vue"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "assertion-error",
+      "version": "2.0.1",
+      "license": "MIT",
+      "purl": "pkg:npm/assertion-error@2.0.1",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@types/chai",
+        "@vitest/expect",
+        "agent-builder-vue",
+        "vitest"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "ast-v8-to-istanbul",
+      "version": "1.0.0",
+      "license": "MIT",
+      "purl": "pkg:npm/ast-v8-to-istanbul@1.0.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@vitest/coverage-v8",
+        "agent-builder-vue"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "async",
+      "version": "3.2.6",
+      "license": "MIT",
+      "purl": "pkg:npm/async@3.2.6",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "archiver",
+        "exceljs"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "autoprefixer",
+      "version": "10.5.0",
+      "license": "MIT",
+      "purl": "pkg:npm/autoprefixer@10.5.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "balanced-match",
+      "version": "1.0.2",
+      "license": "MIT",
+      "purl": "pkg:npm/balanced-match@1.0.2",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@vue/language-core",
+        "@vue/test-utils",
+        "agent-builder-vue",
+        "archiver",
+        "archiver-utils",
+        "brace-expansion",
+        "editorconfig",
+        "exceljs",
+        "glob",
+        "js-beautify",
+        "minimatch",
+        "readdir-glob",
+        "vue-tsc"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "base64-arraybuffer",
+      "version": "1.0.2",
+      "license": "MIT",
+      "purl": "pkg:npm/base64-arraybuffer@1.0.2",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "css-line-break",
+        "html2canvas",
+        "jspdf",
+        "utrie"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "base64-js",
+      "version": "1.5.1",
+      "license": "MIT",
+      "purl": "pkg:npm/base64-js@1.5.1",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "archiver",
+        "bl",
+        "buffer",
+        "exceljs",
+        "mammoth",
+        "tar-stream"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "baseline-browser-mapping",
+      "version": "2.10.32",
+      "license": "Apache-2.0",
+      "purl": "pkg:npm/baseline-browser-mapping@2.10.32",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "autoprefixer",
+        "browserslist"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "big-integer",
+      "version": "1.6.52",
+      "license": "Unlicense",
+      "purl": "pkg:npm/big-integer@1.6.52",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "exceljs",
+        "unzipper"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "binary",
+      "version": "0.3.0",
+      "license": "MIT",
+      "purl": "pkg:npm/binary@0.3.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "exceljs",
+        "unzipper"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "binary-extensions",
+      "version": "2.3.0",
+      "license": "MIT",
+      "purl": "pkg:npm/binary-extensions@2.3.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "chokidar",
+        "is-binary-path",
+        "tailwindcss"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "birpc",
+      "version": "2.9.0",
+      "license": "MIT",
+      "purl": "pkg:npm/birpc@2.9.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@vue/devtools-api",
+        "@vue/devtools-kit",
+        "agent-builder-vue",
+        "pinia"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "bl",
+      "version": "4.1.0",
+      "license": "MIT",
+      "purl": "pkg:npm/bl@4.1.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "archiver",
+        "exceljs",
+        "tar-stream"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "bluebird",
+      "version": "3.4.7",
+      "license": "MIT",
+      "purl": "pkg:npm/bluebird@3.4.7",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "exceljs",
+        "mammoth",
+        "unzipper"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "brace-expansion",
+      "version": "1.1.14",
+      "license": "MIT",
+      "purl": "pkg:npm/brace-expansion@1.1.14",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "archiver",
+        "archiver-utils",
+        "exceljs",
+        "glob",
+        "minimatch"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "brace-expansion",
+      "version": "2.1.0",
+      "license": "MIT",
+      "purl": "pkg:npm/brace-expansion@2.1.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@vue/language-core",
+        "@vue/test-utils",
+        "agent-builder-vue",
+        "archiver",
+        "editorconfig",
+        "exceljs",
+        "glob",
+        "js-beautify",
+        "minimatch",
+        "readdir-glob",
+        "vue-tsc"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "braces",
+      "version": "3.0.3",
+      "license": "MIT",
+      "purl": "pkg:npm/braces@3.0.3",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "chokidar",
+        "micromatch",
+        "tailwindcss"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "browserslist",
+      "version": "4.28.2",
+      "license": "MIT",
+      "purl": "pkg:npm/browserslist@4.28.2",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "autoprefixer",
+        "browserslist",
+        "update-browserslist-db"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "buffer",
+      "version": "5.7.1",
+      "license": "MIT",
+      "purl": "pkg:npm/buffer@5.7.1",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "archiver",
+        "bl",
+        "exceljs",
+        "tar-stream"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "buffer-crc32",
+      "version": "0.2.13",
+      "license": "MIT",
+      "purl": "pkg:npm/buffer-crc32@0.2.13",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "archiver",
+        "compress-commons",
+        "exceljs",
+        "zip-stream"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "buffer-indexof-polyfill",
+      "version": "1.0.2",
+      "license": "MIT",
+      "purl": "pkg:npm/buffer-indexof-polyfill@1.0.2",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "exceljs",
+        "unzipper"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "buffers",
+      "version": "0.1.1",
+      "license": null,
+      "purl": "pkg:npm/buffers@0.1.1",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "binary",
+        "exceljs",
+        "unzipper"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "bufferutil",
+      "version": null,
+      "license": null,
+      "purl": "pkg:npm/bufferutil@0.0.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "happy-dom",
+        "ws"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "camelcase-css",
+      "version": "2.0.1",
+      "license": "MIT",
+      "purl": "pkg:npm/camelcase-css@2.0.1",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "postcss-js",
+        "tailwindcss"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "caniuse-lite",
+      "version": "1.0.30001793",
+      "license": "CC-BY-4.0",
+      "purl": "pkg:npm/caniuse-lite@1.0.30001793",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "autoprefixer",
+        "browserslist"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "canvg",
+      "version": "3.0.11",
+      "license": "MIT",
+      "purl": "pkg:npm/canvg@3.0.11",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "jspdf"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "chai",
+      "version": "6.2.2",
+      "license": "MIT",
+      "purl": "pkg:npm/chai@6.2.2",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@vitest/expect",
+        "agent-builder-vue",
+        "vitest"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "chainsaw",
+      "version": "0.1.0",
+      "license": "MIT/X11",
+      "purl": "pkg:npm/chainsaw@0.1.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "binary",
+        "exceljs",
+        "unzipper"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "chokidar",
+      "version": "3.6.0",
+      "license": "MIT",
+      "purl": "pkg:npm/chokidar@3.6.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "tailwindcss"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "class-variance-authority",
+      "version": "0.7.1",
+      "license": "Apache-2.0",
+      "purl": "pkg:npm/class-variance-authority@0.7.1",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "clsx",
+      "version": "2.1.1",
+      "license": "MIT",
+      "purl": "pkg:npm/clsx@2.1.1",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "class-variance-authority"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "color-convert",
+      "version": "2.0.1",
+      "license": "MIT",
+      "purl": "pkg:npm/color-convert@2.0.1",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@isaacs/cliui",
+        "@vue/test-utils",
+        "agent-builder-vue",
+        "ansi-styles",
+        "glob",
+        "jackspeak",
+        "js-beautify",
+        "wrap-ansi-cjs"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "color-name",
+      "version": "1.1.4",
+      "license": "MIT",
+      "purl": "pkg:npm/color-name@1.1.4",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@isaacs/cliui",
+        "@vue/test-utils",
+        "agent-builder-vue",
+        "ansi-styles",
+        "color-convert",
+        "glob",
+        "jackspeak",
+        "js-beautify",
+        "wrap-ansi-cjs"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "commander",
+      "version": "10.0.1",
+      "license": "MIT",
+      "purl": "pkg:npm/commander@10.0.1",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@vue/test-utils",
+        "agent-builder-vue",
+        "editorconfig",
+        "js-beautify"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "commander",
+      "version": "4.1.1",
+      "license": "MIT",
+      "purl": "pkg:npm/commander@4.1.1",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "sucrase",
+        "tailwindcss"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "compress-commons",
+      "version": "4.1.2",
+      "license": "MIT",
+      "purl": "pkg:npm/compress-commons@4.1.2",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "archiver",
+        "exceljs",
+        "zip-stream"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "concat-map",
+      "version": "0.0.1",
+      "license": "MIT",
+      "purl": "pkg:npm/concat-map@0.0.1",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "archiver",
+        "archiver-utils",
+        "brace-expansion",
+        "exceljs",
+        "glob",
+        "minimatch"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "config-chain",
+      "version": "1.1.13",
+      "license": "MIT",
+      "purl": "pkg:npm/config-chain@1.1.13",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@vue/test-utils",
+        "agent-builder-vue",
+        "js-beautify"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "convert-source-map",
+      "version": "2.0.0",
+      "license": "MIT",
+      "purl": "pkg:npm/convert-source-map@2.0.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@vitest/coverage-v8",
+        "@vitest/utils",
+        "agent-builder-vue"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "copy-anything",
+      "version": "4.0.5",
+      "license": "MIT",
+      "purl": "pkg:npm/copy-anything@4.0.5",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@vue/devtools-api",
+        "@vue/devtools-kit",
+        "agent-builder-vue",
+        "pinia",
+        "superjson"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "core-js",
+      "version": "3.49.0",
+      "license": "MIT",
+      "purl": "pkg:npm/core-js@3.49.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "canvg",
+        "jspdf"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "core-util-is",
+      "version": "1.0.3",
+      "license": "MIT",
+      "purl": "pkg:npm/core-util-is@1.0.3",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "archiver",
+        "archiver-utils",
+        "duplexer2",
+        "exceljs",
+        "jszip",
+        "lazystream",
+        "readable-stream",
+        "unzipper"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "crc-32",
+      "version": "1.2.2",
+      "license": "Apache-2.0",
+      "purl": "pkg:npm/crc-32@1.2.2",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "archiver",
+        "compress-commons",
+        "crc32-stream",
+        "exceljs",
+        "zip-stream"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "crc32-stream",
+      "version": "4.0.3",
+      "license": "MIT",
+      "purl": "pkg:npm/crc32-stream@4.0.3",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "archiver",
+        "compress-commons",
+        "exceljs",
+        "zip-stream"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "cross-spawn",
+      "version": "7.0.6",
+      "license": "MIT",
+      "purl": "pkg:npm/cross-spawn@7.0.6",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@vue/test-utils",
+        "agent-builder-vue",
+        "foreground-child",
+        "glob",
+        "js-beautify"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "css-line-break",
+      "version": "2.1.0",
+      "license": "MIT",
+      "purl": "pkg:npm/css-line-break@2.1.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "html2canvas",
+        "jspdf"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "cssesc",
+      "version": "3.0.0",
+      "license": "MIT",
+      "purl": "pkg:npm/cssesc@3.0.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@tailwindcss/typography",
+        "agent-builder-vue",
+        "postcss-nested",
+        "postcss-selector-parser",
+        "tailwindcss"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "csstype",
+      "version": "3.2.3",
+      "license": "MIT",
+      "purl": "pkg:npm/csstype@3.2.3",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@vue/runtime-dom",
+        "agent-builder-vue",
+        "vue"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "d3-color",
+      "version": "3.1.0",
+      "license": "ISC",
+      "purl": "pkg:npm/d3-color@3.1.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@vue-flow/core",
+        "agent-builder-vue",
+        "d3-interpolate",
+        "d3-transition",
+        "d3-zoom"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "d3-dispatch",
+      "version": "3.0.1",
+      "license": "ISC",
+      "purl": "pkg:npm/d3-dispatch@3.0.1",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@vue-flow/core",
+        "agent-builder-vue",
+        "d3-drag",
+        "d3-transition",
+        "d3-zoom"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "d3-drag",
+      "version": "3.0.0",
+      "license": "ISC",
+      "purl": "pkg:npm/d3-drag@3.0.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@vue-flow/core",
+        "@vue-flow/node-resizer",
+        "agent-builder-vue",
+        "d3-zoom"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "d3-ease",
+      "version": "3.0.1",
+      "license": "BSD-3-Clause",
+      "purl": "pkg:npm/d3-ease@3.0.1",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@vue-flow/core",
+        "agent-builder-vue",
+        "d3-transition",
+        "d3-zoom"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "d3-interpolate",
+      "version": "3.0.1",
+      "license": "ISC",
+      "purl": "pkg:npm/d3-interpolate@3.0.1",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@vue-flow/core",
+        "agent-builder-vue",
+        "d3-transition",
+        "d3-zoom"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "d3-selection",
+      "version": "3.0.0",
+      "license": "ISC",
+      "purl": "pkg:npm/d3-selection@3.0.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@vue-flow/core",
+        "@vue-flow/node-resizer",
+        "agent-builder-vue",
+        "d3-drag",
+        "d3-transition",
+        "d3-zoom"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "d3-timer",
+      "version": "3.0.1",
+      "license": "ISC",
+      "purl": "pkg:npm/d3-timer@3.0.1",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@vue-flow/core",
+        "agent-builder-vue",
+        "d3-transition",
+        "d3-zoom"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "d3-transition",
+      "version": "3.0.1",
+      "license": "ISC",
+      "purl": "pkg:npm/d3-transition@3.0.1",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@vue-flow/core",
+        "agent-builder-vue",
+        "d3-zoom"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "d3-zoom",
+      "version": "3.0.0",
+      "license": "ISC",
+      "purl": "pkg:npm/d3-zoom@3.0.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@vue-flow/core",
+        "agent-builder-vue"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "date-fns",
+      "version": "4.3.0",
+      "license": "MIT",
+      "purl": "pkg:npm/date-fns@4.3.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "dayjs",
+      "version": "1.11.20",
+      "license": "MIT",
+      "purl": "pkg:npm/dayjs@1.11.20",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "exceljs"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "de-indent",
+      "version": "1.0.2",
+      "license": "MIT",
+      "purl": "pkg:npm/de-indent@1.0.2",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@vue/compiler-vue2",
+        "@vue/language-core",
+        "agent-builder-vue",
+        "vue-tsc"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "defu",
+      "version": "6.1.7",
+      "license": "MIT",
+      "purl": "pkg:npm/defu@6.1.7",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "radix-vue"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "didyoumean",
+      "version": "1.2.2",
+      "license": "Apache-2.0",
+      "purl": "pkg:npm/didyoumean@1.2.2",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "tailwindcss"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "dingbat-to-unicode",
+      "version": "1.0.1",
+      "license": "BSD-2-Clause",
+      "purl": "pkg:npm/dingbat-to-unicode@1.0.1",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "mammoth"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "dlv",
+      "version": "1.1.3",
+      "license": "MIT",
+      "purl": "pkg:npm/dlv@1.1.3",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "tailwindcss"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "docx",
+      "version": "9.6.1",
+      "license": "MIT",
+      "purl": "pkg:npm/docx@9.6.1",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "dompurify",
+      "version": "3.4.5",
+      "license": "(MPL-2.0 OR Apache-2.0)",
+      "purl": "pkg:npm/dompurify@3.4.5",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "jspdf"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "duck",
+      "version": "0.1.12",
+      "license": "BSD",
+      "purl": "pkg:npm/duck@0.1.12",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "lop",
+        "mammoth"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "duplexer2",
+      "version": "0.1.4",
+      "license": "BSD-3-Clause",
+      "purl": "pkg:npm/duplexer2@0.1.4",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "exceljs",
+        "unzipper"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "eastasianwidth",
+      "version": "0.2.0",
+      "license": "MIT",
+      "purl": "pkg:npm/eastasianwidth@0.2.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@isaacs/cliui",
+        "@vue/test-utils",
+        "agent-builder-vue",
+        "glob",
+        "jackspeak",
+        "js-beautify",
+        "string-width"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "editorconfig",
+      "version": "1.0.7",
+      "license": "MIT",
+      "purl": "pkg:npm/editorconfig@1.0.7",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@vue/test-utils",
+        "agent-builder-vue",
+        "js-beautify"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "electron-to-chromium",
+      "version": "1.5.361",
+      "license": "ISC",
+      "purl": "pkg:npm/electron-to-chromium@1.5.361",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "autoprefixer",
+        "browserslist"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "emoji-regex",
+      "version": "8.0.0",
+      "license": "MIT",
+      "purl": "pkg:npm/emoji-regex@8.0.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@isaacs/cliui",
+        "@vue/test-utils",
+        "agent-builder-vue",
+        "glob",
+        "jackspeak",
+        "js-beautify",
+        "string-width",
+        "string-width-cjs",
+        "wrap-ansi-cjs"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "emoji-regex",
+      "version": "9.2.2",
+      "license": "MIT",
+      "purl": "pkg:npm/emoji-regex@9.2.2",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@isaacs/cliui",
+        "@vue/test-utils",
+        "agent-builder-vue",
+        "glob",
+        "jackspeak",
+        "js-beautify",
+        "string-width"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "end-of-stream",
+      "version": "1.4.5",
+      "license": "MIT",
+      "purl": "pkg:npm/end-of-stream@1.4.5",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "archiver",
+        "exceljs",
+        "tar-stream"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "entities",
+      "version": "7.0.1",
+      "license": "BSD-2-Clause",
+      "purl": "pkg:npm/entities@7.0.1",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@vue/compiler-core",
+        "@vue/compiler-dom",
+        "@vue/test-utils",
+        "agent-builder-vue",
+        "happy-dom"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "es-errors",
+      "version": "1.3.0",
+      "license": "MIT",
+      "purl": "pkg:npm/es-errors@1.3.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "resolve",
+        "tailwindcss"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "es-module-lexer",
+      "version": "2.1.0",
+      "license": "MIT",
+      "purl": "pkg:npm/es-module-lexer@2.1.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "vitest"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "esbuild",
+      "version": "0.21.5",
+      "license": "MIT",
+      "purl": "pkg:npm/esbuild@0.21.5",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "vite"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "esbuild",
+      "version": "0.25.12",
+      "license": "MIT",
+      "purl": "pkg:npm/esbuild@0.25.12",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "vite",
+        "vitest"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "esbuild",
+      "version": "0.28.0",
+      "license": "MIT",
+      "purl": "pkg:npm/esbuild@0.28.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "postcss-load-config",
+        "tailwindcss",
+        "tsx"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "escalade",
+      "version": "3.2.0",
+      "license": "MIT",
+      "purl": "pkg:npm/escalade@3.2.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "autoprefixer",
+        "browserslist",
+        "update-browserslist-db"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "estree-walker",
+      "version": "2.0.2",
+      "license": "MIT",
+      "purl": "pkg:npm/estree-walker@2.0.2",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@vue/compiler-core",
+        "@vue/compiler-dom",
+        "@vue/compiler-sfc",
+        "@vue/test-utils",
+        "agent-builder-vue",
+        "vue"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "estree-walker",
+      "version": "3.0.3",
+      "license": "MIT",
+      "purl": "pkg:npm/estree-walker@3.0.3",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@vitest/coverage-v8",
+        "@vitest/mocker",
+        "agent-builder-vue",
+        "ast-v8-to-istanbul",
+        "vitest"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "exceljs",
+      "version": "4.4.0",
+      "license": "MIT",
+      "purl": "pkg:npm/exceljs@4.4.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "expect-type",
+      "version": "1.3.0",
+      "license": "Apache-2.0",
+      "purl": "pkg:npm/expect-type@1.3.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "vitest"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "fast-csv",
+      "version": "4.3.6",
+      "license": "MIT",
+      "purl": "pkg:npm/fast-csv@4.3.6",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "exceljs"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "fast-deep-equal",
+      "version": "3.1.3",
+      "license": "MIT",
+      "purl": "pkg:npm/fast-deep-equal@3.1.3",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "radix-vue"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "fast-glob",
+      "version": "3.3.3",
+      "license": "MIT",
+      "purl": "pkg:npm/fast-glob@3.3.3",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "tailwindcss"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "fast-png",
+      "version": "6.4.0",
+      "license": "MIT",
+      "purl": "pkg:npm/fast-png@6.4.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "jspdf"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "fastq",
+      "version": "1.20.1",
+      "license": "ISC",
+      "purl": "pkg:npm/fastq@1.20.1",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@nodelib/fs.walk",
+        "agent-builder-vue",
+        "fast-glob",
+        "tailwindcss"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "fdir",
+      "version": "6.5.0",
+      "license": "MIT",
+      "purl": "pkg:npm/fdir@6.5.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "tinyglobby",
+        "vite",
+        "vitest"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "fflate",
+      "version": "0.8.3",
+      "license": "MIT",
+      "purl": "pkg:npm/fflate@0.8.3",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "jspdf"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "fill-range",
+      "version": "7.1.1",
+      "license": "MIT",
+      "purl": "pkg:npm/fill-range@7.1.1",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "braces",
+        "chokidar",
+        "tailwindcss"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "foreground-child",
+      "version": "3.3.1",
+      "license": "ISC",
+      "purl": "pkg:npm/foreground-child@3.3.1",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@vue/test-utils",
+        "agent-builder-vue",
+        "glob",
+        "js-beautify"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "fraction.js",
+      "version": "5.3.4",
+      "license": "MIT",
+      "purl": "pkg:npm/fraction.js@5.3.4",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "autoprefixer"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "fs-constants",
+      "version": "1.0.0",
+      "license": "MIT",
+      "purl": "pkg:npm/fs-constants@1.0.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "archiver",
+        "exceljs",
+        "tar-stream"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "fs.realpath",
+      "version": "1.0.0",
+      "license": "ISC",
+      "purl": "pkg:npm/fs.realpath@1.0.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "archiver",
+        "archiver-utils",
+        "exceljs",
+        "glob"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "fsevents",
+      "version": null,
+      "license": null,
+      "purl": "pkg:npm/fsevents@0.0.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "chokidar",
+        "postcss-load-config",
+        "rollup",
+        "tailwindcss",
+        "tsx",
+        "vite",
+        "vitest"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "fstream",
+      "version": "1.0.12",
+      "license": "ISC",
+      "purl": "pkg:npm/fstream@1.0.12",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "exceljs",
+        "unzipper"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "function-bind",
+      "version": "1.1.2",
+      "license": "MIT",
+      "purl": "pkg:npm/function-bind@1.1.2",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "hasown",
+        "is-core-module",
+        "resolve",
+        "tailwindcss"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "glob",
+      "version": "10.5.0",
+      "license": "ISC",
+      "purl": "pkg:npm/glob@10.5.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@vue/test-utils",
+        "agent-builder-vue",
+        "js-beautify"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "glob",
+      "version": "7.2.3",
+      "license": "ISC",
+      "purl": "pkg:npm/glob@7.2.3",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "archiver",
+        "archiver-utils",
+        "exceljs",
+        "fstream",
+        "rimraf",
+        "unzipper",
+        "zip-stream"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "glob-parent",
+      "version": "5.1.2",
+      "license": "ISC",
+      "purl": "pkg:npm/glob-parent@5.1.2",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "chokidar",
+        "fast-glob",
+        "tailwindcss"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "glob-parent",
+      "version": "6.0.2",
+      "license": "ISC",
+      "purl": "pkg:npm/glob-parent@6.0.2",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "tailwindcss"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "graceful-fs",
+      "version": "4.2.11",
+      "license": "ISC",
+      "purl": "pkg:npm/graceful-fs@4.2.11",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "archiver",
+        "archiver-utils",
+        "exceljs",
+        "fstream",
+        "unzipper",
+        "zip-stream"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "happy-dom",
+      "version": "20.9.0",
+      "license": "MIT",
+      "purl": "pkg:npm/happy-dom@20.9.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "vitest"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "has-flag",
+      "version": "4.0.0",
+      "license": "MIT",
+      "purl": "pkg:npm/has-flag@4.0.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@vitest/coverage-v8",
+        "agent-builder-vue",
+        "istanbul-lib-report",
+        "supports-color"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "hash.js",
+      "version": "1.1.7",
+      "license": "MIT",
+      "purl": "pkg:npm/hash.js@1.1.7",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "docx"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "hasown",
+      "version": "2.0.3",
+      "license": "MIT",
+      "purl": "pkg:npm/hasown@2.0.3",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "is-core-module",
+        "resolve",
+        "tailwindcss"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "he",
+      "version": "1.2.0",
+      "license": "MIT",
+      "purl": "pkg:npm/he@1.2.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@vue/compiler-vue2",
+        "@vue/language-core",
+        "agent-builder-vue",
+        "vue-tsc"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "hookable",
+      "version": "5.5.3",
+      "license": "MIT",
+      "purl": "pkg:npm/hookable@5.5.3",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@vue/devtools-api",
+        "@vue/devtools-kit",
+        "agent-builder-vue",
+        "pinia"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "html-escaper",
+      "version": "2.0.2",
+      "license": "MIT",
+      "purl": "pkg:npm/html-escaper@2.0.2",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@vitest/coverage-v8",
+        "agent-builder-vue",
+        "istanbul-reports"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "html2canvas",
+      "version": "1.4.1",
+      "license": "MIT",
+      "purl": "pkg:npm/html2canvas@1.4.1",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "jspdf"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "ieee754",
+      "version": "1.2.1",
+      "license": "BSD-3-Clause",
+      "purl": "pkg:npm/ieee754@1.2.1",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "archiver",
+        "bl",
+        "buffer",
+        "exceljs",
+        "tar-stream"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "immediate",
+      "version": "3.0.6",
+      "license": "MIT",
+      "purl": "pkg:npm/immediate@3.0.6",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "jszip",
+        "lie"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "inflight",
+      "version": "1.0.6",
+      "license": "ISC",
+      "purl": "pkg:npm/inflight@1.0.6",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "archiver",
+        "archiver-utils",
+        "exceljs",
+        "glob"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "inherits",
+      "version": "2.0.4",
+      "license": "ISC",
+      "purl": "pkg:npm/inherits@2.0.4",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "archiver",
+        "archiver-utils",
+        "bl",
+        "docx",
+        "duplexer2",
+        "exceljs",
+        "fstream",
+        "glob",
+        "hash.js",
+        "jszip",
+        "lazystream",
+        "readable-stream",
+        "tar-stream",
+        "unzipper"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "ini",
+      "version": "1.3.8",
+      "license": "ISC",
+      "purl": "pkg:npm/ini@1.3.8",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@vue/test-utils",
+        "agent-builder-vue",
+        "config-chain",
+        "js-beautify"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "iobuffer",
+      "version": "5.4.0",
+      "license": "MIT",
+      "purl": "pkg:npm/iobuffer@5.4.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "fast-png",
+        "jspdf"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "is-binary-path",
+      "version": "2.1.0",
+      "license": "MIT",
+      "purl": "pkg:npm/is-binary-path@2.1.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "chokidar",
+        "tailwindcss"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "is-core-module",
+      "version": "2.16.2",
+      "license": "MIT",
+      "purl": "pkg:npm/is-core-module@2.16.2",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "resolve",
+        "tailwindcss"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "is-extglob",
+      "version": "2.1.1",
+      "license": "MIT",
+      "purl": "pkg:npm/is-extglob@2.1.1",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "is-glob",
+        "tailwindcss"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "is-fullwidth-code-point",
+      "version": "3.0.0",
+      "license": "MIT",
+      "purl": "pkg:npm/is-fullwidth-code-point@3.0.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@isaacs/cliui",
+        "@vue/test-utils",
+        "agent-builder-vue",
+        "glob",
+        "jackspeak",
+        "js-beautify",
+        "string-width",
+        "string-width-cjs",
+        "wrap-ansi-cjs"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "is-glob",
+      "version": "4.0.3",
+      "license": "MIT",
+      "purl": "pkg:npm/is-glob@4.0.3",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "chokidar",
+        "fast-glob",
+        "glob-parent",
+        "tailwindcss"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "is-number",
+      "version": "7.0.0",
+      "license": "MIT",
+      "purl": "pkg:npm/is-number@7.0.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "braces",
+        "chokidar",
+        "fill-range",
+        "tailwindcss",
+        "to-regex-range"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "is-what",
+      "version": "5.5.0",
+      "license": "MIT",
+      "purl": "pkg:npm/is-what@5.5.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@vue/devtools-api",
+        "@vue/devtools-kit",
+        "agent-builder-vue",
+        "copy-anything",
+        "pinia",
+        "superjson"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "isarray",
+      "version": "1.0.0",
+      "license": "MIT",
+      "purl": "pkg:npm/isarray@1.0.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "archiver",
+        "archiver-utils",
+        "duplexer2",
+        "exceljs",
+        "jszip",
+        "lazystream",
+        "readable-stream",
+        "unzipper"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "isexe",
+      "version": "2.0.0",
+      "license": "ISC",
+      "purl": "pkg:npm/isexe@2.0.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@vue/test-utils",
+        "agent-builder-vue",
+        "cross-spawn",
+        "foreground-child",
+        "glob",
+        "js-beautify",
+        "which"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "istanbul-lib-coverage",
+      "version": "3.2.2",
+      "license": "BSD-3-Clause",
+      "purl": "pkg:npm/istanbul-lib-coverage@3.2.2",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@vitest/coverage-v8",
+        "agent-builder-vue",
+        "istanbul-lib-report"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "istanbul-lib-report",
+      "version": "3.0.1",
+      "license": "BSD-3-Clause",
+      "purl": "pkg:npm/istanbul-lib-report@3.0.1",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@vitest/coverage-v8",
+        "agent-builder-vue",
+        "istanbul-reports"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "istanbul-reports",
+      "version": "3.2.0",
+      "license": "BSD-3-Clause",
+      "purl": "pkg:npm/istanbul-reports@3.2.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@vitest/coverage-v8",
+        "agent-builder-vue"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "jackspeak",
+      "version": "3.4.3",
+      "license": "BlueOak-1.0.0",
+      "purl": "pkg:npm/jackspeak@3.4.3",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@vue/test-utils",
+        "agent-builder-vue",
+        "glob",
+        "js-beautify"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "jiti",
+      "version": "1.21.7",
+      "license": "MIT",
+      "purl": "pkg:npm/jiti@1.21.7",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "postcss-load-config",
+        "tailwindcss",
+        "vite",
+        "vitest"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "js-beautify",
+      "version": "1.15.4",
+      "license": "MIT",
+      "purl": "pkg:npm/js-beautify@1.15.4",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@vue/test-utils",
+        "agent-builder-vue"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "js-cookie",
+      "version": "3.0.7",
+      "license": "MIT",
+      "purl": "pkg:npm/js-cookie@3.0.7",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@vue/test-utils",
+        "agent-builder-vue",
+        "js-beautify"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "js-tokens",
+      "version": "10.0.0",
+      "license": "MIT",
+      "purl": "pkg:npm/js-tokens@10.0.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@vitest/coverage-v8",
+        "agent-builder-vue",
+        "ast-v8-to-istanbul"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "jsdom",
+      "version": null,
+      "license": null,
+      "purl": "pkg:npm/jsdom@0.0.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "vitest"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "jspdf",
+      "version": "4.2.1",
+      "license": "MIT",
+      "purl": "pkg:npm/jspdf@4.2.1",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "jszip",
+      "version": "3.10.1",
+      "license": "(MIT OR GPL-3.0-or-later)",
+      "purl": "pkg:npm/jszip@3.10.1",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "docx",
+        "exceljs",
+        "mammoth"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "lazystream",
+      "version": "1.0.1",
+      "license": "MIT",
+      "purl": "pkg:npm/lazystream@1.0.1",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "archiver",
+        "archiver-utils",
+        "exceljs",
+        "zip-stream"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "less",
+      "version": null,
+      "license": null,
+      "purl": "pkg:npm/less@0.0.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "vite",
+        "vitest"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "lie",
+      "version": "3.3.0",
+      "license": "MIT",
+      "purl": "pkg:npm/lie@3.3.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "jszip"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "lightningcss",
+      "version": null,
+      "license": null,
+      "purl": "pkg:npm/lightningcss@0.0.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "vite",
+        "vitest"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "lilconfig",
+      "version": "3.1.3",
+      "license": "MIT",
+      "purl": "pkg:npm/lilconfig@3.1.3",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "postcss-load-config",
+        "tailwindcss"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "lines-and-columns",
+      "version": "1.2.4",
+      "license": "MIT",
+      "purl": "pkg:npm/lines-and-columns@1.2.4",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "sucrase",
+        "tailwindcss"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "listenercount",
+      "version": "1.0.1",
+      "license": "ISC",
+      "purl": "pkg:npm/listenercount@1.0.1",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "exceljs",
+        "unzipper"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "lodash.defaults",
+      "version": "4.2.0",
+      "license": "MIT",
+      "purl": "pkg:npm/lodash.defaults@4.2.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "archiver",
+        "archiver-utils",
+        "exceljs",
+        "zip-stream"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "lodash.difference",
+      "version": "4.5.0",
+      "license": "MIT",
+      "purl": "pkg:npm/lodash.difference@4.5.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "archiver",
+        "archiver-utils",
+        "exceljs",
+        "zip-stream"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "lodash.escaperegexp",
+      "version": "4.1.2",
+      "license": "MIT",
+      "purl": "pkg:npm/lodash.escaperegexp@4.1.2",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@fast-csv/format",
+        "@fast-csv/parse",
+        "agent-builder-vue",
+        "exceljs",
+        "fast-csv"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "lodash.flatten",
+      "version": "4.4.0",
+      "license": "MIT",
+      "purl": "pkg:npm/lodash.flatten@4.4.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "archiver",
+        "archiver-utils",
+        "exceljs",
+        "zip-stream"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "lodash.groupby",
+      "version": "4.6.0",
+      "license": "MIT",
+      "purl": "pkg:npm/lodash.groupby@4.6.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@fast-csv/parse",
+        "agent-builder-vue",
+        "exceljs",
+        "fast-csv"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "lodash.isboolean",
+      "version": "3.0.3",
+      "license": "MIT",
+      "purl": "pkg:npm/lodash.isboolean@3.0.3",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@fast-csv/format",
+        "agent-builder-vue",
+        "exceljs",
+        "fast-csv"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "lodash.isequal",
+      "version": "4.5.0",
+      "license": "MIT",
+      "purl": "pkg:npm/lodash.isequal@4.5.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@fast-csv/format",
+        "agent-builder-vue",
+        "exceljs",
+        "fast-csv"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "lodash.isfunction",
+      "version": "3.0.9",
+      "license": "MIT",
+      "purl": "pkg:npm/lodash.isfunction@3.0.9",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@fast-csv/format",
+        "@fast-csv/parse",
+        "agent-builder-vue",
+        "exceljs",
+        "fast-csv"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "lodash.isnil",
+      "version": "4.0.0",
+      "license": "MIT",
+      "purl": "pkg:npm/lodash.isnil@4.0.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@fast-csv/format",
+        "@fast-csv/parse",
+        "agent-builder-vue",
+        "exceljs",
+        "fast-csv"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "lodash.isplainobject",
+      "version": "4.0.6",
+      "license": "MIT",
+      "purl": "pkg:npm/lodash.isplainobject@4.0.6",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "archiver",
+        "archiver-utils",
+        "exceljs",
+        "zip-stream"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "lodash.isundefined",
+      "version": "3.0.1",
+      "license": "MIT",
+      "purl": "pkg:npm/lodash.isundefined@3.0.1",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@fast-csv/parse",
+        "agent-builder-vue",
+        "exceljs",
+        "fast-csv"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "lodash.union",
+      "version": "4.6.0",
+      "license": "MIT",
+      "purl": "pkg:npm/lodash.union@4.6.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "archiver",
+        "archiver-utils",
+        "exceljs",
+        "zip-stream"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "lodash.uniq",
+      "version": "4.5.0",
+      "license": "MIT",
+      "purl": "pkg:npm/lodash.uniq@4.5.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@fast-csv/parse",
+        "agent-builder-vue",
+        "exceljs",
+        "fast-csv"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "lop",
+      "version": "0.4.2",
+      "license": "BSD-2-Clause",
+      "purl": "pkg:npm/lop@0.4.2",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "mammoth"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "lru-cache",
+      "version": "10.4.3",
+      "license": "ISC",
+      "purl": "pkg:npm/lru-cache@10.4.3",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@vue/test-utils",
+        "agent-builder-vue",
+        "glob",
+        "js-beautify",
+        "path-scurry"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "lucide-vue-next",
+      "version": "0.513.0",
+      "license": "ISC",
+      "purl": "pkg:npm/lucide-vue-next@0.513.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "magic-string",
+      "version": "0.30.21",
+      "license": "MIT",
+      "purl": "pkg:npm/magic-string@0.30.21",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@vitest/mocker",
+        "@vitest/snapshot",
+        "@vue/compiler-sfc",
+        "agent-builder-vue",
+        "vitest",
+        "vue"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "magicast",
+      "version": "0.5.3",
+      "license": "MIT",
+      "purl": "pkg:npm/magicast@0.5.3",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@vitest/coverage-v8",
+        "agent-builder-vue"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "make-dir",
+      "version": "4.0.0",
+      "license": "MIT",
+      "purl": "pkg:npm/make-dir@4.0.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@vitest/coverage-v8",
+        "agent-builder-vue",
+        "istanbul-lib-report"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "mammoth",
+      "version": "1.12.0",
+      "license": "BSD-2-Clause",
+      "purl": "pkg:npm/mammoth@1.12.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "merge2",
+      "version": "1.4.1",
+      "license": "MIT",
+      "purl": "pkg:npm/merge2@1.4.1",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "fast-glob",
+        "tailwindcss"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "micromatch",
+      "version": "4.0.8",
+      "license": "MIT",
+      "purl": "pkg:npm/micromatch@4.0.8",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "fast-glob",
+        "tailwindcss"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "minimalistic-assert",
+      "version": "1.0.1",
+      "license": "ISC",
+      "purl": "pkg:npm/minimalistic-assert@1.0.1",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "docx",
+        "hash.js"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "minimatch",
+      "version": "3.1.5",
+      "license": "ISC",
+      "purl": "pkg:npm/minimatch@3.1.5",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "archiver",
+        "archiver-utils",
+        "exceljs",
+        "glob"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "minimatch",
+      "version": "5.1.9",
+      "license": "ISC",
+      "purl": "pkg:npm/minimatch@5.1.9",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "archiver",
+        "exceljs",
+        "readdir-glob"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "minimatch",
+      "version": "9.0.9",
+      "license": "ISC",
+      "purl": "pkg:npm/minimatch@9.0.9",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@vue/language-core",
+        "@vue/test-utils",
+        "agent-builder-vue",
+        "editorconfig",
+        "glob",
+        "js-beautify",
+        "vue-tsc"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "minimist",
+      "version": "1.2.8",
+      "license": "MIT",
+      "purl": "pkg:npm/minimist@1.2.8",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "exceljs",
+        "fstream",
+        "mkdirp",
+        "unzipper"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "minipass",
+      "version": "7.1.3",
+      "license": "BlueOak-1.0.0",
+      "purl": "pkg:npm/minipass@7.1.3",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@vue/test-utils",
+        "agent-builder-vue",
+        "glob",
+        "js-beautify",
+        "path-scurry"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "mitt",
+      "version": "3.0.1",
+      "license": "MIT",
+      "purl": "pkg:npm/mitt@3.0.1",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@vue/devtools-api",
+        "@vue/devtools-kit",
+        "agent-builder-vue",
+        "pinia"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "mkdirp",
+      "version": "0.5.6",
+      "license": "MIT",
+      "purl": "pkg:npm/mkdirp@0.5.6",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "exceljs",
+        "fstream",
+        "unzipper"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "msw",
+      "version": null,
+      "license": null,
+      "purl": "pkg:npm/msw@0.0.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@vitest/mocker",
+        "agent-builder-vue",
+        "vitest"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "muggle-string",
+      "version": "0.4.1",
+      "license": "MIT",
+      "purl": "pkg:npm/muggle-string@0.4.1",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@vue/language-core",
+        "agent-builder-vue",
+        "vue-tsc"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "mz",
+      "version": "2.7.0",
+      "license": "MIT",
+      "purl": "pkg:npm/mz@2.7.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "sucrase",
+        "tailwindcss"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "nanoid",
+      "version": "3.3.12",
+      "license": "MIT",
+      "purl": "pkg:npm/nanoid@3.3.12",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "postcss"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "nanoid",
+      "version": "5.1.11",
+      "license": "MIT",
+      "purl": "pkg:npm/nanoid@5.1.11",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "docx",
+        "radix-vue"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "node-readable-to-web-readable-stream",
+      "version": "0.4.2",
+      "license": "MIT",
+      "purl": "pkg:npm/node-readable-to-web-readable-stream@0.4.2",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "pdfjs-dist"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "node-releases",
+      "version": "2.0.46",
+      "license": "MIT",
+      "purl": "pkg:npm/node-releases@2.0.46",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "autoprefixer",
+        "browserslist"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "nopt",
+      "version": "7.2.1",
+      "license": "ISC",
+      "purl": "pkg:npm/nopt@7.2.1",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@vue/test-utils",
+        "agent-builder-vue",
+        "js-beautify"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "normalize-path",
+      "version": "3.0.0",
+      "license": "MIT",
+      "purl": "pkg:npm/normalize-path@3.0.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "anymatch",
+        "archiver",
+        "archiver-utils",
+        "chokidar",
+        "compress-commons",
+        "exceljs",
+        "tailwindcss",
+        "zip-stream"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "nuxt",
+      "version": null,
+      "license": null,
+      "purl": "pkg:npm/nuxt@0.0.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "vue-sonner"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "object-assign",
+      "version": "4.1.1",
+      "license": "MIT",
+      "purl": "pkg:npm/object-assign@4.1.1",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "mz",
+        "sucrase",
+        "tailwindcss"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "object-hash",
+      "version": "3.0.0",
+      "license": "MIT",
+      "purl": "pkg:npm/object-hash@3.0.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "tailwindcss"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "obug",
+      "version": "2.1.1",
+      "license": "MIT",
+      "purl": "pkg:npm/obug@2.1.1",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@vitest/coverage-v8",
+        "agent-builder-vue",
+        "vitest"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "once",
+      "version": "1.4.0",
+      "license": "ISC",
+      "purl": "pkg:npm/once@1.4.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "archiver",
+        "archiver-utils",
+        "end-of-stream",
+        "exceljs",
+        "glob",
+        "inflight",
+        "tar-stream"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "option",
+      "version": "0.2.4",
+      "license": "BSD-2-Clause",
+      "purl": "pkg:npm/option@0.2.4",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "lop",
+        "mammoth"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "package-json-from-dist",
+      "version": "1.0.1",
+      "license": "BlueOak-1.0.0",
+      "purl": "pkg:npm/package-json-from-dist@1.0.1",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@vue/test-utils",
+        "agent-builder-vue",
+        "glob",
+        "js-beautify"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "pako",
+      "version": "1.0.11",
+      "license": "(MIT AND Zlib)",
+      "purl": "pkg:npm/pako@1.0.11",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "jszip"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "pako",
+      "version": "2.1.0",
+      "license": "(MIT AND Zlib)",
+      "purl": "pkg:npm/pako@2.1.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "fast-png",
+        "jspdf"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "path-browserify",
+      "version": "1.0.1",
+      "license": "MIT",
+      "purl": "pkg:npm/path-browserify@1.0.1",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@volar/typescript",
+        "@vue/language-core",
+        "agent-builder-vue",
+        "vue-tsc"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "path-is-absolute",
+      "version": "1.0.1",
+      "license": "MIT",
+      "purl": "pkg:npm/path-is-absolute@1.0.1",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "archiver",
+        "archiver-utils",
+        "exceljs",
+        "glob",
+        "mammoth"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "path-key",
+      "version": "3.1.1",
+      "license": "MIT",
+      "purl": "pkg:npm/path-key@3.1.1",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@vue/test-utils",
+        "agent-builder-vue",
+        "cross-spawn",
+        "foreground-child",
+        "glob",
+        "js-beautify"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "path-parse",
+      "version": "1.0.7",
+      "license": "MIT",
+      "purl": "pkg:npm/path-parse@1.0.7",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "resolve",
+        "tailwindcss"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "path-scurry",
+      "version": "1.11.1",
+      "license": "BlueOak-1.0.0",
+      "purl": "pkg:npm/path-scurry@1.11.1",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@vue/test-utils",
+        "agent-builder-vue",
+        "glob",
+        "js-beautify"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "pathe",
+      "version": "2.0.3",
+      "license": "MIT",
+      "purl": "pkg:npm/pathe@2.0.3",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@vitest/runner",
+        "@vitest/snapshot",
+        "agent-builder-vue",
+        "vitest"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "pdfjs-dist",
+      "version": "5.4.624",
+      "license": "Apache-2.0",
+      "purl": "pkg:npm/pdfjs-dist@5.4.624",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "perfect-debounce",
+      "version": "1.0.0",
+      "license": "MIT",
+      "purl": "pkg:npm/perfect-debounce@1.0.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@vue/devtools-api",
+        "@vue/devtools-kit",
+        "agent-builder-vue",
+        "pinia"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "performance-now",
+      "version": "2.1.0",
+      "license": "MIT",
+      "purl": "pkg:npm/performance-now@2.1.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "canvg",
+        "jspdf",
+        "raf"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "picocolors",
+      "version": "1.1.1",
+      "license": "ISC",
+      "purl": "pkg:npm/picocolors@1.1.1",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "autoprefixer",
+        "browserslist",
+        "postcss",
+        "tailwindcss",
+        "update-browserslist-db"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "picomatch",
+      "version": "2.3.2",
+      "license": "MIT",
+      "purl": "pkg:npm/picomatch@2.3.2",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "anymatch",
+        "chokidar",
+        "micromatch",
+        "readdirp",
+        "tailwindcss"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "picomatch",
+      "version": "4.0.4",
+      "license": "MIT",
+      "purl": "pkg:npm/picomatch@4.0.4",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "fdir",
+        "tinyglobby",
+        "vite",
+        "vitest"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "pify",
+      "version": "2.3.0",
+      "license": "MIT",
+      "purl": "pkg:npm/pify@2.3.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "postcss-import",
+        "read-cache",
+        "tailwindcss"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "pinia",
+      "version": "3.0.4",
+      "license": "MIT",
+      "purl": "pkg:npm/pinia@3.0.4",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "pirates",
+      "version": "4.0.7",
+      "license": "MIT",
+      "purl": "pkg:npm/pirates@4.0.7",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "sucrase",
+        "tailwindcss"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "postcss",
+      "version": "8.5.15",
+      "license": "MIT",
+      "purl": "pkg:npm/postcss@8.5.15",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@vue/compiler-sfc",
+        "agent-builder-vue",
+        "autoprefixer",
+        "postcss-import",
+        "postcss-js",
+        "postcss-load-config",
+        "postcss-nested",
+        "tailwindcss",
+        "vite",
+        "vitest",
+        "vue"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "postcss-import",
+      "version": "15.1.0",
+      "license": "MIT",
+      "purl": "pkg:npm/postcss-import@15.1.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "tailwindcss"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "postcss-js",
+      "version": "4.1.0",
+      "license": "MIT",
+      "purl": "pkg:npm/postcss-js@4.1.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "tailwindcss"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "postcss-load-config",
+      "version": "6.0.1",
+      "license": "MIT",
+      "purl": "pkg:npm/postcss-load-config@6.0.1",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "tailwindcss"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "postcss-nested",
+      "version": "6.2.0",
+      "license": "MIT",
+      "purl": "pkg:npm/postcss-nested@6.2.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "tailwindcss"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "postcss-selector-parser",
+      "version": "6.0.10",
+      "license": "MIT",
+      "purl": "pkg:npm/postcss-selector-parser@6.0.10",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@tailwindcss/typography",
+        "agent-builder-vue"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "postcss-selector-parser",
+      "version": "6.1.2",
+      "license": "MIT",
+      "purl": "pkg:npm/postcss-selector-parser@6.1.2",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "postcss-nested",
+        "tailwindcss"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "postcss-value-parser",
+      "version": "4.2.0",
+      "license": "MIT",
+      "purl": "pkg:npm/postcss-value-parser@4.2.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "autoprefixer",
+        "postcss-import",
+        "tailwindcss"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "process-nextick-args",
+      "version": "2.0.1",
+      "license": "MIT",
+      "purl": "pkg:npm/process-nextick-args@2.0.1",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "archiver",
+        "archiver-utils",
+        "duplexer2",
+        "exceljs",
+        "jszip",
+        "lazystream",
+        "readable-stream",
+        "unzipper"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "proto-list",
+      "version": "1.2.4",
+      "license": "ISC",
+      "purl": "pkg:npm/proto-list@1.2.4",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@vue/test-utils",
+        "agent-builder-vue",
+        "config-chain",
+        "js-beautify"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "queue-microtask",
+      "version": "1.2.3",
+      "license": "MIT",
+      "purl": "pkg:npm/queue-microtask@1.2.3",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@nodelib/fs.scandir",
+        "@nodelib/fs.walk",
+        "agent-builder-vue",
+        "fast-glob",
+        "run-parallel",
+        "tailwindcss"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "radix-vue",
+      "version": "1.9.17",
+      "license": "MIT",
+      "purl": "pkg:npm/radix-vue@1.9.17",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "raf",
+      "version": "3.4.1",
+      "license": "MIT",
+      "purl": "pkg:npm/raf@3.4.1",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "canvg",
+        "jspdf"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "read-cache",
+      "version": "1.0.0",
+      "license": "MIT",
+      "purl": "pkg:npm/read-cache@1.0.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "postcss-import",
+        "tailwindcss"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "readable-stream",
+      "version": "2.3.8",
+      "license": "MIT",
+      "purl": "pkg:npm/readable-stream@2.3.8",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "archiver",
+        "archiver-utils",
+        "duplexer2",
+        "exceljs",
+        "jszip",
+        "lazystream",
+        "unzipper"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "readable-stream",
+      "version": "3.6.2",
+      "license": "MIT",
+      "purl": "pkg:npm/readable-stream@3.6.2",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "archiver",
+        "archiver-utils",
+        "bl",
+        "compress-commons",
+        "crc32-stream",
+        "exceljs",
+        "tar-stream",
+        "zip-stream"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "readdir-glob",
+      "version": "1.1.3",
+      "license": "Apache-2.0",
+      "purl": "pkg:npm/readdir-glob@1.1.3",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "archiver",
+        "exceljs"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "readdirp",
+      "version": "3.6.0",
+      "license": "MIT",
+      "purl": "pkg:npm/readdirp@3.6.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "chokidar",
+        "tailwindcss"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "regenerator-runtime",
+      "version": "0.13.11",
+      "license": "MIT",
+      "purl": "pkg:npm/regenerator-runtime@0.13.11",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "canvg",
+        "jspdf"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "remove-accents",
+      "version": "0.5.0",
+      "license": "MIT",
+      "purl": "pkg:npm/remove-accents@0.5.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@tanstack/match-sorter-utils",
+        "@tanstack/vue-query",
+        "agent-builder-vue"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "resolve",
+      "version": "1.22.12",
+      "license": "MIT",
+      "purl": "pkg:npm/resolve@1.22.12",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "postcss-import",
+        "tailwindcss"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "reusify",
+      "version": "1.1.0",
+      "license": "MIT",
+      "purl": "pkg:npm/reusify@1.1.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@nodelib/fs.walk",
+        "agent-builder-vue",
+        "fast-glob",
+        "fastq",
+        "tailwindcss"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "rfdc",
+      "version": "1.4.1",
+      "license": "MIT",
+      "purl": "pkg:npm/rfdc@1.4.1",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@vue/devtools-api",
+        "@vue/devtools-kit",
+        "@vue/devtools-shared",
+        "agent-builder-vue",
+        "pinia"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "rgbcolor",
+      "version": "1.0.1",
+      "license": "MIT OR SEE LICENSE IN FEEL-FREE.md",
+      "purl": "pkg:npm/rgbcolor@1.0.1",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "canvg",
+        "jspdf"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "rimraf",
+      "version": "2.7.1",
+      "license": "ISC",
+      "purl": "pkg:npm/rimraf@2.7.1",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "exceljs",
+        "fstream",
+        "unzipper"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "rollup",
+      "version": "4.60.4",
+      "license": "MIT",
+      "purl": "pkg:npm/rollup@4.60.4",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "vite",
+        "vitest"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "run-parallel",
+      "version": "1.2.0",
+      "license": "MIT",
+      "purl": "pkg:npm/run-parallel@1.2.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@nodelib/fs.scandir",
+        "@nodelib/fs.walk",
+        "agent-builder-vue",
+        "fast-glob",
+        "tailwindcss"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "safe-buffer",
+      "version": "5.1.2",
+      "license": "MIT",
+      "purl": "pkg:npm/safe-buffer@5.1.2",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "archiver",
+        "archiver-utils",
+        "duplexer2",
+        "exceljs",
+        "jszip",
+        "lazystream",
+        "readable-stream",
+        "string_decoder",
+        "unzipper"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "safe-buffer",
+      "version": "5.2.1",
+      "license": "MIT",
+      "purl": "pkg:npm/safe-buffer@5.2.1",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "exceljs",
+        "readable-stream",
+        "string_decoder"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "sass",
+      "version": null,
+      "license": null,
+      "purl": "pkg:npm/sass@0.0.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "vite",
+        "vitest"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "sass-embedded",
+      "version": null,
+      "license": null,
+      "purl": "pkg:npm/sass-embedded@0.0.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "vite",
+        "vitest"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "sax",
+      "version": "1.6.0",
+      "license": "BlueOak-1.0.0",
+      "purl": "pkg:npm/sax@1.6.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "docx",
+        "xml-js"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "saxes",
+      "version": "5.0.1",
+      "license": "ISC",
+      "purl": "pkg:npm/saxes@5.0.1",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "exceljs"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "semver",
+      "version": "7.8.1",
+      "license": "ISC",
+      "purl": "pkg:npm/semver@7.8.1",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@vitest/coverage-v8",
+        "@vue/test-utils",
+        "agent-builder-vue",
+        "editorconfig",
+        "istanbul-lib-report",
+        "js-beautify",
+        "make-dir"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "setimmediate",
+      "version": "1.0.5",
+      "license": "MIT",
+      "purl": "pkg:npm/setimmediate@1.0.5",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "exceljs",
+        "jszip",
+        "unzipper"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "shebang-command",
+      "version": "2.0.0",
+      "license": "MIT",
+      "purl": "pkg:npm/shebang-command@2.0.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@vue/test-utils",
+        "agent-builder-vue",
+        "cross-spawn",
+        "foreground-child",
+        "glob",
+        "js-beautify"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "shebang-regex",
+      "version": "3.0.0",
+      "license": "MIT",
+      "purl": "pkg:npm/shebang-regex@3.0.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@vue/test-utils",
+        "agent-builder-vue",
+        "cross-spawn",
+        "foreground-child",
+        "glob",
+        "js-beautify",
+        "shebang-command"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "siginfo",
+      "version": "2.0.0",
+      "license": "ISC",
+      "purl": "pkg:npm/siginfo@2.0.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "vitest",
+        "why-is-node-running"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "signal-exit",
+      "version": "4.1.0",
+      "license": "ISC",
+      "purl": "pkg:npm/signal-exit@4.1.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@vue/test-utils",
+        "agent-builder-vue",
+        "foreground-child",
+        "glob",
+        "js-beautify"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "sortablejs",
+      "version": "1.14.0",
+      "license": "MIT",
+      "purl": "pkg:npm/sortablejs@1.14.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "vuedraggable"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "source-map-js",
+      "version": "1.2.1",
+      "license": "BSD-3-Clause",
+      "purl": "pkg:npm/source-map-js@1.2.1",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@vitest/coverage-v8",
+        "@vue/compiler-core",
+        "@vue/compiler-dom",
+        "@vue/compiler-sfc",
+        "@vue/test-utils",
+        "agent-builder-vue",
+        "magicast",
+        "postcss",
+        "vue"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "speakingurl",
+      "version": "14.0.1",
+      "license": "BSD-3-Clause",
+      "purl": "pkg:npm/speakingurl@14.0.1",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@vue/devtools-api",
+        "@vue/devtools-kit",
+        "agent-builder-vue",
+        "pinia"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "sprintf-js",
+      "version": "1.0.3",
+      "license": "BSD-3-Clause",
+      "purl": "pkg:npm/sprintf-js@1.0.3",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "argparse",
+        "mammoth"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "stackback",
+      "version": "0.0.2",
+      "license": "MIT",
+      "purl": "pkg:npm/stackback@0.0.2",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "vitest",
+        "why-is-node-running"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "stackblur-canvas",
+      "version": "2.7.0",
+      "license": "MIT",
+      "purl": "pkg:npm/stackblur-canvas@2.7.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "canvg",
+        "jspdf"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "std-env",
+      "version": "4.1.0",
+      "license": "MIT",
+      "purl": "pkg:npm/std-env@4.1.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@vitest/coverage-v8",
+        "agent-builder-vue",
+        "vitest"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "string_decoder",
+      "version": "1.1.1",
+      "license": "MIT",
+      "purl": "pkg:npm/string_decoder@1.1.1",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "archiver",
+        "archiver-utils",
+        "duplexer2",
+        "exceljs",
+        "jszip",
+        "lazystream",
+        "readable-stream",
+        "unzipper"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "string_decoder",
+      "version": "1.3.0",
+      "license": "MIT",
+      "purl": "pkg:npm/string_decoder@1.3.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "exceljs",
+        "readable-stream"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "string-width",
+      "version": "4.2.3",
+      "license": "MIT",
+      "purl": "pkg:npm/string-width@4.2.3",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@isaacs/cliui",
+        "@vue/test-utils",
+        "agent-builder-vue",
+        "glob",
+        "jackspeak",
+        "js-beautify",
+        "wrap-ansi-cjs"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "string-width",
+      "version": "5.1.2",
+      "license": "MIT",
+      "purl": "pkg:npm/string-width@5.1.2",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@isaacs/cliui",
+        "@vue/test-utils",
+        "agent-builder-vue",
+        "glob",
+        "jackspeak",
+        "js-beautify",
+        "wrap-ansi"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "string-width-cjs",
+      "version": "4.2.3",
+      "license": "MIT",
+      "purl": "pkg:npm/string-width-cjs@4.2.3",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@isaacs/cliui",
+        "@vue/test-utils",
+        "agent-builder-vue",
+        "glob",
+        "jackspeak",
+        "js-beautify"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "strip-ansi",
+      "version": "6.0.1",
+      "license": "MIT",
+      "purl": "pkg:npm/strip-ansi@6.0.1",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@isaacs/cliui",
+        "@vue/test-utils",
+        "agent-builder-vue",
+        "glob",
+        "jackspeak",
+        "js-beautify",
+        "string-width",
+        "string-width-cjs",
+        "wrap-ansi-cjs"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "strip-ansi",
+      "version": "7.2.0",
+      "license": "MIT",
+      "purl": "pkg:npm/strip-ansi@7.2.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@isaacs/cliui",
+        "@vue/test-utils",
+        "agent-builder-vue",
+        "glob",
+        "jackspeak",
+        "js-beautify",
+        "string-width",
+        "wrap-ansi"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "strip-ansi-cjs",
+      "version": "6.0.1",
+      "license": "MIT",
+      "purl": "pkg:npm/strip-ansi-cjs@6.0.1",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@isaacs/cliui",
+        "@vue/test-utils",
+        "agent-builder-vue",
+        "glob",
+        "jackspeak",
+        "js-beautify"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "stylus",
+      "version": null,
+      "license": null,
+      "purl": "pkg:npm/stylus@0.0.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "vite",
+        "vitest"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "sucrase",
+      "version": "3.35.1",
+      "license": "MIT",
+      "purl": "pkg:npm/sucrase@3.35.1",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "tailwindcss"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "sugarss",
+      "version": null,
+      "license": null,
+      "purl": "pkg:npm/sugarss@0.0.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "vite",
+        "vitest"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "superjson",
+      "version": "2.2.6",
+      "license": "MIT",
+      "purl": "pkg:npm/superjson@2.2.6",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@vue/devtools-api",
+        "@vue/devtools-kit",
+        "agent-builder-vue",
+        "pinia"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "supports-color",
+      "version": "7.2.0",
+      "license": "MIT",
+      "purl": "pkg:npm/supports-color@7.2.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@vitest/coverage-v8",
+        "agent-builder-vue",
+        "istanbul-lib-report"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "supports-preserve-symlinks-flag",
+      "version": "1.0.0",
+      "license": "MIT",
+      "purl": "pkg:npm/supports-preserve-symlinks-flag@1.0.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "resolve",
+        "tailwindcss"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "svg-pathdata",
+      "version": "6.0.3",
+      "license": "MIT",
+      "purl": "pkg:npm/svg-pathdata@6.0.3",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "canvg",
+        "jspdf"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "tailwind-merge",
+      "version": "3.6.0",
+      "license": "MIT",
+      "purl": "pkg:npm/tailwind-merge@3.6.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "tailwindcss",
+      "version": "3.4.19",
+      "license": "MIT",
+      "purl": "pkg:npm/tailwindcss@3.4.19",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@tailwindcss/typography",
+        "agent-builder-vue"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "tar-stream",
+      "version": "2.2.0",
+      "license": "MIT",
+      "purl": "pkg:npm/tar-stream@2.2.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "archiver",
+        "exceljs"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "terser",
+      "version": null,
+      "license": null,
+      "purl": "pkg:npm/terser@0.0.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "vite",
+        "vitest"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "text-segmentation",
+      "version": "1.0.3",
+      "license": "MIT",
+      "purl": "pkg:npm/text-segmentation@1.0.3",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "html2canvas",
+        "jspdf"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "thenify",
+      "version": "3.3.1",
+      "license": "MIT",
+      "purl": "pkg:npm/thenify@3.3.1",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "mz",
+        "sucrase",
+        "tailwindcss",
+        "thenify-all"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "thenify-all",
+      "version": "1.6.0",
+      "license": "MIT",
+      "purl": "pkg:npm/thenify-all@1.6.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "mz",
+        "sucrase",
+        "tailwindcss"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "tinybench",
+      "version": "2.9.0",
+      "license": "MIT",
+      "purl": "pkg:npm/tinybench@2.9.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "vitest"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "tinyexec",
+      "version": "1.1.2",
+      "license": "MIT",
+      "purl": "pkg:npm/tinyexec@1.1.2",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "vitest"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "tinyglobby",
+      "version": "0.2.16",
+      "license": "MIT",
+      "purl": "pkg:npm/tinyglobby@0.2.16",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "sucrase",
+        "tailwindcss",
+        "vite",
+        "vitest"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "tinyrainbow",
+      "version": "3.1.0",
+      "license": "MIT",
+      "purl": "pkg:npm/tinyrainbow@3.1.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@vitest/coverage-v8",
+        "@vitest/expect",
+        "@vitest/pretty-format",
+        "@vitest/utils",
+        "agent-builder-vue",
+        "vitest"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "tmp",
+      "version": "0.2.5",
+      "license": "MIT",
+      "purl": "pkg:npm/tmp@0.2.5",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "exceljs"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "to-regex-range",
+      "version": "5.0.1",
+      "license": "MIT",
+      "purl": "pkg:npm/to-regex-range@5.0.1",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "braces",
+        "chokidar",
+        "fill-range",
+        "tailwindcss"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "traverse",
+      "version": "0.3.9",
+      "license": "MIT/X11",
+      "purl": "pkg:npm/traverse@0.3.9",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "binary",
+        "chainsaw",
+        "exceljs",
+        "unzipper"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "ts-interface-checker",
+      "version": "0.1.13",
+      "license": "Apache-2.0",
+      "purl": "pkg:npm/ts-interface-checker@0.1.13",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "sucrase",
+        "tailwindcss"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "tslib",
+      "version": "2.8.1",
+      "license": "0BSD",
+      "purl": "pkg:npm/tslib@2.8.1",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@internationalized/date",
+        "@swc/helpers",
+        "agent-builder-vue",
+        "aria-hidden",
+        "radix-vue"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "tsx",
+      "version": "4.22.3",
+      "license": "MIT",
+      "purl": "pkg:npm/tsx@4.22.3",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "postcss-load-config",
+        "tailwindcss",
+        "vite",
+        "vitest"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "typescript",
+      "version": "5.9.3",
+      "license": "Apache-2.0",
+      "purl": "pkg:npm/typescript@5.9.3",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@agent-builder/shared",
+        "@vue/language-core",
+        "@vue/tsconfig",
+        "agent-builder-vue",
+        "pinia",
+        "vue",
+        "vue-tsc"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "underscore",
+      "version": "1.13.8",
+      "license": "MIT",
+      "purl": "pkg:npm/underscore@1.13.8",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "duck",
+        "lop",
+        "mammoth"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "undici-types",
+      "version": "6.21.0",
+      "license": "MIT",
+      "purl": "pkg:npm/undici-types@6.21.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@types/node",
+        "agent-builder-vue",
+        "happy-dom"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "undici-types",
+      "version": "7.24.6",
+      "license": "MIT",
+      "purl": "pkg:npm/undici-types@7.24.6",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@types/node",
+        "agent-builder-vue",
+        "docx"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "unzipper",
+      "version": "0.10.14",
+      "license": "MIT",
+      "purl": "pkg:npm/unzipper@0.10.14",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "exceljs"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "update-browserslist-db",
+      "version": "1.2.3",
+      "license": "MIT",
+      "purl": "pkg:npm/update-browserslist-db@1.2.3",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "autoprefixer",
+        "browserslist"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "utf-8-validate",
+      "version": null,
+      "license": null,
+      "purl": "pkg:npm/utf-8-validate@0.0.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "happy-dom",
+        "ws"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "util-deprecate",
+      "version": "1.0.2",
+      "license": "MIT",
+      "purl": "pkg:npm/util-deprecate@1.0.2",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@tailwindcss/typography",
+        "agent-builder-vue",
+        "archiver",
+        "archiver-utils",
+        "duplexer2",
+        "exceljs",
+        "jszip",
+        "lazystream",
+        "postcss-nested",
+        "postcss-selector-parser",
+        "readable-stream",
+        "tailwindcss",
+        "unzipper"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "utrie",
+      "version": "1.0.2",
+      "license": "MIT",
+      "purl": "pkg:npm/utrie@1.0.2",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "css-line-break",
+        "html2canvas",
+        "jspdf",
+        "text-segmentation"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "uuid",
+      "version": "11.1.1",
+      "license": "MIT",
+      "purl": "pkg:npm/uuid@11.1.1",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "exceljs"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "vite",
+      "version": "5.4.21",
+      "license": "MIT",
+      "purl": "pkg:npm/vite@5.4.21",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@vitejs/plugin-vue",
+        "agent-builder-vue"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "vite",
+      "version": "6.4.2",
+      "license": "MIT",
+      "purl": "pkg:npm/vite@6.4.2",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@vitest/mocker",
+        "agent-builder-vue",
+        "vitest"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "vitest",
+      "version": "4.1.7",
+      "license": "MIT",
+      "purl": "pkg:npm/vitest@4.1.7",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@vitest/coverage-v8",
+        "agent-builder-vue"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "vscode-uri",
+      "version": "3.1.0",
+      "license": "MIT",
+      "purl": "pkg:npm/vscode-uri@3.1.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@volar/typescript",
+        "agent-builder-vue",
+        "vue-tsc"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "vue",
+      "version": "3.5.34",
+      "license": "MIT",
+      "purl": "pkg:npm/vue@3.5.34",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@tanstack/vue-query",
+        "@tanstack/vue-virtual",
+        "@vitejs/plugin-vue",
+        "@vue-flow/core",
+        "@vue-flow/node-resizer",
+        "@vue/server-renderer",
+        "@vue/test-utils",
+        "@vue/tsconfig",
+        "@vueuse/core",
+        "@vueuse/shared",
+        "agent-builder-vue",
+        "lucide-vue-next",
+        "pinia",
+        "radix-vue",
+        "vue-demi",
+        "vue-router",
+        "vuedraggable"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "vue-component-type-helpers",
+      "version": "3.3.1",
+      "license": "MIT",
+      "purl": "pkg:npm/vue-component-type-helpers@3.3.1",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@vue/test-utils",
+        "agent-builder-vue"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "vue-demi",
+      "version": "0.14.10",
+      "license": "MIT",
+      "purl": "pkg:npm/vue-demi@0.14.10",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@floating-ui/vue",
+        "@tanstack/vue-query",
+        "@vue-flow/core",
+        "@vueuse/core",
+        "@vueuse/shared",
+        "agent-builder-vue",
+        "radix-vue"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "vue-router",
+      "version": "4.6.4",
+      "license": "MIT",
+      "purl": "pkg:npm/vue-router@4.6.4",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "vue-sonner",
+      "version": "2.0.9",
+      "license": "MIT",
+      "purl": "pkg:npm/vue-sonner@2.0.9",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "vue-tsc",
+      "version": "2.2.12",
+      "license": "MIT",
+      "purl": "pkg:npm/vue-tsc@2.2.12",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "vuedraggable",
+      "version": "4.1.0",
+      "license": "MIT",
+      "purl": "pkg:npm/vuedraggable@4.1.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "whatwg-mimetype",
+      "version": "3.0.0",
+      "license": "MIT",
+      "purl": "pkg:npm/whatwg-mimetype@3.0.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "happy-dom"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "which",
+      "version": "2.0.2",
+      "license": "ISC",
+      "purl": "pkg:npm/which@2.0.2",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@vue/test-utils",
+        "agent-builder-vue",
+        "cross-spawn",
+        "foreground-child",
+        "glob",
+        "js-beautify"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "why-is-node-running",
+      "version": "2.3.0",
+      "license": "MIT",
+      "purl": "pkg:npm/why-is-node-running@2.3.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "vitest"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "wrap-ansi",
+      "version": "8.1.0",
+      "license": "MIT",
+      "purl": "pkg:npm/wrap-ansi@8.1.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@isaacs/cliui",
+        "@vue/test-utils",
+        "agent-builder-vue",
+        "glob",
+        "jackspeak",
+        "js-beautify"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "wrap-ansi-cjs",
+      "version": "7.0.0",
+      "license": "MIT",
+      "purl": "pkg:npm/wrap-ansi-cjs@7.0.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "@isaacs/cliui",
+        "@vue/test-utils",
+        "agent-builder-vue",
+        "glob",
+        "jackspeak",
+        "js-beautify"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "wrappy",
+      "version": "1.0.2",
+      "license": "ISC",
+      "purl": "pkg:npm/wrappy@1.0.2",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "archiver",
+        "archiver-utils",
+        "exceljs",
+        "glob",
+        "inflight",
+        "once"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "ws",
+      "version": "8.21.0",
+      "license": "MIT",
+      "purl": "pkg:npm/ws@8.21.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "happy-dom"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "xml",
+      "version": "1.0.1",
+      "license": "MIT",
+      "purl": "pkg:npm/xml@1.0.1",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "docx"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "xml-js",
+      "version": "1.6.11",
+      "license": "MIT",
+      "purl": "pkg:npm/xml-js@1.6.11",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "docx"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "xmlbuilder",
+      "version": "10.1.1",
+      "license": "MIT",
+      "purl": "pkg:npm/xmlbuilder@10.1.1",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "mammoth"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "xmlchars",
+      "version": "2.2.0",
+      "license": "MIT",
+      "purl": "pkg:npm/xmlchars@2.2.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "exceljs",
+        "saxes"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "yaml",
+      "version": null,
+      "license": null,
+      "purl": "pkg:npm/yaml@0.0.0",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "postcss-load-config",
+        "tailwindcss",
+        "vite",
+        "vitest"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "zip-stream",
+      "version": "4.1.1",
+      "license": "MIT",
+      "purl": "pkg:npm/zip-stream@4.1.1",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue",
+        "archiver",
+        "exceljs"
+      ]
+    },
+    {
+      "type": "library",
+      "name": "zod",
+      "version": "3.25.76",
+      "license": "MIT",
+      "purl": "pkg:npm/zod@3.25.76",
+      "scope": "required",
+      "parents": [
+        "@agent-builder/frontend",
+        "agent-builder-vue"
+      ]
+    }
+  ]
+}

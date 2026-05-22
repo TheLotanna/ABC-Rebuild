@@ -1,4 +1,5 @@
 import type { FastifyRequest, FastifyReply } from 'fastify';
+import { runPiiGuard } from '../../lib/piiGuard.js';
 
 const GITHUB_API = 'https://api.github.com';
 
@@ -24,6 +25,21 @@ export async function githubFetch(req: FastifyRequest, reply: FastifyReply) {
   const parsed = parseGitHubUrl(repoUrl);
   if (!parsed) return reply.code(400).send({ error: 'Invalid GitHub URL' });
   const { owner, repo } = parsed;
+
+  // PII guard — `filePath` and `selectedPaths` are user-supplied and can
+  // carry identifiers (e.g. "case-files/SIN-046454286.md"). `repoUrl` is a
+  // structured value and we scan it too in case a query string carries PI.
+  const guardOk = await runPiiGuard(
+    req,
+    reply,
+    [
+      { name: 'repoUrl', value: repoUrl },
+      { name: 'filePath', value: filePath },
+      { name: 'selectedPaths', value: selectedPaths?.join('\n') },
+    ],
+    { sse: false, route: 'POST /api/tools/github' },
+  );
+  if (!guardOk) return;
 
   try {
     // Get default branch if not supplied

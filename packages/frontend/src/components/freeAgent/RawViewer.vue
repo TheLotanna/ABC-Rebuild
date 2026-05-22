@@ -8,7 +8,7 @@ import {
   Check,
   Wrench,
   AlertCircle,
-} from 'lucide-vue-next';
+} from '@lucide/vue';
 import { toast } from 'vue-sonner';
 import type { RawIterationData } from '@agent-builder/shared';
 import Card from '@/components/ui/Card.vue';

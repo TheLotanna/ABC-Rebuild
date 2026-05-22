@@ -1,4 +1,5 @@
 import type { FastifyRequest, FastifyReply } from 'fastify';
+import { runPiiGuard } from '../../lib/piiGuard.js';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -415,6 +416,18 @@ export async function runFreeAgent(req: FastifyRequest, reply: FastifyReply) {
   } catch (err) {
     return reply.code(400).send({ success: false, error: err instanceof Error ? err.message : String(err) });
   }
+
+  const guardOk = await runPiiGuard(
+    req,
+    reply,
+    [
+      { name: 'prompt', value: prompt },
+      { name: 'systemPrompt', value: systemPrompt },
+      { name: 'scratchpad', value: scratchpad },
+    ],
+    { sse: false, route: 'POST /api/free-agent' },
+  );
+  if (!guardOk) return;
 
   const llmResult = await callLLM(systemPrompt, prompt, model);
   if (!llmResult.success) {

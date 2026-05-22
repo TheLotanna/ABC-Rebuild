@@ -1,24 +1,27 @@
 <script setup lang="ts">
-import { computed } from 'vue';
-import { Handle, Position } from '@xyflow/vue';
+import { computed, inject } from 'vue';
+import { Handle, Position } from '@vue-flow/core';
 import {
   Database,
   Search,
   Globe,
-  Github,
+  GitBranch,
   Cloud,
   CheckCircle2,
   Image,
   Volume2,
   Binary,
-} from 'lucide-vue-next';
+} from '@lucide/vue';
 import type { FreeAgentNodeData } from '@agent-builder/shared';
+import { OpenAttributeViewerKey } from './viewerInjectionKeys';
 
 const props = defineProps<{ data: FreeAgentNodeData & { isBinary?: boolean } }>();
 
-// AttributeViewerModal lives in another slice. Surface a click event so a
-// parent (FreeAgentCanvas) can open the modal — keeps this node decoupled
-// from the modal component tree.
+// AttributeViewerModal lives in another slice. Primary path is the injected
+// callback (provided by FreeAgentView at the canvas-host scope) — vue-flow's
+// custom-node boundary blocks `emit`, so we don't rely on it.
+// The `emit('open-viewer')` remains as a fallback for when the node is
+// rendered outside of FreeAgentCanvas (e.g. in standalone tests).
 const emit = defineEmits<{
   (e: 'open-viewer', payload: {
     attributeName: string;
@@ -28,6 +31,8 @@ const emit = defineEmits<{
     mimeType?: string;
   }): void;
 }>();
+
+const openAttributeViewer = inject(OpenAttributeViewerKey, null);
 
 const icon = computed(() => {
   if (props.data.isBinary) {
@@ -40,7 +45,7 @@ const icon = computed(() => {
     case 'google_search': return Search;
     case 'web_scrape': return Globe;
     case 'read_github_repo':
-    case 'read_github_file': return Github;
+    case 'read_github_file': return GitBranch;
     case 'get_call_api':
     case 'post_call_api': return Cloud;
     case 'image_generation': return Image;
@@ -81,13 +86,18 @@ const palette = computed(() => {
 });
 
 function handleClick() {
-  emit('open-viewer', {
+  const payload = {
     attributeName: props.data.attributeName || '',
     attributeValue: props.data.attributeValue || '',
     attributeTool: props.data.attributeTool,
     isBinary: props.data.isBinary,
     mimeType: props.data.mimeType,
-  });
+  };
+  if (openAttributeViewer) {
+    openAttributeViewer(payload);
+  } else {
+    emit('open-viewer', payload);
+  }
 }
 </script>
 
@@ -104,7 +114,7 @@ function handleClick() {
         <component :is="icon" class="w-4 h-4" />
       </div>
       <span class="font-mono font-medium text-xs truncate flex-1" :class="palette.label">
-        {{ `{{${data.attributeName}}}` }}
+        &#123;&#123;{{ data.attributeName }}&#125;&#125;
       </span>
       <span
         v-if="data.isBinary"

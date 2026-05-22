@@ -1,5 +1,6 @@
 import type { FastifyRequest, FastifyReply } from 'fastify';
 import { initSse, sendEvent, pipeSSE } from './sseHelper.js';
+import { runPiiGuard } from '../../lib/piiGuard.js';
 
 interface RunAgentBody {
   systemPrompt: string;
@@ -28,6 +29,19 @@ export async function runAgentGemini(req: FastifyRequest, reply: FastifyReply) {
   if (!apiKey) {
     return reply.code(500).send({ error: 'GEMINI_API_KEY is not configured' });
   }
+
+  // PII pre-flight — block before any LLM egress when the guard is in `block`
+  // mode and a high-confidence / secret hit is found.
+  const guardOk = await runPiiGuard(
+    req,
+    reply,
+    [
+      { name: 'systemPrompt', value: systemPrompt },
+      { name: 'userPrompt', value: userPrompt },
+    ],
+    { sse: false, route: 'POST /api/run-agent' },
+  );
+  if (!guardOk) return;
 
   const selectedModel = VALID_GEMINI_MODELS.includes(model) ? model : 'gemini-2.5-flash';
   const validMaxTokens = typeof maxOutputTokens === 'number' && maxOutputTokens > 0 ? maxOutputTokens : 32768;

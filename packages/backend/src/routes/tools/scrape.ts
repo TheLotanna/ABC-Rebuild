@@ -1,6 +1,7 @@
 import type { FastifyRequest, FastifyReply } from 'fastify';
 import * as cheerio from 'cheerio';
 import mammoth from 'mammoth';
+import { runPiiGuard } from '../../lib/piiGuard.js';
 
 const USER_AGENTS = [
   'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
@@ -41,6 +42,15 @@ async function smartFetch(url: string, retries = 0): Promise<Response> {
 export async function webScrape(req: FastifyRequest, reply: FastifyReply) {
   const { url, returnHtml, maxCharacters } = req.body as { url: string; returnHtml?: boolean; maxCharacters?: number };
   if (!url) return reply.code(400).send({ error: 'URL is required' });
+
+  // PII guard — URLs leak identifiers via query strings (?email=, ?sin=).
+  const guardOk = await runPiiGuard(
+    req,
+    reply,
+    [{ name: 'url', value: url }],
+    { sse: false, route: 'POST /api/tools/web-scrape' },
+  );
+  if (!guardOk) return;
 
   const accessedAt = new Date().toISOString();
   const ext = getExt(url);

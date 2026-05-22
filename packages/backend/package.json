@@ -6,8 +6,10 @@
   "main": "./src/index.ts",
   "scripts": {
     "dev": "tsx watch src/index.ts",
-    "build": "esbuild src/index.ts --bundle --platform=node --target=node18 --outfile=dist/index.cjs --external:@anthropic-ai/sdk --external:@google/generative-ai --external:cheerio --external:undici --external:dotenv",
-    "start": "node dist/index.cjs"
+    "build": "esbuild src/index.ts --bundle --platform=node --target=node18 --outfile=dist/index.cjs --external:@anthropic-ai/sdk --external:@google/generative-ai --external:cheerio --external:undici --external:dotenv --external:pg",
+    "start": "node dist/index.cjs",
+    "test": "vitest run",
+    "test:watch": "vitest"
   },
   "dependencies": {
     "@agent-builder/shared": "*",
@@ -18,12 +20,15 @@
     "cheerio": "^1.0.0",
     "dotenv": "^16.5.0",
     "fastify": "^5.3.3",
+    "pg": "^8.13.1",
     "undici": "^7.10.0"
   },
   "devDependencies": {
     "@types/node": "^22.0.0",
+    "@types/pg": "^8.11.10",
     "esbuild": "^0.25.5",
     "tsx": "^4.19.4",
-    "typescript": "^5.8.3"
+    "typescript": "^5.8.3",
+    "vitest": "^4.1.7"
   }
 }

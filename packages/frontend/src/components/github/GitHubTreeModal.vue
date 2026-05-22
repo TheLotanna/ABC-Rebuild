@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, watch, computed } from 'vue';
-import { Loader2, Github, X } from 'lucide-vue-next';
+import { Loader2, GitBranch, X } from '@lucide/vue';
 import { toast } from 'vue-sonner';
 import Button from '@/components/ui/Button.vue';
 import GitHubTreeNodeRow, { type TreeNode } from './GitHubTreeNodeRow.vue';
@@ -183,7 +183,7 @@ async function handleSave() {
       <div class="px-6 py-4 border-b flex items-start justify-between gap-2 shrink-0">
         <div>
           <h2 class="flex items-center gap-2 text-lg font-semibold">
-            <Github class="h-5 w-5" />
+            <GitBranch class="h-5 w-5" />
             Select Files from Repository
           </h2>
           <p class="text-sm text-muted-foreground mt-1">

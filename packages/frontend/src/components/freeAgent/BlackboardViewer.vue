@@ -12,7 +12,7 @@ import {
   Copy,
   MessageSquarePlus,
   CircleDot,
-} from 'lucide-vue-next';
+} from '@lucide/vue';
 import { toast } from 'vue-sonner';
 import type { BlackboardEntry } from '@agent-builder/shared';
 import { safeStringify } from '@/lib/safeRender';

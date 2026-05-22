@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { Handle, Position } from '@xyflow/vue';
-import { Bot, Brain, CheckCircle, AlertCircle, Loader2, Play, Pause } from 'lucide-vue-next';
+import { Handle, Position } from '@vue-flow/core';
+import { Bot, Brain, CheckCircle, AlertCircle, Loader2, Play, Pause } from '@lucide/vue';
 import { cn } from '@/lib/utils';
 
 interface FreeAgentNodeData {

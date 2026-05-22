@@ -1,7 +1,9 @@
 <script setup lang="ts">
-import { ref, watch, nextTick } from 'vue';
-import { Handle, Position, NodeResizer } from '@xyflow/vue';
-import { ClipboardEdit, Maximize2 } from 'lucide-vue-next';
+import { ref, watch, nextTick, inject } from 'vue';
+import { Handle, Position } from '@vue-flow/core';
+import { NodeResizer } from '@vue-flow/node-resizer';
+import { ClipboardEdit, Maximize2 } from '@lucide/vue';
+import { OpenScratchpadViewerKey } from './viewerInjectionKeys';
 
 interface ScratchpadNodeData {
   type: 'scratchpad';
@@ -13,10 +15,14 @@ interface ScratchpadNodeData {
 
 const props = defineProps<{ data: ScratchpadNodeData; selected?: boolean }>();
 
-// ScratchpadViewerModal lives in another slice — emit an event to open it.
+// ScratchpadViewerModal lives in another slice. Primary path is the injected
+// callback (provided by FreeAgentView); `emit('open-viewer')` remains as a
+// fallback for when the node is rendered outside FreeAgentCanvas.
 const emit = defineEmits<{
   (e: 'open-viewer', payload: { content: string; label: string }): void;
 }>();
+
+const openScratchpadViewer = inject(OpenScratchpadViewerKey, null);
 
 const isEditing = ref(false);
 const localContent = ref(props.data.content || '');
@@ -53,7 +59,12 @@ function handleKeyDown(e: KeyboardEvent) {
 
 function handleExpandClick(e: MouseEvent) {
   e.stopPropagation();
-  emit('open-viewer', { content: localContent.value, label: props.data.label });
+  const payload = { content: localContent.value, label: props.data.label };
+  if (openScratchpadViewer) {
+    openScratchpadViewer(payload);
+  } else {
+    emit('open-viewer', payload);
+  }
 }
 </script>
 

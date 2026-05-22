@@ -5,7 +5,7 @@ import {
   File as FileIcon,
   ChevronRight as ChevronRightIcon,
   ChevronDown as ChevronDownIcon,
-} from 'lucide-vue-next';
+} from '@lucide/vue';
 
 export interface TreeNode {
   key: string;

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, nextTick, onMounted, onUnmounted, ref, watch } from 'vue';
-import { Palette, Trash2, Pencil } from 'lucide-vue-next';
+import { Palette, Trash2, Pencil } from '@lucide/vue';
 import type { Note } from '@agent-builder/shared';
 import Card from '../ui/Card.vue';
 import Button from '../ui/Button.vue';
@@ -123,7 +123,7 @@ function handleDelete(e: MouseEvent) {
 </script>
 
 <template>
-  <!-- Resize handles intentionally omitted — host wires @xyflow/vue NodeResizer in WorkflowCanvas. -->
+  <!-- Resize handles intentionally omitted — host wires @vue-flow/node-resizer in WorkflowCanvas. -->
   <div ref="containerRef" class="relative">
     <div
       v-if="!isEditing"

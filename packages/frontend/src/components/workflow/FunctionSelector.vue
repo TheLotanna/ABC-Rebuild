@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue';
-import { Search, X } from 'lucide-vue-next';
+import { Search, X } from '@lucide/vue';
 import { functionDefinitions } from '@/lib/functionDefinitions';
 import type { FunctionDefinition } from '@agent-builder/shared';
 import { iconFor } from '@/components/workflow/iconRegistry';

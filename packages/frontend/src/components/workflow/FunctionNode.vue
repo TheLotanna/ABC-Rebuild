@@ -10,7 +10,7 @@ import {
   Copy,
   Lock,
   Unlock,
-} from 'lucide-vue-next';
+} from '@lucide/vue';
 import { toast } from 'vue-sonner';
 import type { FunctionNode as FunctionNodeData, FunctionDefinition } from '@agent-builder/shared';
 import Card from '../ui/Card.vue';

@@ -8,8 +8,9 @@ import {
   Download,
   Lightbulb,
   X,
-} from 'lucide-vue-next';
+} from '@lucide/vue';
 import type { BlackboardEntry } from '@agent-builder/shared';
+import { formatPiiGuardMessage } from '@/lib/piiGuardClient';
 import Button from '@/components/ui/Button.vue';
 import Badge from '@/components/ui/Badge.vue';
 
@@ -149,7 +150,7 @@ Reviewing the blackboard and the scratchpad, what went well and where were there
           } else if (parsed.type === 'done') {
             break;
           } else if (parsed.type === 'error') {
-            throw new Error(parsed.error);
+            throw new Error(formatPiiGuardMessage(parsed.error || 'Stream error', parsed));
           }
         } catch {
           // Ignore parse errors for incomplete chunks

@@ -1,4 +1,5 @@
 import type { FastifyRequest, FastifyReply } from 'fastify';
+import { runPiiGuard } from '../../lib/piiGuard.js';
 
 interface PronghornItem {
   type: 'text' | 'image' | 'binary';
@@ -40,6 +41,33 @@ export async function pronghornPost(req: FastifyRequest, reply: FastifyReply) {
       .code(400)
       .send({ success: false, error: 'Items array is required and must not be empty' });
   }
+
+  // PII guard — Pronghorn is **outbound ingestion**, so every text item is
+  // egress content. Scan `title`, `fileName`, and the `content` of any
+  // text-typed item. `token` is a credential by design and is skipped.
+  // Binary / image items don't have scannable content (it's base64).
+  const guardFields = [
+    {
+      name: 'items.title',
+      value: items.map((it) => it.title ?? '').filter(Boolean).join('\n'),
+    },
+    {
+      name: 'items.fileName',
+      value: items.map((it) => it.fileName ?? '').filter(Boolean).join('\n'),
+    },
+    {
+      name: 'items.text.content',
+      value: items
+        .filter((it) => it.type === 'text')
+        .map((it) => it.content ?? '')
+        .join('\n'),
+    },
+  ];
+  const guardOk = await runPiiGuard(req, reply, guardFields, {
+    sse: false,
+    route: 'POST /api/tools/pronghorn',
+  });
+  if (!guardOk) return;
 
   try {
     const res = await fetch('https://api.pronghorn.red/functions/v1/ingest-artifacts', {

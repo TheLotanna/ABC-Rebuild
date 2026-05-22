@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { MessageSquarePlus, Send, X } from 'lucide-vue-next';
+import { MessageSquarePlus, Send, X } from '@lucide/vue';
 import Button from '@/components/ui/Button.vue';
 
 const props = defineProps<{ open: boolean }>();

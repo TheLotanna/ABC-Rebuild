@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, computed, watch } from 'vue';
-import { Settings, RotateCcw, Save, X } from 'lucide-vue-next';
+import { Settings, RotateCcw, Save, X } from '@lucide/vue';
 import { toast } from 'vue-sonner';
 import {
   DEFAULT_ENHANCEMENT_PROMPT,

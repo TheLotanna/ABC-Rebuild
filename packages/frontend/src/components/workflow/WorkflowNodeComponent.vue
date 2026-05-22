@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { computed } from 'vue';
-import { Handle, Position } from '@xyflow/vue';
+import { computed, type Component } from 'vue';
+import { Handle, Position } from '@vue-flow/core';
 import {
   Brain,
   FileText,
@@ -16,8 +16,11 @@ import {
   FunctionSquare,
   Lock,
   LockOpen,
-  type LucideIcon,
-} from 'lucide-vue-next';
+} from '@lucide/vue';
+
+// `@lucide/vue` doesn't export a `LucideIcon` named type; icons are plain
+// Vue components, so `Component` from Vue captures them.
+type LucideIcon = Component;
 import type {
   WorkflowNode,
   AgentNode as AgentNodeData,

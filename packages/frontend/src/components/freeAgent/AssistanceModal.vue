@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue';
-import { HelpCircle, Send, X } from 'lucide-vue-next';
+import { HelpCircle, Send, X } from '@lucide/vue';
 import type { AssistanceRequest } from '@agent-builder/shared';
 import Button from '@/components/ui/Button.vue';
 import Input from '@/components/ui/Input.vue';

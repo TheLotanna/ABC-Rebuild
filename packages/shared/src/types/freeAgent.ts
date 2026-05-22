@@ -282,12 +282,13 @@ export interface ToolDefinition {
   edge_function?: string;
   frontend_handler?: boolean;
   icon: string;
-  category: string;
+  category: string | string[];
   parameters: Record<string, ToolParameter>;
   returns: {
     type: string;
     properties?: string[] | Record<string, unknown>;
     items?: Record<string, unknown>;
+    description?: string;
   };
 }
 
@@ -301,15 +302,17 @@ export interface ToolParameter {
   sensitive?: boolean;
 }
 
+export interface ToolCategory {
+  name: string;
+  description: string;
+  color: string;
+}
+
 export interface ToolsManifest {
   version: string;
   description: string;
   tools: Record<string, ToolDefinition>;
-  categories: Record<string, {
-    name: string;
-    description: string;
-    color: string;
-  }>;
+  categories: Record<string, ToolCategory>;
 }
 
 export interface AgentResponse {

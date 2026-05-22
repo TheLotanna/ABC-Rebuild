@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue';
-import { X, FileText, Filter } from 'lucide-vue-next';
+import { X, FileText, Filter } from '@lucide/vue';
 import {
   type ExcelData,
   formatExcelDataForChat,

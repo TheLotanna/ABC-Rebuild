@@ -1,0 +1,21 @@
+step_no,area,from_state,to_state,rationale,risk,status
+1,frontend,React 18 + TSX + ReactFlow 11,Vue 3 + SFC + @xyflow/vue,Course-mandated tech stack (Vue.js),medium,in_progress
+2,backend,Supabase Edge Functions (Deno),Fastify 5 + Node 20 (TypeScript),Self-hosted; aligns with GoA goa-public Node backend; better observability,medium,complete
+3,database,Supabase Postgres (managed),Shared GoA Postgres with per-user schemas,Course-mandated DB; uses Render-hosted shared instance now; eventually GoA-hosted,low,in_progress
+4,auth,Supabase Auth (anon key),Microsoft EntraID + MSAL,Required for ministry detection via AIM-G-{MINISTRY}-ALL_EMPLOYEES groups,high,planned
+5,infra,Open hosting (lovable.dev),Nexus 'publish my app' with SSO; behind GoA load balancer,Required for Protected B; SSO enforced; WAF in front,high,planned
+6,observability,console.log only,Structured logs (pino) + audit_log table + Grafana dashboard,Protected B audit + ATO evidence,medium,planned
+7,backend,Hardcoded model IDs in routes,Models table with effective dates and provider routing,Stops drift; tracks deprecation; enables A/B by ministry,low,planned
+8,backend,No PII scanner,packages/backend/src/lib/pii.ts regex detector run pre-LLM,3.5 requirement; defense-in-depth for Protected B,low,in_progress
+9,backend,Direct egress to api.anthropic.com,Vertex AI proxy for Protected A/B classifications,Keeps data within GoA boundary; required for ATO,medium,planned
+10,frontend,localStorage secrets,Server-side per-user secret vault,Stop secret leak via browser dev tools,low,planned
+11,backend,Open CORS,Origin allowlist + EntraID JWT validation,Block anonymous API abuse,low,planned
+12,backend,No rate limit,@fastify/rate-limit per EntraID OID,Stop LLM cost-exhaustion DoS,low,planned
+13,backend,No CSRF,SameSite + Origin/Referer check,Required for cookie auth model,low,planned
+14,frontend,Unsanitized markdown,vue-markdown-render + DOMPurify with strict allowlist,Mitigates prompt-injection driven XSS,low,planned
+15,backend,No retention policy,Nightly purge job + classification-driven TTL,Privacy + storage hygiene,low,planned
+16,tooling,No evals,Vitest + Playwright + axe-core in CI,Trust building + ATO evidence,low,planned
+17,docs,Code-is-spec,REBUILD_PLAN.md + ARCHITECTURE.md + PRIVACY_CONTROLS.md + Red/Blue reports,Trust building + DM-ready brief,low,in_progress
+18,infra,No load balancer,GoA load balancer + Vue static (5173) + Fastify (3000),Required for SSO + WAF + horizontal scale,medium,planned
+19,backend,Tool URL = arbitrary,Per-tool URL allowlist + private-IP block,SSRF mitigation,low,planned
+20,backend,Free agent unbounded loop,Server-side max-iteration cap + abort,Cost + observability,low,planned

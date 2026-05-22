@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, computed, type Component } from 'vue';
-import { Search, X, FileText, Bot, Sparkles } from 'lucide-vue-next';
+import { Search, X, FileText, Bot, Sparkles } from '@lucide/vue';
 import Card from '@/components/ui/Card.vue';
 import Input from '@/components/ui/Input.vue';
 import Badge from '@/components/ui/Badge.vue';

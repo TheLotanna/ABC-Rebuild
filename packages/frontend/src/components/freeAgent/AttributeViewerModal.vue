@@ -8,7 +8,7 @@ import {
   Volume2,
   Download,
   X,
-} from 'lucide-vue-next';
+} from '@lucide/vue';
 import Button from '@/components/ui/Button.vue';
 
 type Tab = 'raw' | 'markdown' | 'preview';

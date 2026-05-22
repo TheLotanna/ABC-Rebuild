@@ -6,7 +6,7 @@ import {
   CheckCircle2,
   AlertCircle,
   Loader2,
-} from 'lucide-vue-next';
+} from '@lucide/vue';
 import type { LogEntry } from '@agent-builder/shared';
 import { cn } from '@/lib/utils';
 import Card from '@/components/ui/Card.vue';

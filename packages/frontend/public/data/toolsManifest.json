@@ -1,0 +1,1194 @@
+{
+  "version": "1.0.0",
+  "description": "Tools manifest for Free Agent autonomous operations",
+  "tools": {
+    "get_time": {
+      "name": "Get Time",
+      "description": "Get the current date and time in a specified timezone",
+      "edge_function": "time",
+      "icon": "Clock",
+      "category": "utility",
+      "parameters": {
+        "timezone": {
+          "type": "string",
+          "required": false,
+          "default": "UTC",
+          "description": "IANA timezone name (e.g., America/New_York)"
+        },
+        "saveAs": {
+          "type": "string",
+          "required": false,
+          "description": "Save result to a named attribute. Use read_attribute(['name']) to retrieve."
+        }
+      },
+      "returns": {
+        "type": "object",
+        "properties": ["utc", "timestamp", "date", "time", "timezone", "year", "month", "day", "hours", "minutes", "seconds"]
+      }
+    },
+    "get_weather": {
+      "name": "Get Weather",
+      "description": "Get current weather and forecast for a location",
+      "edge_function": "tool_weather",
+      "icon": "Cloud",
+      "category": "utility",
+      "parameters": {
+        "location": {
+          "type": "string",
+          "required": true,
+          "description": "City name or location (e.g., 'London', 'New York, NY')"
+        },
+        "units": {
+          "type": "string",
+          "required": false,
+          "default": "metric",
+          "enum": ["metric", "imperial"],
+          "description": "Temperature units"
+        },
+        "saveAs": {
+          "type": "string",
+          "required": false,
+          "description": "Save result to a named attribute. Use read_attribute(['name']) to retrieve."
+        }
+      },
+      "returns": {
+        "type": "object",
+        "properties": ["location", "current", "forecast", "units"]
+      }
+    },
+    "brave_search": {
+      "name": "Web Search",
+      "description": "Search the web using Brave Search API. Returns titles, URLs, and descriptions.\n\nCRITICAL: Use saveAs to auto-save large results:\n  { \"tool\": \"brave_search\", \"params\": { \"query\": \"...\", \"saveAs\": \"search_results\" } }\n\nYou'll get confirmation instead of full data (saves tokens). Call read_attribute(['search_results']) in NEXT iteration to access.\n\nReturns: { success: true, results: [{ title, url, description }] }\n\nErrors:\n- \"BRAVE_API_KEY not configured\" - Missing API key\n- \"Invalid query\" - Empty or malformed query\n- Rate limit (429) - Try google_search instead",
+      "edge_function": "brave-search",
+      "icon": "Search",
+      "category": "web",
+      "parameters": {
+        "query": {
+          "type": "string",
+          "required": true,
+          "description": "Search query"
+        },
+        "numResults": {
+          "type": "number",
+          "required": false,
+          "default": 10,
+          "description": "Number of results to return (1-200)"
+        },
+        "saveAs": {
+          "type": "string",
+          "required": false,
+          "description": "Save result to a named attribute (e.g., 'search_results'). Use {{name}} in scratchpad or read_attribute(['name']) to retrieve."
+        }
+      },
+      "returns": {
+        "type": "object",
+        "properties": {
+          "results": {
+            "type": "array",
+            "items": {
+              "title": "string",
+              "url": "string",
+              "description": "string"
+            }
+          }
+        }
+      }
+    },
+    "google_search": {
+      "name": "Google Search",
+      "description": "Search the web using Google Custom Search API.\n\nCRITICAL: Use saveAs to auto-save large results:\n  { \"tool\": \"google_search\", \"params\": { \"query\": \"...\", \"saveAs\": \"search_results\" } }\n\nYou'll get confirmation instead of full data (saves tokens). Call read_attribute(['search_results']) in NEXT iteration to access.\n\nReturns: { success: true, results: [{ title, url, snippet }] }\n\nErrors:\n- \"GOOGLE_API_KEY not configured\" - Missing API key\n- \"GOOGLE_SEARCH_ENGINE_ID not configured\" - Missing search engine ID\n- Rate limit (429) - Try brave_search instead",
+      "edge_function": "google-search",
+      "icon": "Search",
+      "category": "web",
+      "parameters": {
+        "query": {
+          "type": "string",
+          "required": true,
+          "description": "Search query"
+        },
+        "numResults": {
+          "type": "number",
+          "required": false,
+          "default": 10,
+          "description": "Number of results to return"
+        },
+        "saveAs": {
+          "type": "string",
+          "required": false,
+          "description": "Save result to a named attribute. Use {{name}} in scratchpad or read_attribute(['name']) to retrieve."
+        }
+      },
+      "returns": {
+        "type": "object",
+        "properties": {
+          "results": {
+            "type": "array",
+            "items": {
+              "title": "string",
+              "url": "string",
+              "snippet": "string"
+            }
+          }
+        }
+      }
+    },
+    "web_scrape": {
+      "name": "Web Scrape",
+      "description": "Fetch and extract content from a web page. Handles HTML, PDF, and DOCX files. Returns cleaned text content.\n\nCRITICAL: Use saveAs to auto-save large results:\n  { \"tool\": \"web_scrape\", \"params\": { \"url\": \"...\", \"saveAs\": \"page_content\" } }\n\nYou'll get confirmation instead of full data (saves tokens). Call read_attribute(['page_content']) in NEXT iteration to access.\n\nReturns: { url, title, content, contentLength, accessedAt }\n\nParameters:\n- url (required): Full URL to scrape\n- maxCharacters (optional): Limit content length (default: 50000)\n- returnHtml (optional): Return raw HTML instead of text (default: false)\n- saveAs (optional): Auto-save to named attribute\n\nErrors:\n- \"Invalid URL\" - Malformed URL\n- \"Fetch failed\" - Network error or blocked\n- \"Content too large\" - Exceeded maxCharacters\n\nTIP: For large pages, use saveAs and read only what you need later.",
+      "edge_function": "web-scrape",
+      "icon": "Globe",
+      "category": "web",
+      "parameters": {
+        "url": {
+          "type": "string",
+          "required": true,
+          "description": "URL to scrape"
+        },
+        "maxCharacters": {
+          "type": "number",
+          "required": false,
+          "default": 50000,
+          "description": "Maximum content length to return"
+        },
+        "returnHtml": {
+          "type": "boolean",
+          "required": false,
+          "default": false,
+          "description": "Return raw HTML instead of extracted text"
+        },
+        "saveAs": {
+          "type": "string",
+          "required": false,
+          "description": "Save result to a named attribute. Use {{name}} in scratchpad or read_attribute(['name']) to retrieve."
+        }
+      },
+      "returns": {
+        "type": "object",
+        "properties": ["url", "title", "content", "contentLength", "accessedAt"]
+      }
+    },
+    "read_github_repo": {
+      "name": "Read GitHub Repository Structure",
+      "description": "Get the file structure of a GitHub repository. Returns a tree of file paths with sizes.\n\nIMPORTANT: Returns file PATHS and SIZES only - NOT file contents. Use read_github_file for contents.\n\nCRITICAL: Use saveAs to auto-save large trees:\n  { \"tool\": \"read_github_repo\", \"params\": { \"repoUrl\": \"...\", \"saveAs\": \"repo_structure\" } }\n\nThen call read_github_file for specific files you need.\n\nReturns:\n- success: boolean\n- repository: string (owner/repo)\n- totalFiles, totalDirectories: numbers\n- files: array of { path, size, type: 'file'|'directory' }\n\nParameters:\n- repoUrl (required): GitHub repository URL (e.g., github.com/owner/repo)\n- branch (optional): Branch name (defaults to main/master)\n- saveAs (optional): Auto-save to named attribute\n\nErrors:\n- \"Repository not found (404)\" - Invalid repo URL or private repo without access\n- \"Rate limit exceeded\" - GitHub API rate limit hit\n\nTIP: Use saveAs to store tree, then read_github_file for specific files you need.",
+      "edge_function": "github-fetch",
+      "icon": "Github",
+      "category": "code",
+      "parameters": {
+        "repoUrl": {
+          "type": "string",
+          "required": true,
+          "description": "GitHub repository URL (e.g., github.com/owner/repo)"
+        },
+        "branch": {
+          "type": "string",
+          "required": false,
+          "description": "Branch name (defaults to main/master)"
+        },
+        "saveAs": {
+          "type": "string",
+          "required": false,
+          "description": "Save result to a named attribute. Use {{name}} in scratchpad or read_attribute(['name']) to retrieve."
+        }
+      },
+      "returns": {
+        "type": "object",
+        "properties": ["success", "mode", "repository", "totalFiles", "totalDirectories", "files"]
+      }
+    },
+    "read_github_file": {
+      "name": "Read GitHub File",
+      "description": "Read the contents of specific files from a GitHub repository. Can fetch multiple files at once.\n\nCRITICAL: Use saveAs to auto-save large files:\n  { \"tool\": \"read_github_file\", \"params\": { \"repoUrl\": \"...\", \"selectedPaths\": [...], \"saveAs\": \"code_files\" } }\n\nYou'll get confirmation instead of full data (saves tokens). Call read_attribute(['code_files']) in NEXT iteration to access.\n\nReturns:\n- success: boolean\n- mode: string ('files')\n- repository: string (owner/repo)\n- output: string (if outputMode='combined')\n- outputs: array (if outputMode='separate') [{ path, content, size }]\n- totalFiles: number\n\nParameters:\n- repoUrl (required): GitHub repository URL\n- selectedPaths (required): Array of file paths to read\n- branch (optional): Branch name\n- outputMode (optional): 'combined' (all files in one string) or 'separate' (array of files)\n- saveAs (optional): Auto-save to named attribute\n\nErrors:\n- \"File not found (404)\" - Invalid file path\n- \"Files too large\" - Combined size exceeds limit\n\nTIP: Use read_github_repo first to see available files, then fetch specific files with this tool.",
+      "edge_function": "github-fetch",
+      "icon": "FileCode",
+      "category": "code",
+      "parameters": {
+        "repoUrl": {
+          "type": "string",
+          "required": true,
+          "description": "GitHub repository URL"
+        },
+        "selectedPaths": {
+          "type": "array",
+          "items": "string",
+          "required": true,
+          "description": "Array of file paths within the repository to read"
+        },
+        "branch": {
+          "type": "string",
+          "required": false,
+          "description": "Branch name"
+        },
+        "outputMode": {
+          "type": "string",
+          "required": false,
+          "default": "combined",
+          "enum": ["combined", "separate"],
+          "description": "combined returns all files in one string, separate returns each file separately"
+        },
+        "saveAs": {
+          "type": "string",
+          "required": false,
+          "description": "Save result to a named attribute. Use {{name}} in scratchpad or read_attribute(['name']) to retrieve."
+        }
+      },
+      "returns": {
+        "type": "object",
+        "properties": ["success", "mode", "repository", "output", "outputs", "totalFiles"]
+      }
+    },
+    "read_blackboard": {
+      "name": "Read Blackboard",
+      "description": "Read all entries from the agent's blackboard memory. The blackboard persists thoughts, observations, and progress across iterations.",
+      "frontend_handler": true,
+      "icon": "ClipboardList",
+      "category": "memory",
+      "parameters": {
+        "filter": {
+          "type": "string",
+          "required": false,
+          "enum": ["observation", "insight", "question", "decision", "plan", "artifact", "error"],
+          "description": "Filter entries by category"
+        }
+      },
+      "returns": {
+        "type": "array",
+        "items": {
+          "id": "string",
+          "timestamp": "string",
+          "category": "string",
+          "content": "string",
+          "data": "object"
+        }
+      }
+    },
+    "write_blackboard": {
+      "name": "Write Blackboard",
+      "description": "Write an entry to the agent's blackboard memory. Use to track observations, insights, decisions, and progress.",
+      "frontend_handler": true,
+      "icon": "Edit3",
+      "category": "memory",
+      "parameters": {
+        "category": {
+          "type": "string",
+          "required": true,
+          "enum": ["observation", "insight", "question", "decision", "plan", "artifact", "error"],
+          "description": "Type of entry"
+        },
+        "content": {
+          "type": "string",
+          "required": true,
+          "description": "Content of the blackboard entry"
+        },
+        "data": {
+          "type": "object",
+          "required": false,
+          "description": "Optional structured data to attach"
+        }
+      },
+      "returns": {
+        "type": "object",
+        "properties": ["id", "timestamp", "success"]
+      }
+    },
+    "read_file": {
+      "name": "Read File",
+      "description": "Read content from a user-provided file in the current session. Files are provided by the user at session start.",
+      "frontend_handler": true,
+      "icon": "FileText",
+      "category": "file",
+      "parameters": {
+        "fileId": {
+          "type": "string",
+          "required": true,
+          "description": "ID of the file to read (from session files)"
+        }
+      },
+      "returns": {
+        "type": "object",
+        "properties": ["filename", "content", "mimeType", "size"]
+      }
+    },
+    "read_attribute": {
+      "name": "Read Attribute",
+      "description": "Retrieve saved tool result attributes (data saved via saveAs parameter).\n\nUSAGE:\n- List all attributes: read_attribute({ names: [] })\n  Returns: { attributes: [{ name, tool, size, iteration, createdAt }], count }\n\n- Get specific attributes: read_attribute({ names: ['search_results', 'repo_structure'] })\n  Returns: { search_results: {...}, repo_structure: {...} }\n\nIMPORTANT:\n- Call with empty array FIRST to see what's available\n- Only read attributes when you need SPECIFIC information\n- Don't re-read the same attribute multiple times - summarize to scratchpad instead\n- Binary attributes (images, audio) return metadata only, not full base64 data\n\nReturns:\n- If names=[]: metadata for all attributes\n- If names=[...]: full content for requested attributes\n\nErrors:\n- \"Attribute 'name' not found\" - Requested attribute doesn't exist\n\nTIP: Always check available attributes before making new tool calls to avoid duplicate work.",
+      "frontend_handler": true,
+      "icon": "Database",
+      "category": "memory",
+      "parameters": {
+        "names": {
+          "type": "array",
+          "items": "string",
+          "required": true,
+          "description": "Array of attribute names to retrieve. Empty array returns metadata for all available attributes."
+        }
+      },
+      "returns": {
+        "type": "object",
+        "properties": ["attributes", "count"]
+      }
+    },
+    "read_artifact": {
+      "name": "Read Artifact",
+      "description": "Read artifacts created in this session. Call with empty ids array to list all artifacts with metadata, or with specific ids/titles to get their full content.",
+      "frontend_handler": true,
+      "icon": "FileOutput",
+      "category": "memory",
+      "parameters": {
+        "ids": {
+          "type": "array",
+          "items": "string",
+          "required": true,
+          "description": "Array of artifact IDs or titles to retrieve. Empty array returns metadata for all available artifacts."
+        }
+      },
+      "returns": {
+        "type": "object",
+        "properties": ["artifacts", "count"]
+      }
+    },
+    "read_scratchpad": {
+      "name": "Read Scratchpad",
+      "description": "Read the current contents of the scratchpad. The scratchpad is your working output area visible to the user. Use to review results before sending to output or API. Handlebar placeholders like {{attribute_name}} will be substituted with actual attribute content.",
+      "frontend_handler": true,
+      "icon": "ClipboardCopy",
+      "category": "memory",
+      "parameters": {},
+      "returns": {
+        "type": "string",
+        "description": "Current scratchpad content with attribute substitutions"
+      }
+    },
+    "write_scratchpad": {
+      "name": "Write Scratchpad",
+      "description": "Write or append content to the scratchpad. The scratchpad is visible to the user in real-time. Use to store working results, analysis outputs, or summaries.\n\nCRITICAL RULES:\n- Scratchpad is for SUMMARIES, not raw data\n- Maximum 50KB per write (enforced)\n- NO raw JSON blobs - will be rejected\n- Extract KEY FINDINGS only\n\nUSAGE:\n- Append: write_scratchpad({ content: \"...\" }) (default)\n- Replace: write_scratchpad({ content: \"...\", mode: \"replace\" })\n\nWhen to use:\n1. After read_attribute - summarize key findings\n2. After analysis - save conclusions\n3. To track progress - note completed steps\n\nReturns: { success: true, length: number }\n\nErrors:\n- \"Content too large (XKB)\" - Exceeded 50KB limit. Extract key findings only.\n- \"Content is raw JSON\" - Scratchpad is for summaries. Extract relevant data instead.\n\nTIP: Keep scratchpad concise. It's YOUR working notes, not a data dump.",
+      "frontend_handler": true,
+      "icon": "ClipboardEdit",
+      "category": "memory",
+      "parameters": {
+        "content": {
+          "type": "string",
+          "required": true,
+          "description": "Content to write to scratchpad"
+        },
+        "mode": {
+          "type": "string",
+          "required": false,
+          "default": "append",
+          "enum": ["replace", "append"],
+          "description": "Whether to replace all content or append to existing"
+        }
+      },
+      "returns": {
+        "type": "object",
+        "properties": ["success", "length"]
+      }
+    },
+    "read_prompt": {
+      "name": "Read Prompt",
+      "description": "Read the original user prompt/instructions. Use to reference back to the task requirements at any time.",
+      "frontend_handler": true,
+      "icon": "MessageSquare",
+      "category": "memory",
+      "parameters": {},
+      "returns": {
+        "type": "string",
+        "description": "The original user prompt"
+      }
+    },
+    "read_prompt_files": {
+      "name": "Read Prompt Files",
+      "description": "Get list of files provided by the user with metadata (id, name, type, size). Use to understand available file inputs before reading them.",
+      "frontend_handler": true,
+      "icon": "Files",
+      "category": "memory",
+      "parameters": {},
+      "returns": {
+        "type": "array",
+        "items": {
+          "id": "string",
+          "filename": "string",
+          "mimeType": "string",
+          "size": "number"
+        }
+      }
+    },
+    "read_zip_contents": {
+      "name": "Read ZIP Contents",
+      "description": "List all files and directories inside a ZIP archive without extracting.",
+      "edge_function": "tool_zip-handler",
+      "icon": "Archive",
+      "category": "file",
+      "parameters": {
+        "fileData": {
+          "type": "string",
+          "required": true,
+          "description": "Base64 encoded ZIP file data"
+        },
+        "action": {
+          "type": "string",
+          "required": true,
+          "default": "list",
+          "description": "Action to perform (always 'list' for this tool)"
+        },
+        "saveAs": {
+          "type": "string",
+          "required": false,
+          "description": "Save result to a named attribute. Use read_attribute(['name']) to retrieve."
+        }
+      },
+      "returns": {
+        "type": "array",
+        "items": {
+          "path": "string",
+          "size": "number",
+          "isDirectory": "boolean",
+          "compressedSize": "number"
+        }
+      }
+    },
+    "read_zip_file": {
+      "name": "Read ZIP File Entry",
+      "description": "Extract and read a specific file from a ZIP archive.",
+      "edge_function": "tool_zip-handler",
+      "icon": "FileArchive",
+      "category": "file",
+      "parameters": {
+        "fileData": {
+          "type": "string",
+          "required": true,
+          "description": "Base64 encoded ZIP file data"
+        },
+        "action": {
+          "type": "string",
+          "required": true,
+          "default": "read",
+          "description": "Action to perform (always 'read' for this tool)"
+        },
+        "entryPath": {
+          "type": "string",
+          "required": true,
+          "description": "Path to file within the ZIP archive"
+        },
+        "saveAs": {
+          "type": "string",
+          "required": false,
+          "description": "Save result to a named attribute. Use read_attribute(['name']) to retrieve."
+        }
+      },
+      "returns": {
+        "type": "object",
+        "properties": ["path", "content", "size", "mimeType"]
+      }
+    },
+    "extract_zip_files": {
+      "name": "Extract ZIP Files",
+      "description": "Extract all or selected files from a ZIP archive.",
+      "edge_function": "tool_zip-handler",
+      "icon": "FolderOutput",
+      "category": "file",
+      "parameters": {
+        "fileData": {
+          "type": "string",
+          "required": true,
+          "description": "Base64 encoded ZIP file data"
+        },
+        "action": {
+          "type": "string",
+          "required": true,
+          "default": "extract",
+          "description": "Action to perform (always 'extract' for this tool)"
+        },
+        "paths": {
+          "type": "array",
+          "items": "string",
+          "required": false,
+          "description": "Specific paths to extract (extracts all if empty)"
+        },
+        "saveAs": {
+          "type": "string",
+          "required": false,
+          "description": "Save result to a named attribute. Use read_attribute(['name']) to retrieve."
+        }
+      },
+      "returns": {
+        "type": "array",
+        "items": {
+          "path": "string",
+          "data": "string",
+          "size": "number",
+          "mimeType": "string"
+        }
+      }
+    },
+    "pdf_info": {
+      "name": "Get PDF Info",
+      "description": "Get information about a PDF file including page count and metadata.",
+      "edge_function": "tool_pdf-handler",
+      "icon": "FileText",
+      "category": "document",
+      "parameters": {
+        "fileData": {
+          "type": "string",
+          "required": true,
+          "description": "Base64 encoded PDF file data"
+        },
+        "action": {
+          "type": "string",
+          "required": true,
+          "default": "info",
+          "description": "Action to perform"
+        },
+        "saveAs": {
+          "type": "string",
+          "required": false,
+          "description": "Save result to a named attribute. Use read_attribute(['name']) to retrieve."
+        }
+      },
+      "returns": {
+        "type": "object",
+        "properties": ["version", "estimatedPageCount", "sizeBytes", "hasEncryption"]
+      }
+    },
+    "pdf_extract_text": {
+      "name": "Extract PDF Text",
+      "description": "Extract text content from a PDF file.",
+      "edge_function": "tool_pdf-handler",
+      "icon": "FileSearch",
+      "category": "document",
+      "parameters": {
+        "fileData": {
+          "type": "string",
+          "required": true,
+          "description": "Base64 encoded PDF file data"
+        },
+        "action": {
+          "type": "string",
+          "required": true,
+          "default": "extract_text",
+          "description": "Action to perform"
+        },
+        "pages": {
+          "type": "array",
+          "items": "number",
+          "required": false,
+          "description": "Page numbers to extract (1-indexed, all if empty)"
+        },
+        "saveAs": {
+          "type": "string",
+          "required": false,
+          "description": "Save result to a named attribute. Use read_attribute(['name']) to retrieve."
+        }
+      },
+      "returns": {
+        "type": "object",
+        "properties": ["extractedText", "textLength"]
+      }
+    },
+    "ocr_image": {
+      "name": "OCR Image",
+      "description": "Extract text from an image using optical character recognition.",
+      "edge_function": "tool_ocr-handler",
+      "icon": "ScanText",
+      "category": "document",
+      "parameters": {
+        "imageSource": {
+          "type": "string",
+          "required": true,
+          "description": "Base64 data, data URI, or image URL"
+        },
+        "language": {
+          "type": "string",
+          "required": false,
+          "default": "en",
+          "description": "Language hint for OCR"
+        },
+        "saveAs": {
+          "type": "string",
+          "required": false,
+          "description": "Save result to a named attribute. Use read_attribute(['name']) to retrieve."
+        }
+      },
+      "returns": {
+        "type": "object",
+        "properties": ["text", "confidence", "language"]
+      }
+    },
+    "send_email": {
+      "name": "Send Email",
+      "description": "Send an email using Resend. Supports plain text or HTML content.",
+      "edge_function": "send-email",
+      "icon": "Mail",
+      "category": "communication",
+      "parameters": {
+        "to": {
+          "type": "string",
+          "required": true,
+          "description": "Recipient email address"
+        },
+        "subject": {
+          "type": "string",
+          "required": true,
+          "description": "Email subject line"
+        },
+        "body": {
+          "type": "string",
+          "required": true,
+          "description": "Email body content"
+        },
+        "useHtml": {
+          "type": "boolean",
+          "required": false,
+          "default": false,
+          "description": "Send body as HTML"
+        },
+        "saveAs": {
+          "type": "string",
+          "required": false,
+          "description": "Save result to a named attribute. Use read_attribute(['name']) to retrieve."
+        }
+      },
+      "returns": {
+        "type": "object",
+        "properties": ["success", "messageId", "message"]
+      }
+    },
+    "request_assistance": {
+      "name": "Request Assistance",
+      "description": "Pause execution and request input, clarification, or files from the user. Execution resumes when user responds.",
+      "frontend_handler": true,
+      "icon": "HelpCircle",
+      "category": "interaction",
+      "parameters": {
+        "question": {
+          "type": "string",
+          "required": true,
+          "description": "Question or request to show the user"
+        },
+        "context": {
+          "type": "string",
+          "required": false,
+          "description": "Additional context explaining why assistance is needed"
+        },
+        "inputType": {
+          "type": "string",
+          "required": false,
+          "default": "text",
+          "enum": ["text", "file", "choice"],
+          "description": "Type of input expected from user"
+        },
+        "choices": {
+          "type": "array",
+          "items": "string",
+          "required": false,
+          "description": "Options if inputType is 'choice'"
+        }
+      },
+      "returns": {
+        "type": "object",
+        "properties": ["response", "fileId", "selectedChoice"]
+      }
+    },
+    "image_generation": {
+      "name": "Generate Image",
+      "description": "Generate an image from a text prompt using Gemini's image generation model.",
+      "edge_function": "run-nano",
+      "icon": "Image",
+      "category": "generation",
+      "binary": true,
+      "parameters": {
+        "prompt": {
+          "type": "string",
+          "required": true,
+          "description": "Detailed description of the image to generate"
+        },
+        "model": {
+          "type": "string",
+          "required": false,
+          "default": "gemini-3-pro-image-preview",
+          "enum": ["gemini-2.5-flash-image", "gemini-3-pro-image-preview"],
+          "description": "Image generation model to use"
+        },
+        "saveAs": {
+          "type": "string",
+          "required": false,
+          "description": "Save result to a named attribute. Use read_attribute(['name']) to retrieve."
+        }
+      },
+      "returns": {
+        "type": "object",
+        "properties": ["imageUrl", "mimeType", "model"]
+      }
+    },
+    "elevenlabs_tts": {
+      "name": "Text to Speech",
+      "description": "Convert text to speech using ElevenLabs API.",
+      "edge_function": "elevenlabs-tts",
+      "icon": "Volume2",
+      "category": "generation",
+      "binary": true,
+      "parameters": {
+        "text": {
+          "type": "string",
+          "required": true,
+          "description": "Text to convert to speech"
+        },
+        "voiceId": {
+          "type": "string",
+          "required": false,
+          "description": "ElevenLabs voice ID (optional - defaults to a natural male voice if not specified)"
+        },
+        "modelId": {
+          "type": "string",
+          "required": false,
+          "default": "eleven_turbo_v2_5",
+          "description": "ElevenLabs model ID"
+        },
+        "saveAs": {
+          "type": "string",
+          "required": false,
+          "description": "Save result to a named attribute. Use read_attribute(['name']) to retrieve."
+        }
+      },
+      "returns": {
+        "type": "object",
+        "properties": ["audioData", "contentType"]
+      }
+    },
+    "export_word": {
+      "name": "Export Word Document",
+      "description": "Create a Word (.docx) document from markdown content and save as artifact.",
+      "frontend_handler": true,
+      "icon": "FileText",
+      "category": "export",
+      "parameters": {
+        "content": {
+          "type": "string",
+          "required": true,
+          "description": "Markdown content to convert"
+        },
+        "filename": {
+          "type": "string",
+          "required": false,
+          "default": "document.docx",
+          "description": "Output filename"
+        },
+        "title": {
+          "type": "string",
+          "required": false,
+          "default": "Document",
+          "description": "Document title for header/metadata"
+        }
+      },
+      "returns": {
+        "type": "object",
+        "properties": ["filename", "artifactId", "size"]
+      }
+    },
+    "export_pdf": {
+      "name": "Export PDF",
+      "description": "Create a PDF document from markdown content and save as artifact.",
+      "frontend_handler": true,
+      "icon": "FileText",
+      "category": "export",
+      "parameters": {
+        "content": {
+          "type": "string",
+          "required": true,
+          "description": "Markdown content to convert"
+        },
+        "filename": {
+          "type": "string",
+          "required": false,
+          "default": "document.pdf",
+          "description": "Output filename"
+        },
+        "title": {
+          "type": "string",
+          "required": false,
+          "default": "Document",
+          "description": "Document title for header/metadata"
+        }
+      },
+      "returns": {
+        "type": "object",
+        "properties": ["filename", "artifactId", "size"]
+      }
+    },
+    "pronghorn_post": {
+      "name": "Pronghorn Post",
+      "description": "Send artifacts (text, images, binary) to a Pronghorn project for collection. Use for exporting results, reports, or generated content to external storage.",
+      "edge_function": "pronghorn-post",
+      "icon": "Send",
+      "category": "export",
+      "parameters": {
+        "projectId": {
+          "type": "string",
+          "required": true,
+          "description": "Pronghorn project ID to send artifacts to",
+          "sensitive": true
+        },
+        "token": {
+          "type": "string",
+          "required": true,
+          "description": "Pronghorn share token for authentication",
+          "sensitive": true
+        },
+        "items": {
+          "type": "array",
+          "required": true,
+          "description": "Array of items to send. Each item has: type ('text'|'image'|'binary'), content (string or base64), optional title, fileName, contentType. Supports {{scratchpad}}, {{attribute:name}}, {{artifact:id}} references in content.",
+          "items": {
+            "type": {
+              "type": "string",
+              "enum": ["text", "image", "binary"],
+              "description": "Type of content being sent"
+            },
+            "content": {
+              "type": "string",
+              "description": "Content to send - plain text or base64 encoded. Supports reference placeholders."
+            },
+            "title": {
+              "type": "string",
+              "description": "Optional title for the artifact"
+            },
+            "fileName": {
+              "type": "string",
+              "description": "Optional filename for file artifacts"
+            },
+            "contentType": {
+              "type": "string",
+              "description": "Optional MIME type for binary content"
+            }
+          }
+        },
+        "saveAs": {
+          "type": "string",
+          "required": false,
+          "description": "Save result to a named attribute. Use read_attribute(['name']) to retrieve."
+        }
+      },
+      "returns": {
+        "type": "object",
+        "properties": ["success", "message", "itemsReceived", "itemsCreated", "itemsFailed", "processingTimeMs", "results"]
+      }
+    },
+    "get_call_api": {
+      "name": "GET API Call",
+      "description": "Make a GET request to an external API endpoint. Use for fetching data from REST APIs.",
+      "edge_function": "api-call",
+      "icon": "Download",
+      "category": "api",
+      "parameters": {
+        "url": {
+          "type": "string",
+          "required": true,
+          "description": "Full API endpoint URL"
+        },
+        "headers": {
+          "type": "object",
+          "required": false,
+          "sensitive": true,
+          "description": "Request headers (e.g., Authorization, API keys)"
+        },
+        "saveAs": {
+          "type": "string",
+          "required": false,
+          "description": "Save result to a named attribute. Use {{name}} in scratchpad or read_attribute(['name']) to retrieve."
+        }
+      },
+      "returns": {
+        "type": "object",
+        "properties": ["status", "statusText", "data"]
+      }
+    },
+    "post_call_api": {
+      "name": "POST API Call",
+      "description": "Make a POST request to an external API endpoint. Use for sending data to REST APIs.",
+      "edge_function": "api-call",
+      "icon": "Upload",
+      "category": "api",
+      "parameters": {
+        "url": {
+          "type": "string",
+          "required": true,
+          "description": "Full API endpoint URL"
+        },
+        "headers": {
+          "type": "object",
+          "required": false,
+          "sensitive": true,
+          "description": "Request headers"
+        },
+        "body": {
+          "type": "object",
+          "required": true,
+          "description": "Request body (will be JSON stringified)"
+        },
+        "saveAs": {
+          "type": "string",
+          "required": false,
+          "description": "Save result to a named attribute. Use {{name}} in scratchpad or read_attribute(['name']) to retrieve."
+        }
+      },
+      "returns": {
+        "type": "object",
+        "properties": ["status", "statusText", "data"]
+      }
+    },
+    "read_database_schemas": {
+      "name": "Read Database Schemas",
+      "description": "Retrieve the complete schema structure from a PostgreSQL database including tables, columns, data types, constraints, and foreign key relationships. Use this BEFORE execute_sql to understand the database structure. Returns organized schema information for query planning.",
+      "edge_function": "external-db",
+      "icon": "DatabaseZap",
+      "category": "database",
+      "parameters": {
+        "connectionString": {
+          "type": "string",
+          "required": true,
+          "sensitive": true,
+          "description": "PostgreSQL connection string (e.g., postgres://user:pass@host:port/database). SSL will be enforced automatically."
+        },
+        "schemas": {
+          "type": "array",
+          "items": "string",
+          "required": false,
+          "description": "Filter to specific schema names (default: all non-system schemas like 'public')"
+        },
+        "saveAs": {
+          "type": "string",
+          "required": false,
+          "description": "Save schema structure to a named attribute for reference when building queries."
+        }
+      },
+      "returns": {
+        "type": "object",
+        "properties": ["success", "schemas", "totalSchemas", "totalTables", "totalColumns"]
+      }
+    },
+    "execute_sql": {
+      "name": "Execute SQL",
+      "description": "Execute SQL queries on an external PostgreSQL database. Supports both read (SELECT) and write (INSERT/UPDATE/DELETE) operations. Multiple statements can be separated by semicolons and will be executed sequentially. Use read_database_schemas first to understand the database structure.",
+      "edge_function": "external-db",
+      "icon": "Database",
+      "category": "database",
+      "parameters": {
+        "connectionString": {
+          "type": "string",
+          "required": true,
+          "sensitive": true,
+          "description": "PostgreSQL connection string (e.g., postgres://user:pass@host:port/database). SSL will be enforced automatically."
+        },
+        "query": {
+          "type": "string",
+          "required": true,
+          "description": "SQL query to execute. Multiple statements can be separated by semicolons."
+        },
+        "isWrite": {
+          "type": "boolean",
+          "required": false,
+          "default": false,
+          "description": "Set to true for INSERT/UPDATE/DELETE operations"
+        },
+        "params": {
+          "type": "array",
+          "required": false,
+          "description": "Parameterized query values for security (applies to single-statement queries)"
+        },
+        "saveAs": {
+          "type": "string",
+          "required": false,
+          "description": "Save query results as JSON to a named attribute. Use read_attribute(['name']) to retrieve."
+        }
+      },
+      "returns": {
+        "type": "object",
+        "properties": ["success", "columns", "rows", "rowCount", "command", "results", "summary"]
+      }
+    },
+    "read_self": {
+      "name": "Read Self Configuration",
+      "description": "Introspect your own system prompt configuration. Returns all editable sections, tool overrides, and disabled items. Use to understand your current configuration before modifying.",
+      "frontend_handler": true,
+      "icon": "Eye",
+      "category": "advanced_self_author",
+      "parameters": {
+        "include": {
+          "type": "string",
+          "required": false,
+          "enum": ["sections", "tools", "all"],
+          "default": "all",
+          "description": "What to return: sections only, tools only, or all configuration"
+        }
+      },
+      "returns": {
+        "type": "object",
+        "properties": ["sections", "toolOverrides", "disabledSections", "disabledTools"]
+      }
+    },
+    "write_self": {
+      "name": "Write Self Configuration",
+      "description": "Modify your own system prompt configuration. Changes take effect in the next iteration. Use carefully - this modifies your behavior. IMPORTANT: Use addSections to create NEW sections, sectionOverrides only works for EXISTING sections.",
+      "frontend_handler": true,
+      "icon": "PenTool",
+      "category": "advanced_self_author",
+      "parameters": {
+        "sectionOverrides": {
+          "type": "object",
+          "required": false,
+          "description": "Map of EXISTING sectionId to new content. Valid IDs: identity, memory_architecture, correct_workflow, loop_problem, anti_loop_rules, loop_self_reflection, tool_execution_timing, response_format, blackboard_mandatory, data_handling, workflow_summary, accessing_attributes, reference_resolution. Use addSections to create NEW sections."
+        },
+        "addSections": {
+          "type": "array",
+          "required": false,
+          "description": "Add new custom sections: [{id?: string, title: string, content: string}]. ID is auto-generated if not provided.",
+          "items": {
+            "id": "string (optional) - Custom ID for the section, auto-generated if omitted",
+            "title": "string (required) - Section title displayed in UI",
+            "content": "string (required) - Section content/instructions"
+          }
+        },
+        "deleteSections": {
+          "type": "array",
+          "items": "string",
+          "required": false,
+          "description": "IDs of custom sections to delete. Only works for sections added via addSections."
+        },
+        "disableSections": {
+          "type": "array",
+          "items": "string",
+          "required": false,
+          "description": "Section IDs to disable"
+        },
+        "enableSections": {
+          "type": "array",
+          "items": "string",
+          "required": false,
+          "description": "Section IDs to re-enable"
+        },
+        "toolDescriptionOverrides": {
+          "type": "object",
+          "required": false,
+          "description": "Map of toolId to new description"
+        },
+        "disableTools": {
+          "type": "array",
+          "items": "string",
+          "required": false,
+          "description": "Tool IDs to disable"
+        },
+        "enableTools": {
+          "type": "array",
+          "items": "string",
+          "required": false,
+          "description": "Tool IDs to re-enable"
+        }
+      },
+      "returns": {
+        "type": "object",
+        "properties": ["success", "changesApplied", "warnings", "validSectionIds", "customSections"]
+      }
+    },
+    "spawn": {
+      "name": "Spawn Child Agents",
+      "description": "Create child agent instances for parallel work. Each child receives your current memory plus modifications. You will enter orchestrate mode until children complete.",
+      "frontend_handler": true,
+      "icon": "GitBranch",
+      "category": "advanced_spawn",
+      "parameters": {
+        "children": {
+          "type": "array",
+          "required": true,
+          "description": "Array of child specifications: [{name, task, maxIterations?, sectionOverrides?, attributes?}]",
+          "items": {
+            "name": "string (required) - Unique identifier for this child",
+            "task": "string (required) - Specific task/prompt for this child",
+            "maxIterations": "number (optional) - Max iterations for child (default: 20)",
+            "sectionOverrides": "object (optional) - Section content overrides",
+            "attributes": "object (optional) - Additional attributes to inject"
+          }
+        },
+        "completionThreshold": {
+          "type": "number",
+          "required": false,
+          "description": "Resume orchestrator after this many children complete (default: all)"
+        }
+      },
+      "returns": {
+        "type": "object",
+        "properties": ["spawned", "childNames", "message"]
+      }
+    }
+  },
+  "categories": {
+    "utility": {
+      "name": "Utility",
+      "description": "General utility tools",
+      "color": "#6B7280"
+    },
+    "web": {
+      "name": "Web",
+      "description": "Web search and scraping",
+      "color": "#3B82F6"
+    },
+    "code": {
+      "name": "Code",
+      "description": "GitHub and code analysis",
+      "color": "#8B5CF6"
+    },
+    "memory": {
+      "name": "Memory",
+      "description": "Blackboard and persistent memory",
+      "color": "#F59E0B"
+    },
+    "file": {
+      "name": "File",
+      "description": "File reading and extraction",
+      "color": "#10B981"
+    },
+    "document": {
+      "name": "Document",
+      "description": "PDF and OCR processing",
+      "color": "#EC4899"
+    },
+    "communication": {
+      "name": "Communication",
+      "description": "Email and messaging",
+      "color": "#EF4444"
+    },
+    "interaction": {
+      "name": "Interaction",
+      "description": "User interaction",
+      "color": "#14B8A6"
+    },
+    "generation": {
+      "name": "Generation",
+      "description": "AI content generation",
+      "color": "#F97316"
+    },
+    "export": {
+      "name": "Export",
+      "description": "Document export",
+      "color": "#06B6D4"
+    },
+    "api": {
+      "name": "API",
+      "description": "External API calls",
+      "color": "#84CC16"
+    },
+    "database": {
+      "name": "Database",
+      "description": "Database operations",
+      "color": "#A855F7"
+    },
+    "advanced_self_author": {
+      "name": "Self-Author",
+      "description": "Agent self-modification (advanced)",
+      "color": "#DC2626"
+    },
+    "advanced_spawn": {
+      "name": "Spawn",
+      "description": "Child agent spawning (advanced)",
+      "color": "#D97706"
+    }
+  }
+}

@@ -8,7 +8,7 @@ import {
   Play,
   Minimize2,
   Maximize2,
-} from 'lucide-vue-next';
+} from '@lucide/vue';
 import type { Stage as StageType, WorkflowNode } from '@agent-builder/shared';
 import Card from '../ui/Card.vue';
 import Button from '../ui/Button.vue';

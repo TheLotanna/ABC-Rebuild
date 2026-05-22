@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { Key, Link, Settings, AlertTriangle, Check } from 'lucide-vue-next';
+import { Key, Link, Settings, AlertTriangle, Check } from '@lucide/vue';
 import { useSecretsManager } from '@/composables/useSecretsManager';
 import Badge from '@/components/ui/Badge.vue';
 import Button from '@/components/ui/Button.vue';

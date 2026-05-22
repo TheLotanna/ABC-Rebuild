@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { Handle, Position } from '@xyflow/vue';
-import { GitBranch, Loader2, CheckCircle, XCircle, Pause } from 'lucide-vue-next';
+import { Handle, Position } from '@vue-flow/core';
+import { GitBranch, Loader2, CheckCircle, XCircle, Pause } from '@lucide/vue';
 import { cn } from '@/lib/utils';
 import type { FreeAgentNodeData } from '@agent-builder/shared';
 

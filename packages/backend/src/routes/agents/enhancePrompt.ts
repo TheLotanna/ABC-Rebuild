@@ -1,5 +1,6 @@
 import type { FastifyRequest, FastifyReply } from 'fastify';
 import { initSse, sendEvent, pipeSSE } from './sseHelper.js';
+import { runPiiGuard } from '../../lib/piiGuard.js';
 
 interface EnhancePromptBody {
   systemPrompt: string;
@@ -19,6 +20,17 @@ export async function enhancePrompt(req: FastifyRequest, reply: FastifyReply) {
   const isGemini = model.startsWith('gemini');
   const isClaude = model.startsWith('claude');
   const isGrok = model.startsWith('grok');
+
+  const guardOk = await runPiiGuard(
+    req,
+    reply,
+    [
+      { name: 'systemPrompt', value: systemPrompt },
+      { name: 'userPrompt', value: userPrompt },
+    ],
+    { sse: false, route: 'POST /api/enhance-prompt' },
+  );
+  if (!guardOk) return;
 
   initSse(reply);
 
