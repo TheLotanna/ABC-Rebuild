@@ -12,6 +12,7 @@ import { externalDb } from './db.js';
 import { pdfHandler } from './pdf.js';
 import { ocrHandler } from './ocr.js';
 import { zipHandler } from './zip.js';
+import { pronghornPost } from './pronghorn.js';
 
 export const toolRoutes: FastifyPluginAsync = async (fastify) => {
   fastify.post('/brave-search', braveSearch);
@@ -28,4 +29,5 @@ export const toolRoutes: FastifyPluginAsync = async (fastify) => {
   fastify.post('/pdf', pdfHandler);
   fastify.post('/ocr', ocrHandler);
   fastify.post('/zip', zipHandler);
+  fastify.post('/pronghorn', pronghornPost);
 };

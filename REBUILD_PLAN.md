@@ -227,7 +227,7 @@ Notes for whoever wires `WorkflowCanvas.vue` / `WorkflowCanvasMode.vue` next:
 
 ### Phase 5 — Free Agent mode Vue components 🟡 IN PROGRESS
 Port all 30 files from `src/components/freeAgent/`:
-- Containers: `FreeAgentView.vue`, `FreeAgentPanel.vue`, `FreeAgentCanvas.vue` ⏳
+- Containers: `FreeAgentView.vue`, `FreeAgentPanel.vue`, `FreeAgentCanvas.vue` 🟡 IN PROGRESS — claude-B (2026-05-22)
 - Viewers (✅ DONE — claude-D (2026-05-22)):
   `BlackboardViewer.vue`, `ArtifactsPanel.vue`, `RawViewer.vue`,
   `SecretsMiniPanel.vue`. `SystemPromptViewer.vue` (1525 lines) ⏳ still
@@ -247,7 +247,7 @@ Port all 30 files from `src/components/freeAgent/`:
     without a circular import.
   - ⏳ `FinalReportModal.vue`, `ChildAgentDetailModal.vue`, `ReflectModal.vue`,
     `EnhancePromptModal.vue`, `SecretsManagerModal.vue` (larger modals — open for other agents)
-- Tabs: `ToolInstancesTab.vue` ⏳
+- Tabs: ✅ DONE — claude-D (2026-05-22): `ToolInstancesTab.vue` — reads `useToolInstances()` directly, 3 inline modals (add, edit, delete-confirm), accesses through `.config.instances` to dodge the reactivity-snapshot issue [stores/toolInstanceStore.ts:112-124](packages/frontend/src/stores/toolInstanceStore.ts)
 
 **claude-D scope note (2026-05-22, ✅ slice complete):** All 10 canvas-node
 files under `packages/frontend/src/components/freeAgent/*Node.vue` have been
@@ -335,7 +335,7 @@ under `components/workflow/`. Notes for follow-up:
   EnhancePrompt, EnhancePromptSettings, SecretsManager)
 - ⏳ `SystemPromptViewer.vue` (~1525 lines)
 - ⏳ `AgentSelector.vue`, `FunctionSelector.vue`, `ExcelSelector.vue`
-- ⏳ Backend `POST /api/tools/pronghorn` route (frontend already calls it)
+- ✅ DONE — claude-D (2026-05-22): Backend `POST /api/tools/pronghorn` route (registered in `routes/tools/index.ts`, mirrors Supabase edge function: validates `projectId`/`token`/`items`, proxies to Pronghorn `ingest-artifacts`, maps per-item failures to HTTP 422)
 - ⏳ Final E2E verification (see §8)
 - ⏳ `npm install` + `vue-tsc --noEmit` once node is available
 - ⏳ Migrate `src/components/help/` and `src/components/github/` if used
@@ -356,7 +356,7 @@ touch any file under `packages/frontend/src/components/`,
 - ✅ `.env.example` — adds `SHARED_DATABASE_URL`, `SCHEMA_NAME`
 - ✅ Root `package.json` — `db:migrate`, `db:seed` scripts
 - ✅ `packages/backend/package.json` — adds `pg` (fixes pre-existing dynamic import in `routes/tools/db.ts`) + `@types/pg`
-- ⏳ Wire `pii.ts` into agent routes as a pre-flight check before LLM egress
+- 🟡 IN PROGRESS — claude-C (2026-05-22): Wire `pii.ts` into agent routes as a pre-flight check before LLM egress. Adds `packages/backend/src/lib/piiGuard.ts` (reusable middleware) + integrates into all 6 agent routes (`anthropic.ts`, `gemini.ts`, `xai.ts`, `nano.ts`, `enhancePrompt.ts`, `freeAgent.ts`). Modes via `PII_GUARD_MODE` env: `block` (default — return error before egress), `warn` (log + redact in audit, still call LLM), `off`. Emits audit lines to stderr as structured JSON; full DB audit-log table deferred to a follow-up.
 
 Schema name is variable-driven via `SCHEMA_NAME` env (default
 `lotanna_okwuchukwu`). Migrations are rerunnable (`CREATE … IF NOT EXISTS`).
