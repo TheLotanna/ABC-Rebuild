@@ -178,7 +178,7 @@ All Fastify routes ported. SSE format preserved as
 ### Phase 4 — Workflow mode Vue components 🟡 IN PROGRESS
 Port from `src/components/workflow/` (source):
 - ✅ DONE — claude-C (2026-05-22): `WorkflowCanvas.vue` — **stacked-view canvas** (SVG arrows between port DOM IDs, identical to the React source's approach). Despite the file name it does **not** wrap `@vue-flow/core` — the source `WorkflowCanvas.tsx` is the stacked view, not the canvas-mode renderer. The eventual `@vue-flow/core` integration lives in `WorkflowCanvasMode.vue`. **TODO for whoever finalises this file: add `@drop` / `@dragover` handler on the canvas container to call `store.addNode(stageId, JSON.parse(e.dataTransfer.getData('agentTemplate')), e.dataTransfer.getData('nodeType'))` — Sidebar now sends this data on drag-start.**
-- 🟡 IN PROGRESS — claude-C (2026-05-22): `WorkflowCanvasMode.vue` — `@vue-flow/core` canvas wiring. Adapter SFCs added under `components/workflow/canvas/` to bridge the @vue-flow `NodeProps` shape (props.data) to my existing nodes' direct-prop API.
+- ✅ DONE — claude-C (2026-05-22): `WorkflowCanvasMode.vue` — `@vue-flow/core` canvas. Three thin adapter SFCs under `components/workflow/canvas/` (`StageNodeFlow.vue`, `WorkflowNodeFlow.vue`, `NoteNodeFlow.vue`) bridge `@vue-flow`'s `NodeProps.data` shape to my existing nodes' direct-prop API. `NoteNodeFlow` mounts `@vue-flow/node-resizer`'s `NodeResizer` and forwards new sizes via the existing `update` event. **Background / Controls / MiniMap plugin packages aren't installed** — a CSS radial-gradient stands in for the background; the minimap toggle is wired-but-inert. `StageNode`'s inline `+ Agent` / `+ Function` buttons surface via new `open-add-agent` / `open-add-function` emits so the host can mount `AgentSelector` / `FunctionSelector` once. Ctrl+C / Ctrl+V copy/clone the currently-selected node (`clone-node` emit).
 - ✅ DONE — claude-C (2026-05-22): `SimpleView.vue` — folder/file-style flat view with per-stage / per-node downloads (JSZip). Shadcn primitives (ScrollArea, Dialog, Tabs, Accordion) and `vue-markdown-render` are **deferred** — replaced with plain `overflow-auto` divs, a fixed-overlay modal, button-tab switcher, and `<pre>` rendering. Swap in real primitives once they land in `components/ui/`.
 - ✅ DONE — claude-C (2026-05-22): `Stage.vue`, `StageNode.vue`
 - ✅ DONE — claude-C (2026-05-22): `AgentNode.vue`, `FunctionNode.vue`, `NoteNode.vue`
@@ -227,11 +227,10 @@ Notes for whoever wires `WorkflowCanvas.vue` / `WorkflowCanvasMode.vue` next:
 
 ### Phase 5 — Free Agent mode Vue components 🟡 IN PROGRESS
 Port all 30 files from `src/components/freeAgent/`:
-- Containers: `FreeAgentView.vue`, `FreeAgentPanel.vue`, `FreeAgentCanvas.vue` 🟡 IN PROGRESS — claude-B (2026-05-22)
+- Containers: `FreeAgentView.vue`, `FreeAgentPanel.vue`, `FreeAgentCanvas.vue` ✅ DONE — claude-B (2026-05-22)
 - Viewers (✅ DONE — claude-D (2026-05-22)):
   `BlackboardViewer.vue`, `ArtifactsPanel.vue`, `RawViewer.vue`,
-  `SecretsMiniPanel.vue`. `SystemPromptViewer.vue` (1525 lines) ⏳ still
-  deferred — open for another agent.
+  `SecretsMiniPanel.vue`. `SystemPromptViewer.vue` (1525 lines) 🟡 IN PROGRESS — claude-B (2026-05-22)
 - Canvas nodes (✅ DONE — claude-D (2026-05-22)):
   `FreeAgentNode.vue`, `ChildAgentNode.vue`, `ScratchpadNode.vue`,
   `AttributeNode.vue`, `FileNode.vue`, `PromptNode.vue`, `PromptFileNode.vue`,
@@ -254,7 +253,10 @@ Port all 30 files from `src/components/freeAgent/`:
     was choking on `{{ \`{{${...}}}\` }}` (the `}}` inside the template
     literal closed the interpolation early); replaced with `&#123;&#123;…&#125;&#125;`,
     matching the same fix already applied to `AttributeNode.vue:107`.
-  - 🟡 IN PROGRESS — claude-festive-elbakyan (2026-05-22): `ChildAgentDetailModal.vue`, `EnhancePromptModal.vue`, `SecretsManagerModal.vue` — the 3 largest remaining modals. Same `v-model:open` + fixed-overlay backdrop pattern as the existing modals.
+  - ✅ DONE — claude-festive-elbakyan (2026-05-22): `ChildAgentDetailModal.vue` (498→Vue) + `SecretsManagerModal.vue` (821→Vue). Notes:
+    - `ChildAgentDetailModal`: 7-tab pill control (Task/Blackboard/Tools/Scratchpad/Attributes/Artifacts/Raw) matching the claude-D modal-slice pattern; embeds `AttributeViewerModal` for binary preview when the user clicks a binary attribute's Preview button. Scratchpad still renders as `whitespace-pre-wrap` until `vue-markdown-render` lands. Uses `RawViewer` for the Raw tab. Public API: `:open / @update:open` + `child: ChildSession | null` prop.
+    - `SecretsManagerModal`: reads through `secretsStore.config.{secrets,mappings,headerMappings}` via `storeToRefs` for reactivity (per the SecretsMiniPanel note at lines 280-285). Native `<select>` / `<input type=checkbox>` / `<textarea>` used in place of missing shadcn-vue primitives. `title=` attribute for tooltips. Two inline confirmation overlays (delete-secret, clear-all) at `z-[60]`. Accepts optional `enableInstances` boolean (defaults on if the tool-instance store has entries) so callers can force-disable the instance picker. Public API: `:open / @update:open` + `toolsManifest: ToolsManifest | null` + optional `enableInstances: boolean`.
+  - ✅ DONE — claude-C (2026-05-22): `EnhancePromptModal.vue` — was previously listed under claude-festive-elbakyan's in-progress claim but the slot was still empty on disk when claude-C checked, so ported here to keep the slice closed. SSE-streamed via the same endpoint mux as `useWorkflowRunner` (`claude-*` → `/api/run-agent/anthropic`, `grok-*` → `/api/run-agent/xai`, else `/api/run-agent`). Auto-streams on `open`, aborts on close, supports refine-with-feedback. Tabs primitive replaced with two pill buttons (consistent with claude-D's modal slice); markdown still rendered as `whitespace-pre-wrap` until `vue-markdown-render` lands. Reuses `getStoredEnhancementPrompt()` from `@/lib/enhancePromptStorage`. Public API: `:open / @update:open`, `@accept (enhanced)`, `@accept-and-start (enhanced)`.
 - Tabs: ✅ DONE — claude-D (2026-05-22): `ToolInstancesTab.vue` — reads `useToolInstances()` directly, 3 inline modals (add, edit, delete-confirm), accesses through `.config.instances` to dodge the reactivity-snapshot issue [stores/toolInstanceStore.ts:112-124](packages/frontend/src/stores/toolInstanceStore.ts)
 
 **claude-D scope note (2026-05-22, ✅ slice complete):** All 10 canvas-node
@@ -337,18 +339,19 @@ under `components/workflow/`. Notes for follow-up:
 - ✅ All composables already target `VITE_BACKEND_URL` via Vite proxy
 - ✅ Dark mode wired via `@vueuse/core` `useColorMode` in `AppLayout.vue`
 - ✅ DONE — claude-integrator (2026-05-22): Rewrote 9 stale `${VITE_SUPABASE_URL}/functions/v1/<name>` calls in `packages/frontend/src/lib/functionExecutor.ts` to `${VITE_BACKEND_URL ?? ''}/api/<...>` per the route map. Endpoints fixed: `run-nano`, `tts` (was `elevenlabs-tts`), `google-search`, `brave-search`, `web-scrape`, `api-call`, `email` (was `send-email`), `github` (was `github-fetch`), `pronghorn` (was `pronghorn-post`). Unblocks the workflow execution path — those tools were unreachable from the Vue frontend.
-- ⏳ Replace stubs: `PropertiesPanel.vue`, `WorkflowCanvasMode.vue`,
-  `FreeAgentView.vue`, `FreeAgentPanel.vue`, `FreeAgentCanvas.vue`
+- ✅ Replace stubs: `PropertiesPanel.vue`, `FreeAgentView.vue`, `FreeAgentPanel.vue`, `FreeAgentCanvas.vue` (all done — claude-B 2026-05-22)
+- 🟡 Replace stub: `WorkflowCanvasMode.vue` — claude-C (2026-05-22)
 - ✅ DONE — claude-D (2026-05-22): `OutputLog.vue` (real impl replaces claude-B's stub)
 - ✅ DONE — claude-D (2026-05-22): `AgentSelector.vue`, `FunctionSelector.vue`, `ExcelSelector.vue`
 - ✅ DONE — claude-D (2026-05-22): `EnhancePromptSettingsModal.vue`, `ToolInstancesTab.vue`
 - ✅ DONE — claude-integrator (2026-05-22): `FinalReportModal.vue` — port of the 242-line source. Same `v-model:open` + fixed-overlay pattern as the modal slice. Emits `@reset` for the "Start New Task" button. `Download` hits `exportSessionToZip()` from `@/utils/sessionExporter`. Inline border-`div`s replace shadcn `Separator`; markdown still deferred (summary renders as `whitespace-pre-wrap`).
 - ⏳ Remaining 4 modals (ChildAgentDetail, Reflect, EnhancePrompt, SecretsManager)
-- ⏳ `SystemPromptViewer.vue` (~1525 lines)
+- 🟡 `SystemPromptViewer.vue` (~1525 lines) — claude-B (2026-05-22)
 - ✅ DONE — claude-D (2026-05-22): Backend `POST /api/tools/pronghorn` route (registered in `routes/tools/index.ts`, mirrors Supabase edge function: validates `projectId`/`token`/`items`, proxies to Pronghorn `ingest-artifacts`, maps per-item failures to HTTP 422)
 - ⏳ Final E2E verification (see §8)
 - ⏳ `npm install` + `vue-tsc --noEmit` once node is available
-- ⏳ Migrate `src/components/help/` and `src/components/github/` if used
+- ✅ DONE — claude-integrator (2026-05-22): `packages/frontend/src/components/help/HelpModal.vue` (port of the 201-line source). Same `v-model:open` + fixed-overlay pattern. Inline `<div class="h-px bg-border" />` for shadcn `Separator`. Wired into `Toolbar.vue` — the Help button now opens the modal locally (no parent emit needed). Note: literal `{input}` / `{prompt}` placeholders are rendered via `{{ '{input}' }}` to escape Vue's mustache parser.
+- ✅ DONE — claude-D (2026-05-22): `packages/frontend/src/components/github/GitHubTreeModal.vue` + `GitHubTreeNodeRow.vue` (recursive row split into its own SFC to avoid two-script-block conflict). Re-routes GitHub fetch from `VITE_SUPABASE_URL/functions/v1/github-fetch` → local `/api/tools/github` (claude-B's existing route). API: `v-model:open` + `@select-paths (paths, contents)`. Toasts via `vue-sonner`. Native `<input type="checkbox">` with `accent-primary` + `indeterminate` for partial-select; swap to a real Checkbox primitive when one lands. HelpModal was authored in parallel by claude-integrator — left as-is.
 
 ### Phase 7 — AI Garage analysis & compliance layer 🟡 IN PROGRESS — claude-festive-elbakyan (2026-05-22)
 
@@ -366,7 +369,9 @@ touch any file under `packages/frontend/src/components/`,
 - ✅ `.env.example` — adds `SHARED_DATABASE_URL`, `SCHEMA_NAME`
 - ✅ Root `package.json` — `db:migrate`, `db:seed` scripts
 - ✅ `packages/backend/package.json` — adds `pg` (fixes pre-existing dynamic import in `routes/tools/db.ts`) + `@types/pg`
-- ✅ DONE — claude-C (2026-05-22): Wire `pii.ts` into agent routes as a pre-flight check before LLM egress. Adds `packages/backend/src/lib/piiGuard.ts` (`runPiiGuard`, `scanFields`, `redactForUpstream`, `getGuardMode`) + `piiGuard.test.ts` (16 cases, runs via `node --import tsx`). Integrated into all 6 agent routes (`anthropic.ts`, `gemini.ts`, `xai.ts`, `nano.ts`, `enhancePrompt.ts`, `freeAgent.ts`). Modes via `PII_GUARD_MODE` env (documented in `.env.example`): `block` (default — HTTP 400 / SSE error before egress on any secret or high-confidence hit), `warn` (audit only, still calls LLM), `off`. Live smoke-tested: clean prompts pass through; leaked Anthropic key + valid SIN both blocked with `piiGuard.findings` body; `warn` mode emits structured `{"audit":"pii_guard",...}` line to stderr without blocking. Audit lines carry kinds/confidences/offsets only — never the matched raw value. **Follow-ups left for another agent:** (a) persist audit lines to an `audit_log` table in the `lotanna_okwuchukwu` schema so they survive process restart; (b) gate tool-route inputs (e.g. `send-email`, `db`) on the same guard; (c) wire the audit line into the frontend so the user sees *why* the request was blocked (currently just shows the generic message).
+- ✅ DONE — claude-C (2026-05-22): Wire `pii.ts` into agent routes as a pre-flight check before LLM egress. Adds `packages/backend/src/lib/piiGuard.ts` (`runPiiGuard`, `scanFields`, `redactForUpstream`, `getGuardMode`) + `piiGuard.test.ts` (16 cases, runs via `node --import tsx`). Integrated into all 6 agent routes (`anthropic.ts`, `gemini.ts`, `xai.ts`, `nano.ts`, `enhancePrompt.ts`, `freeAgent.ts`). Modes via `PII_GUARD_MODE` env (documented in `.env.example`): `block` (default — HTTP 400 / SSE error before egress on any secret or high-confidence hit), `warn` (audit only, still calls LLM), `off`. Live smoke-tested: clean prompts pass through; leaked Anthropic key + valid SIN both blocked with `piiGuard.findings` body; `warn` mode emits structured `{"audit":"pii_guard",...}` line to stderr without blocking. Audit lines carry kinds/confidences/offsets only — never the matched raw value.
+- ✅ DONE — claude-C (2026-05-22): Persist PII audit events to Postgres. Adds `migrations/0002_pii_audit_log.sql` (`__SCHEMA__.pii_audit_log`, additive + idempotent, indexes on ts/route/action/has_secret-when-true) and `packages/backend/src/lib/auditDb.ts` (lazy-init shared pg Pool, fire-and-forget `recordAuditEvent`, identifier-whitelisted schema interpolation, `audit_db_error` lines on failure). Hooked into `piiGuard.emitAudit()`. **Verified** live: with a deliberately broken `SHARED_DATABASE_URL`, a SIN-bearing request still blocked in **36 ms** and the async insert failure surfaced as `{"audit_db_error":true,"reason":"insert_failed",…}` to stderr — i.e. guard never blocks on DB downtime. **Blocked** on running the migration against the real shared Postgres: the exercise credentials `database_database_zke3_user / qUiH…` rejected with `password authentication failed` (pg server returned auth_failed in `auth.c:317`). Migration SQL is shape-identical to the working 0001; once fresh creds land, `npm run db:migrate` will apply it.
+- ⏳ Remaining PII follow-ups (open for other agents): (a) gate tool-route inputs (e.g. `send-email`, `db`) on the same guard; (b) wire the audit line into the frontend so the user sees *why* the request was blocked (currently just shows the generic message).
 
 Schema name is variable-driven via `SCHEMA_NAME` env (default
 `lotanna_okwuchukwu`). Migrations are rerunnable (`CREATE … IF NOT EXISTS`).
