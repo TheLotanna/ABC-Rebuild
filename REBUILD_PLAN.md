@@ -145,10 +145,11 @@ All Fastify routes ported. SSE format preserved as
 - ✅ `src/stores/promptStore.ts` — claude-B (2026-05-22)
 - ✅ `src/stores/toolInstanceStore.ts` — claude-B (2026-05-22)
 - ✅ `src/composables/useFreeAgentSession.ts` — claude-B (thin wrapper over freeAgentStore)
+- ✅ `src/composables/useWorkflowRunner.ts` — claude-B (2026-05-22): SSE streaming execution composable. Owns `runSingleAgent`, `runSingleFunction`, `runStage`, `runWorkflow`, `runDownstream`, `runAgentBeastMode`, `executeAgentOnce`. Model routing: `claude-*` → `/api/run-agent/anthropic`, `grok-*` → `/api/run-agent/xai`, else `/api/run-agent`.
 - ✅ `src/composables/use-mobile.ts`, `use-toast.ts`, `useSecretsManager.ts`, `usePromptCustomization.ts`, `useToolInstances.ts` — claude-B
 - ✅ `public/data/` JSON assets copied (systemPromptTemplate, toolsManifest, freeAgentInstructions)
 - ✅ `src/lib/*` and `src/utils/*` framework-agnostic files copied & fixed (supabase→fetch, lucide-react→iconName)
-- ⏳ `src/views/WorkbenchView.vue`
+- ✅ DONE — claude-B (2026-05-22): `src/views/WorkbenchView.vue` — full orchestration view. Imports all layout/canvas/panel components. Save/load/clear handlers built in. Uses `useWorkflowRunner` composable for SSE execution. Placeholder stubs for pending components (Toolbar, Sidebar, PropertiesPanel, OutputLog, FreeAgentView, WorkflowCanvasMode) — replace each stub with the real implementation as other agents complete those files.
 - ✅ DONE — claude-C (2026-05-22): `src/views/NotFoundView.vue`
 - ✅ DONE — claude-C (2026-05-22): `src/components/layout/AppLayout.vue`, `MobileNav.vue` (MobileNav is the lean variant — `DropdownMenu` / `AlertDialog` swapped for plain Buttons + hidden file input + an inline modal-free confirm. Swap in `shadcn-vue` `DropdownMenu` / `AlertDialog` when those primitives land.)
 
@@ -162,10 +163,10 @@ Port from `src/components/workflow/` (source):
 - ✅ DONE — claude-C (2026-05-22): `WorkflowNodeComponent.vue` (shared node-content renderer; uses `@xyflow/vue` `Handle`/`Position`)
 - ✅ DONE — claude-C (2026-05-22): `iconRegistry.ts` (string-name → `LucideIcon` lookup used by `FunctionNode`)
 - ✅ DONE — claude-C (2026-05-22): ui primitives `ui/Card.vue`, `ui/Badge.vue`, `ui/Button.vue`, `ui/Input.vue`, `ui/CardHeader.vue`, `ui/CardTitle.vue`, `ui/CardContent.vue` — plain Tailwind, no `radix-vue` dep. **Other agents: do not re-implement these primitives, but feel free to add more shadcn-vue primitives alongside them.**
-- ⏳ `Sidebar.vue` (from `src/components/sidebar/`)
-- ⏳ `Toolbar.vue` (from `src/components/toolbar/`)
-- ⏳ `PropertiesPanel.vue` (from `src/components/properties/`)
-- ⏳ `OutputLog.vue` (from `src/components/output/`)
+- ⏳ `Sidebar.vue` (from `src/components/sidebar/`) — stub created at `components/sidebar/Sidebar.vue`
+- ⏳ `Toolbar.vue` (from `src/components/toolbar/`) — stub created at `components/toolbar/Toolbar.vue`
+- ⏳ `PropertiesPanel.vue` (from `src/components/properties/`) — stub created at `components/properties/PropertiesPanel.vue`
+- ⏳ `OutputLog.vue` (from `src/components/output/`) — functional stub created (renders log entries with colour-coding)
 - ⏳ `AgentSelector.vue`, `FunctionSelector.vue`, `ExcelSelector.vue`
 
 **claude-C scope note (2026-05-22, ✅ slice complete):** Workflow node slice is done.
@@ -210,11 +211,14 @@ Port all 30 files from `src/components/freeAgent/`:
   `FreeAgentNode.vue`, `ChildAgentNode.vue`, `ScratchpadNode.vue`,
   `AttributeNode.vue`, `FileNode.vue`, `PromptNode.vue`, `PromptFileNode.vue`,
   `ArtifactNode.vue`, `ToolNode.vue`, `CategoryLabelNode.vue`
-- Modals: `AssistanceModal.vue`, `FinalReportModal.vue`,
-  `ChildAgentDetailModal.vue`, `ArtifactViewerModal.vue`,
-  `AttributeViewerModal.vue`, `ScratchpadViewerModal.vue`,
-  `ReflectModal.vue`, `InterjectModal.vue`, `EnhancePromptModal.vue`,
-  `EnhancePromptSettingsModal.vue`, `SecretsManagerModal.vue` ⏳
+- Modals:
+  - ✅ DONE — claude-D (2026-05-22): `ScratchpadViewerModal.vue`,
+    `InterjectModal.vue`, `AssistanceModal.vue`, `AttributeViewerModal.vue`,
+    `ArtifactViewerModal.vue` (5 smaller modals; closes loop on
+    `open-viewer` events from `AttributeNode` / `ScratchpadNode`)
+  - ⏳ `FinalReportModal.vue`, `ChildAgentDetailModal.vue`, `ReflectModal.vue`,
+    `EnhancePromptModal.vue`, `EnhancePromptSettingsModal.vue`,
+    `SecretsManagerModal.vue` (larger modals — open for other agents)
 - Tabs: `ToolInstancesTab.vue` ⏳
 
 **claude-D scope note (2026-05-22, ✅ slice complete):** All 10 canvas-node
@@ -255,6 +259,27 @@ ported. Notes for follow-up:
 - All four viewers consume only the shadcn-vue primitives that already
   exist in `components/ui/` (Card/Header/Title/Content, Button, Badge) — no
   new ui primitives required.
+
+**claude-D modal slice (2026-05-22, ✅ slice complete):** 5 smaller modals
+ported using the same fixed-overlay backdrop pattern claude-C used in
+`SimpleView.vue` (no shadcn-vue `Dialog` primitive used). Notes:
+
+- All five expose a `v-model:open` API: parent passes `:open` and listens
+  on `@update:open`. Behavioural events:
+  - `InterjectModal`: `@submit (message: string)`
+  - `AssistanceModal`: `@respond ({ response?, fileId?, selectedChoice? })`
+  - The three viewer modals are display-only (no extra events).
+- `AttributeViewerModal` and `ScratchpadViewerModal` use the same inlined
+  3-button tab pattern as `RawViewer.vue`. Swap to a real Tabs primitive
+  when one lands.
+- Markdown still deferred — text content renders as `whitespace-pre-wrap`.
+- `AssistanceModal` replaces shadcn-vue `RadioGroup` with native
+  `<input type="radio">` styled with `accent-primary`. Swap to a real
+  RadioGroup primitive when it lands.
+- Wire-up: `FreeAgentCanvas.vue` should mount the viewer modals once and
+  toggle them in response to the `open-viewer` events from `AttributeNode`
+  / `ScratchpadNode`. The Assistance/Interject modals are typically owned
+  by `FreeAgentView.vue` (orchestration scope).
 
 ### Phase 6 — Integration & polish ⏳ PENDING
 - Wire composables to backend (`VITE_BACKEND_URL` → Fastify)
