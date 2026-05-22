@@ -140,14 +140,14 @@ All Fastify routes ported. SSE format preserved as
   `src/index.css` (design tokens)
 - ✅ `src/main.ts`, `src/App.vue`, `src/router/index.ts`
 - ✅ `src/stores/workflowStore.ts`
-- 🟡 IN PROGRESS — claude-B (2026-05-22): `src/stores/freeAgentStore.ts`
-- 🟡 IN PROGRESS — claude-B (2026-05-22): `src/stores/secretsStore.ts`
-- 🟡 IN PROGRESS — claude-B (2026-05-22): `src/stores/promptStore.ts`
-- 🟡 IN PROGRESS — claude-B (2026-05-22): `src/stores/toolInstanceStore.ts`
-- 🟡 IN PROGRESS — claude-B (2026-05-22): `src/composables/useFreeAgentSession.ts`
-- 🟡 IN PROGRESS — claude-B (2026-05-22): `src/composables/use-mobile.ts`, `use-toast.ts`, `useSecretsManager.ts`, `usePromptCustomization.ts`, `useToolInstances.ts`
-- 🟡 IN PROGRESS — claude-B (2026-05-22): Copy `public/data/` JSON assets from source
-- 🟡 IN PROGRESS — claude-B (2026-05-22): Copy framework-agnostic `src/lib/*` and `src/utils/*` from source
+- ✅ `src/stores/freeAgentStore.ts` — claude-B (2026-05-22)
+- ✅ `src/stores/secretsStore.ts` — claude-B (2026-05-22)
+- ✅ `src/stores/promptStore.ts` — claude-B (2026-05-22)
+- ✅ `src/stores/toolInstanceStore.ts` — claude-B (2026-05-22)
+- ✅ `src/composables/useFreeAgentSession.ts` — claude-B (thin wrapper over freeAgentStore)
+- ✅ `src/composables/use-mobile.ts`, `use-toast.ts`, `useSecretsManager.ts`, `usePromptCustomization.ts`, `useToolInstances.ts` — claude-B
+- ✅ `public/data/` JSON assets copied (systemPromptTemplate, toolsManifest, freeAgentInstructions)
+- ✅ `src/lib/*` and `src/utils/*` framework-agnostic files copied & fixed (supabase→fetch, lucide-react→iconName)
 - ⏳ `src/views/WorkbenchView.vue`, `NotFoundView.vue`
 - ⏳ `src/components/layout/AppLayout.vue`, `MobileNav.vue`
 
@@ -156,30 +156,54 @@ Port from `src/components/workflow/` (source):
 - ⏳ `WorkflowCanvas.vue` (wraps `@xyflow/vue`)
 - ⏳ `WorkflowCanvasMode.vue`
 - ⏳ `SimpleView.vue`
-- 🟡 IN PROGRESS — claude-C (2026-05-22): `Stage.vue`, `StageNode.vue`
-- 🟡 IN PROGRESS — claude-C (2026-05-22): `AgentNode.vue`, `FunctionNode.vue`, `NoteNode.vue`
-- 🟡 IN PROGRESS — claude-C (2026-05-22): `WorkflowNodeComponent.vue` (shared node-content renderer)
-- 🟡 IN PROGRESS — claude-C (2026-05-22): Minimal ui primitives needed by the above (`ui/Card.vue`, `ui/Badge.vue`, `ui/Button.vue`) — built on plain Tailwind, no `radix-vue` dep required for these three. **Other agents: do not re-implement these three primitives, but feel free to add more shadcn-vue primitives alongside them.**
+- ✅ DONE — claude-C (2026-05-22): `Stage.vue`, `StageNode.vue`
+- ✅ DONE — claude-C (2026-05-22): `AgentNode.vue`, `FunctionNode.vue`, `NoteNode.vue`
+- ✅ DONE — claude-C (2026-05-22): `WorkflowNodeComponent.vue` (shared node-content renderer; uses `@xyflow/vue` `Handle`/`Position`)
+- ✅ DONE — claude-C (2026-05-22): `iconRegistry.ts` (string-name → `LucideIcon` lookup used by `FunctionNode`)
+- ✅ DONE — claude-C (2026-05-22): ui primitives `ui/Card.vue`, `ui/Badge.vue`, `ui/Button.vue`, `ui/Input.vue`, `ui/CardHeader.vue`, `ui/CardTitle.vue`, `ui/CardContent.vue` — plain Tailwind, no `radix-vue` dep. **Other agents: do not re-implement these primitives, but feel free to add more shadcn-vue primitives alongside them.**
 - ⏳ `Sidebar.vue` (from `src/components/sidebar/`)
 - ⏳ `Toolbar.vue` (from `src/components/toolbar/`)
 - ⏳ `PropertiesPanel.vue` (from `src/components/properties/`)
 - ⏳ `OutputLog.vue` (from `src/components/output/`)
 - ⏳ `AgentSelector.vue`, `FunctionSelector.vue`, `ExcelSelector.vue`
 
-**claude-C scope note (2026-05-22):** I am only touching files under
-`packages/frontend/src/components/workflow/` and
-`packages/frontend/src/components/ui/` (three primitives listed above). I will
-**not** touch `src/views/`, `src/router/`, `src/main.ts`, `src/App.vue`,
-`src/stores/`, `src/composables/`, `src/lib/`, `src/utils/`, or any
-`components/freeAgent/` files. Safe for other agents to work on any of those in
-parallel.
+**claude-C scope note (2026-05-22, ✅ slice complete):** Workflow node slice is done.
+I authored `Card.vue`, `Badge.vue`, `Button.vue`, all 6 workflow `.vue` files,
+and `iconRegistry.ts`. The other `ui/*.vue` primitives in the directory
+listing were added by another agent in parallel — I left them alone except
+for swapping `Stage.vue`'s `<Input>` for a styled `<input>` to make the
+file compile when the draft was found mid-edit.
+
+Notes for whoever wires `WorkflowCanvas.vue` / `WorkflowCanvasMode.vue` next:
+
+- All workflow node Vue components use a **plain-props + events** API (not the
+  ReactFlow-style `data: {...}` wrapper). Pass props directly and listen on
+  `@select`, `@delete`, `@toggle-minimize`, `@toggle-lock`, `@port-click`,
+  `@run`, `@drag-start`.
+- `FunctionNode.vue` takes an optional
+  `functionDef: FunctionDefinition | null` prop — the host looks it up via
+  `getFunctionById` from `@/lib/functionDefinitions` once claude-B finishes
+  copying that file. `iconRegistry.ts` already maps the lucide icon names
+  used by the function definitions.
+- `NoteNode.vue` intentionally **omits** the `NodeResizer`. Wrap it in
+  `@xyflow/vue`'s `NodeResizer` from inside `WorkflowCanvas.vue` and forward
+  the resize result via the `update` event.
+- `Stage.vue` emits `request-add-agent` / `request-add-function` for the
+  mobile-only inline add buttons — wire those to `AgentSelector.vue` /
+  `FunctionSelector.vue` modals at the host-view level.
+- `WorkflowNodeComponent.vue` is the **canvas-mode** node renderer (uses
+  `Handle`/`Position` from `@xyflow/vue`); `AgentNode.vue` and `FunctionNode.vue`
+  are the **stacked-view** renderers (HTML-positioned port divs). Both are kept
+  because the two view modes have distinct port-handling requirements (the
+  README's risk note about validating one node type with `@xyflow/vue` is
+  worth a quick smoke test on `WorkflowNodeComponent` when wiring the canvas).
 
 ### Phase 5 — Free Agent mode Vue components 🟡 IN PROGRESS
 Port all 30 files from `src/components/freeAgent/`:
 - Containers: `FreeAgentView.vue`, `FreeAgentPanel.vue`, `FreeAgentCanvas.vue` ⏳
 - Viewers: `BlackboardViewer.vue`, `ArtifactsPanel.vue`, `RawViewer.vue`,
   `SystemPromptViewer.vue`, `SecretsMiniPanel.vue` ⏳
-- Canvas nodes (🟡 IN PROGRESS — claude-D (2026-05-22)):
+- Canvas nodes (✅ DONE — claude-D (2026-05-22)):
   `FreeAgentNode.vue`, `ChildAgentNode.vue`, `ScratchpadNode.vue`,
   `AttributeNode.vue`, `FileNode.vue`, `PromptNode.vue`, `PromptFileNode.vue`,
   `ArtifactNode.vue`, `ToolNode.vue`, `CategoryLabelNode.vue`
@@ -190,13 +214,22 @@ Port all 30 files from `src/components/freeAgent/`:
   `EnhancePromptSettingsModal.vue`, `SecretsManagerModal.vue` ⏳
 - Tabs: `ToolInstancesTab.vue` ⏳
 
-**claude-D scope note (2026-05-22):** I am only touching the 10 canvas-node
-files under `packages/frontend/src/components/freeAgent/*Node.vue`. I will
-**not** touch viewer/modal/container/tab files in that directory, nor any
-file outside `components/freeAgent/`. My nodes import from
-`@/components/ui/{card,badge,button}` (claude-C's slice) and
-`@agent-builder/shared` — same paths claude-C uses, no file overlap.
-Safe to port the other freeAgent files in parallel.
+**claude-D scope note (2026-05-22, ✅ slice complete):** All 10 canvas-node
+files under `packages/frontend/src/components/freeAgent/*Node.vue` have been
+ported. Notes for follow-up agents:
+
+- Modal/viewer dependencies were **not** inlined. `AttributeNode.vue` and
+  `ScratchpadNode.vue` emit `open-viewer` events rather than rendering their
+  modals directly — the parent (`FreeAgentCanvas.vue`) is expected to listen
+  and render `AttributeViewerModal.vue` / `ScratchpadViewerModal.vue` itself.
+- Markdown rendering (`PromptNode`, `ScratchpadNode`) was deferred — content
+  is rendered as `whitespace-pre-wrap` plain text. Swap in `vue-markdown-render`
+  once it's added to `frontend/package.json`.
+- `ScrollArea` was replaced with a plain `overflow-auto` div; revisit when
+  the shadcn-vue ScrollArea primitive lands in `components/ui/`.
+- All nodes import `cn` from `@/lib/utils` and `FreeAgentNodeData` from
+  `@agent-builder/shared` (already in shared types).
+- `lucide-vue-next` icons used: see each node's `<script setup>` imports.
 
 ### Phase 6 — Integration & polish ⏳ PENDING
 - Wire composables to backend (`VITE_BACKEND_URL` → Fastify)
